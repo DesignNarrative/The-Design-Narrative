@@ -2,44 +2,51 @@
 
 import { useRef, useState, useEffect } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { ArrowUpRight } from 'lucide-react';
 
 const PROJECTS = [
   {
-    title: 'Utopia Organic Brand',
-    category: 'Brand Design & Packaging',
-    image: 'https://images.unsplash.com/photo-1542744094-3a31f103e35f?w=600&auto=format&fit=crop&q=60',
+    title: 'CHAV BHARI',
+    category: 'Branding & Packaging',
+    image: '/assets/projects/Chav Bhari.png',
     video: 'https://player.vimeo.com/external/494252666.sd.mp4?s=3de3ecb70868f0a0c6a5a898b3c6a461e1b8b2b6&profile_id=139&oauth2_token_id=57447761',
+    link: '/work/chav-bhari',
   },
   {
-    title: 'Coco Pani Identity',
-    category: 'Brand strategy & Nomenclature',
-    image: 'https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?w=600&auto=format&fit=crop&q=60',
+    title: 'COCO PANI',
+    category: 'FMCG',
+    image: '/assets/projects/Coco Paniii.png',
     video: 'https://player.vimeo.com/external/371433846.sd.mp4?s=236da2f3c054e0f9b3ec836c2e399fa51b69f8c6&profile_id=139&oauth2_token_id=57447761',
+    link: '/work/cocopani',
   },
   {
-    title: 'Yarnen Web Platform',
+    title: 'YARNEN WEB PLATFORM',
     category: 'UI/UX Web & E-Commerce',
-    image: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=600&auto=format&fit=crop&q=60',
+    image: '/assets/projects/Yarnen fashion.png',
     video: 'https://player.vimeo.com/external/403848777.sd.mp4?s=a7b05101d293d05260840b2efd489bdf11f2a36b&profile_id=139&oauth2_token_id=57447761',
+    link: '/work/yarnen-fashion',
   },
   {
-    title: 'Dangayach Group',
+    title: 'DANGAYACH GROUP',
     category: 'Corporate Branding & Web',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&auto=format&fit=crop&q=60',
+    image: '/assets/projects/Dangayach.png',
     video: 'https://player.vimeo.com/external/435674703.sd.mp4?s=7f26c6d2c49ee69a4c5148d4fb9fcf32d207ec29&profile_id=139&oauth2_token_id=57447761',
+    link: '/work/dangayach-group',
   },
   {
-    title: 'O\'Daisy E-Commerce',
+    title: 'O\'DAISY E-COMMERCE',
     category: 'UI/UX App & Strategy',
-    image: 'https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=600&auto=format&fit=crop&q=60',
+    image: '/assets/projects/Odaiysy.png',
     video: 'https://player.vimeo.com/external/494252666.sd.mp4?s=3de3ecb70868f0a0c6a5a898b3c6a461e1b8b2b6&profile_id=139&oauth2_token_id=57447761',
+    link: '/work/odaisy-preschool',
   },
   {
-    title: 'A Curve Story campaigns',
-    category: 'Social Campaigns & Media',
-    image: 'https://images.unsplash.com/photo-1571721795195-a2ca2d3370a9?w=600&auto=format&fit=crop&q=60',
+    title: 'YUMMKEEMO',
+    category: 'Branding & Packaging',
+    image: '/assets/projects/Yumkeemo.png',
     video: 'https://player.vimeo.com/external/403848777.sd.mp4?s=a7b05101d293d05260840b2efd489bdf11f2a36b&profile_id=139&oauth2_token_id=57447761',
+    link: '/work/yummkeemo',
   },
 ];
 
@@ -63,7 +70,8 @@ function ProjectCard({ project }: { project: typeof PROJECTS[0] }) {
   };
 
   return (
-    <div
+    <Link
+      href={project.link}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       className="snap-start shrink-0 w-[80vw] md:w-[450px] h-[500px] rounded-3xl overflow-hidden glass-card-dark border border-white/5 flex flex-col relative group select-none cursor-pointer"
@@ -105,7 +113,7 @@ function ProjectCard({ project }: { project: typeof PROJECTS[0] }) {
           View case study details
         </p>
       </div>
-    </div>
+    </Link>
   );
 }
 
