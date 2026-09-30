@@ -234,7 +234,7 @@ export default function ServicesPage() {
               className="relative w-full max-w-lg aspect-square rounded-3xl overflow-hidden shadow-2xl border border-black/5 bg-white"
             >
               <Image
-                src="/assets/services/Services Banner.png"
+                src="/assets/services/SERVICES BANNER IMAGE.png"
                 alt="The Design Narrative Services Banner"
                 fill
                 className="object-contain"
