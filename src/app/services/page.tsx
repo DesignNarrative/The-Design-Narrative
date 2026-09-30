@@ -2,6 +2,7 @@
 
 import { useState, useRef } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { ArrowUpRight, Sparkles, Paintbrush, Globe, MessageSquare, TrendingUp } from 'lucide-react';
 
@@ -9,7 +10,7 @@ const TILES = [
   {
     title: 'Brand Design',
     desc: 'Strategy, naming, and packaging design built to stand out.',
-    video: 'https://player.vimeo.com/external/494252666.sd.mp4?s=3de3ecb70868f0a0c6a5a898b3c6a461e1b8b2b6&profile_id=139&oauth2_token_id=57447761',
+    image: '/assets/services/Brand Design Card.png',
     link: '/services/brand-design',
     icon: Paintbrush,
     color: 'from-violet-500/20 to-transparent',
@@ -17,7 +18,7 @@ const TILES = [
   {
     title: 'UI UX Design',
     desc: 'Websites and apps shaped by user behavior. Snappy layouts.',
-    video: 'https://player.vimeo.com/external/371433846.sd.mp4?s=236da2f3c054e0f9b3ec836c2e399fa51b69f8c6&profile_id=139&oauth2_token_id=57447761',
+    image: '/assets/services/UiUX Card.png',
     link: '/services/ui-ux',
     icon: Globe,
     color: 'from-cyan-500/20 to-transparent',
@@ -25,7 +26,7 @@ const TILES = [
   {
     title: 'Social Marketing',
     desc: 'Compelling campaigns designed to capture infinite attention.',
-    video: 'https://player.vimeo.com/external/403848777.sd.mp4?s=a7b05101d293d05260840b2efd489bdf11f2a36b&profile_id=139&oauth2_token_id=57447761',
+    image: '/assets/services/Social Media Card.png',
     link: '/services/social-media',
     icon: MessageSquare,
     color: 'from-pink-500/20 to-transparent',
@@ -33,7 +34,7 @@ const TILES = [
   {
     title: 'SEO Growth',
     desc: 'Ranking optimization that gets you organic Page 1 slots.',
-    video: 'https://player.vimeo.com/external/435674703.sd.mp4?s=7f26c6d2c49ee69a4c5148d4fb9fcf32d207ec29&profile_id=139&oauth2_token_id=57447761',
+    image: '/assets/services/SEO Card.png',
     link: '/services/seo',
     icon: TrendingUp,
     color: 'from-lime-500/20 to-transparent',
@@ -41,44 +42,22 @@ const TILES = [
 ];
 
 function ServiceTile({ tile }: { tile: typeof TILES[0] }) {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [isHovered, setIsHovered] = useState(false);
   const Icon = tile.icon;
-
-  const handleMouseEnter = () => {
-    setIsHovered(true);
-    if (videoRef.current) {
-      videoRef.current.play().catch(() => {});
-    }
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-    if (videoRef.current) {
-      videoRef.current.pause();
-    }
-  };
 
   return (
     <Link
       href={tile.link}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      className="relative flex flex-col justify-between h-[450px] p-8 rounded-3xl overflow-hidden bg-[#050505] text-white border border-white/5 group shadow-lg transition-transform duration-300 hover:scale-[1.02] active:scale-98 select-none"
+      className="relative flex flex-col justify-between h-[450px] p-8 rounded-3xl overflow-hidden bg-[#050505] text-white border border-white/5 group shadow-lg transition-transform duration-300 hover:scale-[1.02] active:scale-98"
     >
-      {/* Background Video Loop on Hover */}
+      {/* Background Image */}
       <div className="absolute inset-0 w-full h-full z-10 pointer-events-none overflow-hidden">
-        <video
-          ref={videoRef}
-          src={tile.video}
-          muted
-          loop
-          playsInline
-          preload="none"
-          className="w-full h-full object-cover transition-opacity duration-500 filter grayscale"
-          style={{ opacity: isHovered ? 0.35 : 0.05 }}
+        <Image
+          src={tile.image}
+          alt={tile.title}
+          fill
+          className="object-cover opacity-80 group-hover:opacity-95 group-hover:scale-105 transition-all duration-500"
         />
-        <div className={`absolute inset-0 bg-gradient-to-t ${tile.color} z-15 pointer-events-none`} />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#050505] via-[#050505]/60 to-black/30" />
       </div>
 
       {/* Content */}
@@ -115,7 +94,7 @@ export default function ServicesHubPage() {
   };
 
   return (
-    <div className="relative min-h-screen bg-white text-[#111111] select-none py-16 px-6 md:px-12 max-w-7xl mx-auto space-y-16">
+    <div className="relative min-h-screen bg-white text-[#111111] py-16 px-6 md:px-12 max-w-7xl mx-auto space-y-16">
       
       {/* 1. HEADER (White Bg) */}
       <div className="space-y-6 mb-16 max-w-4xl pt-8">

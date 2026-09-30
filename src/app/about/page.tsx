@@ -128,7 +128,7 @@ export default function AboutPage() {
   };
 
   return (
-    <div className="relative min-h-screen bg-white text-[#111111] select-none">
+    <div className="relative min-h-screen bg-white text-[#111111]">
       
       {/* SECTION 1: HERO (Moody Team Photo + Strategic Design Slogan) */}
       <section className="relative w-full h-[65vh] bg-[#050505] overflow-hidden flex flex-col justify-end p-6 md:p-16">
@@ -284,7 +284,7 @@ export default function AboutPage() {
               key={idx}
               onMouseMove={handleCardMouseMove}
               onMouseLeave={handleCardMouseLeave}
-              className="glass-card-light rounded-2xl overflow-hidden border border-black/5 p-4 flex flex-col items-center text-center transition-all duration-200 select-none group origin-center shadow-sm"
+              className="glass-card-light rounded-2xl overflow-hidden border border-black/5 p-4 flex flex-col items-center text-center transition-all duration-200 group origin-center shadow-sm"
               style={{ transformStyle: 'preserve-3d', willChange: 'transform' }}
             >
               {/* Grayscale default -> colorized hover image */}

@@ -64,7 +64,7 @@ Requirement: ${formData.message}`;
   };
 
   return (
-    <div className="relative min-h-screen bg-white text-[#111111] select-none py-16 px-6 md:px-12 max-w-7xl mx-auto space-y-24">
+    <div className="relative min-h-screen bg-white text-[#111111] py-16 px-6 md:px-12 max-w-7xl mx-auto space-y-24">
       
       {/* SECTION 1: SPLIT-SCREEN HERO (Form left, Video right) */}
       <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch pt-8">

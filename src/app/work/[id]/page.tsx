@@ -20,7 +20,7 @@ export default function CaseStudyPage({ params }: { params: Promise<{ id: string
   const nextProject = PROJECTS[(currentIndex + 1) % PROJECTS.length];
 
   return (
-    <div className="relative min-h-screen bg-white text-[#111111] select-none py-16 px-6 md:px-12 max-w-7xl mx-auto space-y-24">
+    <div className="relative min-h-screen bg-white text-[#111111] py-16 px-6 md:px-12 max-w-7xl mx-auto space-y-24">
       
       {/* Back link */}
       <Link href="/work" className="text-xs font-bold text-gray-400 hover:text-black uppercase tracking-widest flex items-center gap-1.5 mb-12">
@@ -177,7 +177,7 @@ export default function CaseStudyPage({ params }: { params: Promise<{ id: string
           </div>
 
           {/* Nav overlay */}
-          <div className="relative z-20 w-full h-full flex flex-col justify-center items-center text-center p-6 space-y-2 select-none">
+          <div className="relative z-20 w-full h-full flex flex-col justify-center items-center text-center p-6 space-y-2">
             <span className="text-[9px] font-mono tracking-widest uppercase text-violet-400 font-bold group-hover:translate-x-1 transition-transform">
               NEXT PROJECT &rarr;
             </span>

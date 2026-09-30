@@ -95,7 +95,7 @@ export default function ImageSequenceHero() {
       className="relative w-full h-screen bg-white overflow-hidden"
     >
       {/* Monospace floating metadata header (Un-ignorable layout) */}
-      <div className="absolute top-8 left-1/2 transform -translate-x-1/2 z-30 flex items-center px-4 py-2 rounded-full border border-black/10 bg-white/75 backdrop-blur-md text-[9px] font-mono font-bold tracking-widest text-[#111111] uppercase select-none pointer-events-none">
+      <div className="absolute top-8 left-1/2 transform -translate-x-1/2 z-30 flex items-center px-4 py-2 rounded-full border border-black/10 bg-white/75 backdrop-blur-md text-[9px] font-mono font-bold tracking-widest text-[#111111] uppercase pointer-events-none">
         THE DESIGN NARRATIVE • SHAPING BRAND PERCEPTION
       </div>
 
@@ -123,7 +123,7 @@ export default function ImageSequenceHero() {
       {/* Floating Bottom CTA (Fades in over full-bleed frames) */}
       <div
         ref={overlayRef}
-        className="absolute inset-x-0 bottom-16 flex flex-col items-center justify-center text-center z-20 px-6 opacity-0 translate-y-6 select-none pointer-events-none"
+        className="absolute inset-x-0 bottom-16 flex flex-col items-center justify-center text-center z-20 px-6 opacity-0 translate-y-6 pointer-events-none"
       >
         <div className="flex gap-4 pointer-events-auto">
           <Link

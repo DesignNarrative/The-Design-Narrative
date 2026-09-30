@@ -95,7 +95,7 @@ export default function WorkHubPage() {
   });
 
   return (
-    <div className="relative min-h-screen bg-white text-[#111111] select-none py-16 px-6 md:px-12 max-w-7xl mx-auto space-y-12">
+    <div className="relative min-h-screen bg-white text-[#111111] py-16 px-6 md:px-12 max-w-7xl mx-auto space-y-12">
       
       {/* 1. HEADER (White Bg) */}
       <div className="space-y-6 max-w-4xl pt-8">

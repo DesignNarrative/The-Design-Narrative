@@ -4,6 +4,7 @@ import './globals.css';
 
 // Components
 import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 import CustomCursor from '@/components/CustomCursor';
 import SmoothScroll from '@/components/SmoothScroll';
 
@@ -45,6 +46,7 @@ export default function RootLayout({
           <main className="flex-grow pt-20">
             {children}
           </main>
+          <Footer />
         </SmoothScroll>
       </body>
     </html>

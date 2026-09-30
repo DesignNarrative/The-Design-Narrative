@@ -74,7 +74,7 @@ function ProjectCard({ project }: { project: typeof PROJECTS[0] }) {
       href={project.link}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className="snap-start shrink-0 w-[80vw] md:w-[450px] h-[500px] rounded-3xl overflow-hidden glass-card-dark border border-white/5 flex flex-col relative group select-none cursor-pointer"
+      className="snap-start shrink-0 w-[80vw] md:w-[450px] h-[500px] rounded-3xl overflow-hidden glass-card-dark border border-white/5 flex flex-col relative group cursor-pointer"
     >
       {/* Visual Frame */}
       <div className="relative w-full h-[360px] overflow-hidden bg-white/5">
