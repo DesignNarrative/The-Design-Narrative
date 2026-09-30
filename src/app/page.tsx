@@ -337,7 +337,7 @@ export default function HomePage() {
       </section>
 
       {/* SECTION 6: TESTIMONIALS (Redesigned with floating polaroids & sliding cards) */}
-      <section className="relative py-28 md:py-36 overflow-hidden bg-gradient-to-b from-white via-[#fafafc] to-white border-t border-black/5">
+      <section className="relative pt-24 md:pt-32 pb-10 md:pb-12 overflow-hidden bg-gradient-to-b from-white via-[#fafafc] to-white border-t border-black/5">
         
         {/* Floating Top Moodboard Polaroids & Annotations */}
         <div className="max-w-7xl mx-auto px-6 relative mb-16 md:mb-20">
@@ -516,7 +516,7 @@ export default function HomePage() {
       </section>
 
       {/* SECTION 7: RESOURCES (Blog Previews - White Background) */}
-      <section className="py-24 md:py-32 px-6 md:px-12 max-w-7xl mx-auto">
+      <section className="pt-8 md:pt-12 pb-24 md:pb-32 px-6 md:px-12 max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 md:mb-16">
           <div className="space-y-3">
             <span className="text-[11px] font-mono tracking-widest text-gray-400 font-bold uppercase block">
@@ -531,7 +531,7 @@ export default function HomePage() {
           </div>
 
           <Link
-            href="/services"
+            href="/blogs"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-black/20 text-xs font-black uppercase tracking-wider text-black hover:bg-black hover:text-white transition-all duration-200 self-start md:self-auto shrink-0 shadow-sm"
           >
             VIEW ALL ARTICLES <ArrowUpRight className="w-4 h-4" />
@@ -564,17 +564,10 @@ export default function HomePage() {
                 </h3>
 
                 <div className="flex items-center justify-between pt-4 border-t border-black/5">
-                  <div className="flex items-center gap-2.5">
-                    <div className="w-7 h-7 rounded-full bg-black text-white flex items-center justify-center font-black text-[9px] tracking-tighter">
-                      TDN
-                    </div>
-                    <div className="text-[11px] font-semibold text-gray-500 flex items-center gap-1.5 font-mono">
-                      <span>{blog.author}</span>
-                      <span className="text-gray-300">•</span>
-                      <span>{blog.readTime}</span>
-                      <span className="text-gray-300">•</span>
-                      <span>{blog.date}</span>
-                    </div>
+                  <div className="text-[11px] font-semibold text-gray-500 flex items-center gap-1.5 font-mono">
+                    <span>{blog.readTime}</span>
+                    <span className="text-gray-300">•</span>
+                    <span>{blog.date}</span>
                   </div>
 
                   <div className="w-9 h-9 rounded-full border border-black/15 flex items-center justify-center text-black group-hover:bg-black group-hover:text-white group-hover:border-black transition-all duration-300 shadow-sm shrink-0">
