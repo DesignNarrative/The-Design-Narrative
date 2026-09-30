@@ -272,24 +272,8 @@ export default function HomePage() {
       {/* SECTION 3: SERVICES PINNED CHAPTERS (Pinned Viewport Reveal) */}
       <ServicesPin />
 
-      {/* SECTION 4: FEATURED WORK GALLERY (Draggable Portfolio Snap Showcase) */}
-      <section className="bg-[#050505] text-white py-24 md:py-32 overflow-hidden border-t border-white/5">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 mb-16 flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
-          <div className="space-y-4">
-            <span className="text-[10px] font-mono tracking-widest text-violet-400 uppercase">PORTFOLIO</span>
-            <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tight">FEATURED PROJECTS</h2>
-          </div>
-          <Link
-            href="/services"
-            className="flex items-center gap-1 text-xs font-bold text-gray-500 hover:text-white uppercase tracking-widest border border-white/10 hover:border-violet-500/30 px-6 py-3 rounded-full transition-all"
-          >
-            All Work <ArrowUpRight className="w-4 h-4" />
-          </Link>
-        </div>
-
-        {/* Draggable slide list */}
-        <HorizontalGallery />
-      </section>
+      {/* SECTION 4: FEATURED WORK GALLERY (Scroll-driven Horizontal Showcase) */}
+      <HorizontalGallery />
 
       {/* SECTION 5: MANIFESTO & Ideas That Stick Visual (White Background) */}
       <section className="py-20 md:py-28 px-6 md:px-12 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">

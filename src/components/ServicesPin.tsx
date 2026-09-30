@@ -80,9 +80,9 @@ export default function ServicesPin() {
     const trigger = ScrollTrigger.create({
       trigger: pin,
       start: 'top top',
-      end: '+=240%', // Snappy and responsive scroll depth
+      end: '+=280%', // Smooth and responsive scroll depth
       pin: true,
-      scrub: 0.6,
+      scrub: 0.5,
       anticipatePin: 1,
       onUpdate: (self) => {
         const progress = self.progress;
@@ -101,26 +101,35 @@ export default function ServicesPin() {
           const content = contentBlocks[idx];
           const bg = bgImages[idx];
 
+          // Normalized progress within this specific slide [0, 1]
+          const slideStart = idx / total;
+          const rawProgress = (progress - slideStart) / (1 / total);
+          const slideProgress = Math.max(0, Math.min(1, rawProgress));
+
+          // Continuous responsive zoom: scales from 1.02 to 1.30 on scroll
+          const dynamicScale = 1.02 + (slideProgress * 0.28);
+
           if (idx === index) {
             // Active slide: smooth fade and parallax in
             gsap.to(panel, {
               opacity: 1,
               pointerEvents: 'auto',
-              duration: 0.4,
+              duration: 0.25,
               overwrite: 'auto',
             });
             gsap.to(content, {
               y: 0,
               opacity: 1,
-              duration: 0.45,
+              duration: 0.3,
               ease: 'power2.out',
               overwrite: 'auto',
             });
             if (bg) {
+              // Direct responsive zoom tied immediately to scroll position
               gsap.to(bg, {
-                scale: 1.05,
-                duration: 0.6,
-                ease: 'power1.out',
+                scale: dynamicScale,
+                duration: 0.08,
+                ease: 'none',
                 overwrite: 'auto',
               });
             }
@@ -129,20 +138,20 @@ export default function ServicesPin() {
             gsap.to(panel, {
               opacity: 0,
               pointerEvents: 'none',
-              duration: 0.35,
+              duration: 0.2,
               overwrite: 'auto',
             });
             gsap.to(content, {
               y: idx < index ? -40 : 60,
               opacity: 0,
-              duration: 0.35,
+              duration: 0.2,
               ease: 'power2.in',
               overwrite: 'auto',
             });
             if (bg) {
               gsap.to(bg, {
-                scale: 1.0,
-                duration: 0.5,
+                scale: idx < index ? 1.30 : 1.02,
+                duration: 0.2,
                 overwrite: 'auto',
               });
             }
@@ -170,7 +179,7 @@ export default function ServicesPin() {
           >
             {/* Background Image with Parallax Scale */}
             <div className="absolute inset-0 w-full h-full z-10 pointer-events-none overflow-hidden">
-              <div className="service-bg-image relative w-full h-full transition-transform duration-700">
+              <div className="service-bg-image relative w-full h-full will-change-transform">
                 <Image
                   src={chapter.image}
                   alt={chapter.title}
