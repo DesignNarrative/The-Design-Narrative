@@ -253,14 +253,14 @@ export default function HomePage() {
             {CLIENTS.concat(CLIENTS).map((client, idx) => (
               <div
                 key={idx}
-                className="w-44 h-24 md:w-52 md:h-28 rounded-2xl bg-white border border-black/5 shadow-sm hover:shadow-xl hover:-translate-y-2 hover:scale-105 transition-all duration-300 flex items-center justify-center p-4 md:p-5 cursor-pointer shrink-0"
+                className="group w-44 h-24 md:w-52 md:h-28 rounded-2xl bg-white border border-black/5 shadow-sm hover:shadow-xl hover:-translate-y-2 hover:scale-105 transition-all duration-300 flex items-center justify-center p-4 md:p-5 cursor-pointer shrink-0"
               >
                 <div className="relative w-full h-full flex items-center justify-center">
                   <Image
                     src={client.logo}
                     alt={`${client.name} Logo`}
                     fill
-                    className="object-contain"
+                    className="object-contain filter grayscale opacity-65 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
                   />
                 </div>
               </div>

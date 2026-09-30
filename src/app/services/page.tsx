@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import {
   ArrowUpRight,
   ArrowRight,
@@ -19,78 +19,85 @@ import {
   Boxes,
   BarChart3,
   CheckCircle2,
-  Star,
-  ChevronRight
+  ChevronDown
 } from 'lucide-react';
 
 const SERVICES_LIST = [
   {
     id: 'brand-design',
+    category: 'BRANDING',
     title: 'BRAND DESIGN',
     tag: 'IDENTITY & PACKAGING',
     desc: 'Strategy, naming, and packaging design built to stand out.',
+    deliverables: ['Visual Identity', 'Luxury Packaging', 'Brand Guidelines', 'Naming & Strategy'],
     image: '/assets/services/Brand Design Card.png',
     link: '/services/brand-design',
     icon: Paintbrush,
-    accent: 'from-violet-500/20 to-transparent',
-    iconBg: 'bg-violet-100 text-violet-600',
+    dotColor: 'bg-violet-500',
   },
   {
     id: 'ui-ux',
+    category: 'DIGITAL',
     title: 'UI/UX DESIGN',
     tag: 'DIGITAL PRODUCTS',
-    desc: 'Websites and apps shaped by user behavior. Snappy layouts.',
+    desc: 'Websites and apps shaped by user behavior with snappy, high-converting layouts.',
+    deliverables: ['Design Systems', 'Mobile App UI', 'Wireframes & Prototypes', 'Conversion UX'],
     image: '/assets/services/UiUX Card.png',
     link: '/services/ui-ux',
     icon: Layers,
-    accent: 'from-cyan-500/20 to-transparent',
-    iconBg: 'bg-cyan-100 text-cyan-600',
+    dotColor: 'bg-cyan-500',
   },
   {
     id: 'web-development',
+    category: 'DIGITAL',
     title: 'WEB DEVELOPMENT',
     tag: 'FAST & SCALABLE',
     desc: 'Fast, modern, and scalable websites that convert visitors into buyers.',
+    deliverables: ['Next.js & React', 'E-Commerce', '3D Motion', 'API Integrations'],
     image: '/assets/services/web-development.jpg',
     link: '/services/ui-ux',
     icon: Code2,
-    accent: 'from-blue-500/20 to-transparent',
-    iconBg: 'bg-blue-100 text-blue-600',
+    dotColor: 'bg-blue-500',
   },
   {
     id: 'social-media',
+    category: 'MARKETING',
     title: 'SOCIAL MEDIA MARKETING',
     tag: 'VIRAL ENGAGEMENT',
-    desc: 'Compelling campaigns and content designed to capture infinite attention.',
+    desc: 'Compelling campaigns and feed-stopping content designed to capture attention.',
+    deliverables: ['Short-form Reels', 'Content Calendar', 'Viral Growth Engine', 'Paid Ads'],
     image: '/assets/services/Social Media Card.png',
     link: '/services/social-media',
     icon: Share2,
-    accent: 'from-pink-500/20 to-transparent',
-    iconBg: 'bg-pink-100 text-pink-600',
+    dotColor: 'bg-pink-500',
   },
   {
     id: 'seo',
+    category: 'MARKETING',
     title: 'SEO & GROWTH',
     tag: 'ORGANIC RANKINGS',
     desc: 'Ranking optimization that gets you organic Page 1 slots on Google.',
+    deliverables: ['Technical SEO', 'High-Intent Keywords', 'Entity Search', 'Content Moats'],
     image: '/assets/services/SEO Card.png',
     link: '/services/seo',
     icon: TrendingUp,
-    accent: 'from-lime-500/20 to-transparent',
-    iconBg: 'bg-lime-100 text-lime-600',
+    dotColor: 'bg-lime-500',
   },
   {
     id: 'content-creative',
+    category: 'MARKETING',
     title: 'CONTENT & CREATIVE',
     tag: 'VISUALS & MOTION',
-    desc: 'Visuals, videos and commercial creative that connect and convert.',
+    desc: 'Visuals, videos, and copywriting that connect with your audience and convert.',
+    deliverables: ['Brand Photography', 'Commercial Films', 'Motion Graphics', 'Copywriting'],
     image: '/assets/services/content-creative.jpg',
     link: '/services/social-media',
     icon: Video,
-    accent: 'from-purple-500/20 to-transparent',
-    iconBg: 'bg-purple-100 text-purple-600',
+    dotColor: 'bg-purple-500',
   },
 ];
+
+const SERVICE_FILTER_TABS = ['ALL', 'BRANDING', 'DIGITAL', 'MARKETING'];
 
 const PROCESS_STEPS = [
   {
@@ -144,8 +151,12 @@ const CASE_STUDIES = [
 ];
 
 export default function ServicesPage() {
+  const [activeFilter, setActiveFilter] = useState('ALL');
   const [customMsg, setCustomMsg] = useState('');
-  const [activeCaseIdx, setActiveCaseIdx] = useState(0);
+
+  const filteredServices = SERVICES_LIST.filter(
+    (service) => activeFilter === 'ALL' || service.category === activeFilter
+  );
 
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -216,59 +227,31 @@ export default function ServicesPage() {
 
           {/* Right Hero Moodboard Visual */}
           <div className="lg:col-span-6 relative flex items-center justify-center min-h-[380px] md:min-h-[460px]">
-            {/* Main Studio Image Card */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="relative w-full max-w-md aspect-square rounded-3xl overflow-hidden shadow-2xl border border-black/10 bg-gray-900"
+              className="relative w-full max-w-lg aspect-square rounded-3xl overflow-hidden shadow-2xl border border-black/5 bg-white"
             >
               <Image
-                src="/assets/services/services-hero-desk.jpg"
-                alt="The Design Narrative Creative Studio"
+                src="/assets/services/Services Banner.png"
+                alt="The Design Narrative Services Banner"
                 fill
-                className="object-cover"
+                className="object-contain"
                 priority
               />
-            </motion.div>
-
-            {/* Floating Metric Pill: +120% Average Growth */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="absolute -bottom-4 left-6 sm:left-12 z-30 flex items-center gap-3 px-5 py-3 rounded-2xl bg-white border border-black/10 shadow-[0_15px_35px_rgba(0,0,0,0.15)] backdrop-blur-md"
-            >
-              <div className="w-8 h-8 rounded-xl bg-violet-50 flex items-center justify-center text-violet-600">
-                <BarChart3 className="w-4 h-4" />
-              </div>
-              <div className="leading-tight">
-                <div className="text-sm font-black text-black">+120%</div>
-                <div className="text-[10px] text-gray-500 font-medium">Average Growth</div>
-              </div>
-            </motion.div>
-
-            {/* Floating Mini Dark Badge */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="absolute top-8 right-2 sm:right-6 z-30 px-4 py-3 rounded-2xl bg-[#111116] border border-white/15 text-white shadow-2xl backdrop-blur-md max-w-[130px]"
-            >
-              <div className="text-[10px] font-mono tracking-wider text-violet-400 uppercase">Design</div>
-              <div className="text-xs font-bold">Develop &bull; Grow</div>
             </motion.div>
           </div>
 
         </div>
       </section>
 
-      {/* 2. SOLUTIONS FOR EVERY STAGE (6 Services Grid) */}
+      {/* 2. SOLUTIONS FOR EVERY STAGE (Large 2-Column Cards Grid with Tabs & Animations) */}
       <section id="services-grid" className="py-20 md:py-28 px-6 md:px-12 max-w-7xl mx-auto border-t border-black/5">
         
-        {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
-          <div className="space-y-3 max-w-2xl">
+        {/* Section Header & Filter Tabs */}
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16">
+          <div className="space-y-4 max-w-2xl">
             <span className="text-[11px] font-mono tracking-widest text-violet-600 font-bold uppercase block">
               OUR SERVICES
             </span>
@@ -276,62 +259,116 @@ export default function ServicesPage() {
               SOLUTIONS FOR EVERY <br />
               STAGE OF <span className="font-serif italic font-normal text-violet-600">YOUR GROWTH.</span>
             </h2>
-          </div>
-
-          <div className="max-w-md space-y-4">
-            <p className="text-xs sm:text-sm text-gray-500 font-medium leading-relaxed">
+            <p className="text-sm md:text-base text-gray-500 font-medium leading-relaxed max-w-xl">
               From brand identity to high-performing websites and campaigns &mdash; we help you build a strong digital presence that delivers real results.
             </p>
           </div>
-        </div>
 
-        {/* 6 Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {SERVICES_LIST.map((service) => {
-            const Icon = service.icon;
-            return (
-              <Link
-                key={service.id}
-                href={service.link}
-                className="group bg-white rounded-3xl overflow-hidden border border-black/5 shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between"
+          {/* Category Filter Tabs */}
+          <div className="flex flex-wrap items-center gap-2 bg-[#f4f4f6] p-1.5 rounded-full border border-black/5 self-start lg:self-end">
+            {SERVICE_FILTER_TABS.map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setActiveFilter(tab)}
+                className={`px-5 py-2 rounded-full text-xs font-mono font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer ${
+                  activeFilter === tab
+                    ? 'bg-black text-white shadow-md'
+                    : 'text-gray-600 hover:text-black hover:bg-black/5'
+                }`}
               >
-                {/* Image Container */}
-                <div className="relative aspect-[16/10] w-full overflow-hidden bg-gray-100">
-                  <Image
-                    src={service.image}
-                    alt={service.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
-                  />
-                  {/* Floating Icon Badge */}
-                  <div className="absolute top-4 left-4 z-10 w-9 h-9 rounded-xl bg-white/90 backdrop-blur-md shadow-md flex items-center justify-center border border-black/5">
-                    <Icon className="w-4 h-4 text-violet-600" />
-                  </div>
-                </div>
-
-                {/* Content Details */}
-                <div className="p-7 flex flex-col justify-between flex-grow gap-6">
-                  <div className="space-y-2">
-                    <div className="text-[9px] font-mono font-bold tracking-widest text-violet-600 uppercase">
-                      {service.tag}
-                    </div>
-                    <h3 className="text-lg md:text-xl font-black text-black leading-snug tracking-tight group-hover:text-violet-600 transition-colors">
-                      {service.title}
-                    </h3>
-                    <p className="text-xs text-gray-500 font-medium leading-relaxed">
-                      {service.desc}
-                    </p>
-                  </div>
-
-                  <div className="flex items-center justify-between pt-4 border-t border-black/5 text-xs font-black uppercase tracking-wider text-black group-hover:text-violet-600 transition-colors">
-                    <span>EXPLORE</span>
-                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
-                  </div>
-                </div>
-              </Link>
-            );
-          })}
+                {tab}
+              </button>
+            ))}
+          </div>
         </div>
+
+        {/* Large 2-Column Cards Grid */}
+        <motion.div layout className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+          <AnimatePresence>
+            {filteredServices.map((service, idx) => {
+              const Icon = service.icon;
+              return (
+                <motion.div
+                  key={service.id}
+                  layout
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.4, delay: idx * 0.08 }}
+                >
+                  <Link
+                    href={service.link}
+                    className="group bg-white rounded-[2.2rem] md:rounded-[2.5rem] border border-black/10 shadow-xl hover:shadow-[0_30px_70px_rgba(0,0,0,0.12)] hover:-translate-y-2.5 transition-all duration-500 overflow-hidden flex flex-col justify-between h-full"
+                  >
+                    {/* Big Prominent Image Section */}
+                    <div className="relative h-80 sm:h-96 md:h-[420px] lg:h-[460px] w-full overflow-hidden bg-gray-900">
+                      <Image
+                        src={service.image}
+                        alt={service.title}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
+
+                      {/* Top-Left Frosted Tag */}
+                      <div className="absolute top-5 left-5 z-10 flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/60 backdrop-blur-md text-white text-[10px] font-mono font-bold tracking-wider uppercase border border-white/15 shadow-md">
+                        <span className={`w-2 h-2 rounded-full ${service.dotColor}`} />
+                        <span>{service.tag}</span>
+                      </div>
+
+                      {/* Top-Right Floating Icon Pill */}
+                      <div className="absolute top-5 right-5 z-10 w-11 h-11 rounded-2xl bg-white/90 backdrop-blur-md flex items-center justify-center border border-black/5 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                        <Icon className="w-5 h-5 text-violet-600" />
+                      </div>
+
+                      {/* Title overlay at bottom of image for cinematic depth */}
+                      <div className="absolute bottom-5 left-6 right-6 z-10 text-white">
+                        <span className="text-[10px] font-mono tracking-widest text-violet-300 font-bold uppercase block mb-1">
+                          CHAPTER 0{idx + 1} &bull; {service.category}
+                        </span>
+                        <h3 className="text-2xl sm:text-3xl md:text-4xl font-black tracking-tight uppercase drop-shadow-md">
+                          {service.title}
+                        </h3>
+                      </div>
+                    </div>
+
+                    {/* Compact Text Section */}
+                    <div className="p-5 sm:p-6 md:p-7 flex flex-col justify-between flex-grow gap-4 bg-white">
+                      <div className="space-y-3">
+                        <p className="text-xs sm:text-sm text-gray-600 font-medium leading-relaxed">
+                          {service.desc}
+                        </p>
+
+                        {/* Deliverables / Capabilities Pills */}
+                        <div className="flex flex-wrap gap-1.5 pt-1">
+                          {service.deliverables.map((item, dIdx) => (
+                            <span
+                              key={dIdx}
+                              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#f6f6f8] text-[10px] font-mono font-semibold text-gray-700 border border-black/5 group-hover:border-violet-500/20 transition-colors"
+                            >
+                              <span className="w-1 h-1 rounded-full bg-violet-500" />
+                              {item}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Action Bar */}
+                      <div className="flex items-center justify-between pt-4 border-t border-black/5">
+                        <span className="text-[11px] font-mono font-bold text-gray-400 uppercase tracking-widest">
+                          Deep-Dive Chapter
+                        </span>
+                        <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-black text-white text-[11px] font-black uppercase tracking-wider group-hover:bg-violet-600 group-hover:shadow-lg transition-all duration-300 shadow-sm">
+                          EXPLORE SERVICE <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-200" />
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                </motion.div>
+              );
+            })}
+          </AnimatePresence>
+        </motion.div>
       </section>
 
       {/* 3. OUR PROCESS (From Idea to Impact) */}
