@@ -198,28 +198,13 @@ export default function HomePage() {
             muted
             loop
             playsInline
-            className="w-full h-full object-cover filter brightness-[0.4] contrast-[1.1]"
+            className="w-full h-full object-cover filter brightness-[0.95] contrast-[1.05]"
             src="/assets/videos/Home banner vedio.mp4"
           />
         </div>
 
         {/* WebGL interactive refraction canvas overlay */}
 
-
-        {/* Slogan details overlay */}
-        <div className="relative z-20 px-6 max-w-4xl mx-auto space-y-6 flex flex-col items-center">
-          <h1 className="text-4xl md:text-8xl font-black tracking-tight leading-[0.95] uppercase text-white drop-shadow-lg">
-            WE BUILD BRANDS <br />
-            <span className="font-serif italic font-normal lowercase text-violet-400">
-              people can&apos;t
-            </span> <br />
-            SCROLL PAST.
-          </h1>
-          
-          <p className="text-sm md:text-base text-gray-300 font-semibold max-w-2xl mx-auto leading-relaxed drop-shadow-sm sm:whitespace-nowrap">
-            End-to-end branding &amp; digital marketing, engineered for scale.
-          </p>
-        </div>
 
         {/* Scroll Cue Tag */}
         <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20 flex flex-col items-center gap-1.5 text-[9px] font-mono tracking-widest uppercase text-gray-400">
