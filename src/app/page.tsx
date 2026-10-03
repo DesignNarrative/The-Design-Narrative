@@ -12,26 +12,31 @@ const ServicesPin = dynamic(() => import('@/components/ServicesPin'), { ssr: fal
 const HorizontalGallery = dynamic(() => import('@/components/HorizontalGallery'), { ssr: false });
 
 const CLIENTS = [
-  { name: 'SKJ Elite', logo: '/assets/logos/SKJ elite logo.jpg' },
-  { name: 'Utopia', logo: '/assets/logos/utopia logo.png' },
-  { name: 'Abhinav Group', logo: '/assets/logos/Abhinav Group logo.png' },
-  { name: 'Coco Pani', logo: '/assets/logos/Coco pani logo.jpg' },
+  { name: 'Pink walk', logo: '/assets/logos/pinkwalk logo.jpg' },
+  { name: 'AM to AM', logo: '/assets/logos/AM To AM logo.png' },
+  { name: 'Dangayach Group', logo: '/assets/projects/Dangayach.png' },
+  { name: 'Citara', logo: '/assets/logos/Citara Logo.jpg' },
   { name: 'Yarnen', logo: '/assets/logos/Yarnen logo.jpg' },
-  { name: 'Atelier noua', logo: '/assets/logos/Atelier noua logo.png' },
-  { name: 'Odaisy', logo: '/assets/logos/Odaisy logo.png' },
-  { name: 'All set green', logo: '/assets/logos/All set green logo.jpg' },
-  { name: 'PinkWalk', logo: '/assets/logos/pinkwalk logo.jpg' },
-  { name: 'A Curve Story', logo: '/assets/logos/A Curve Story logo.jpg' },
-  { name: 'PinkWest', logo: '/assets/logos/PinkWest logo.png' },
-  { name: 'Saarthi', logo: '/assets/logos/Saarthi logo.jpg' },
+  { name: 'DNL Properties', logo: '/assets/logos/DNL Properties logo.png' },
+  { name: 'Pink West', logo: '/assets/logos/PinkWest logo.png' },
+  { name: "O'Daisy", logo: '/assets/logos/Odaisy logo.png' },
+  { name: 'Northpoint School', logo: '/assets/logos/Northpoint School logo.png' },
+  { name: 'All Set Green', logo: '/assets/logos/All set green logo.jpg' },
+  { name: 'Tamanna Punjabi Group', logo: '/assets/logos/Tamanna Punjabi kapoor logo.jpg' },
+  { name: 'Abhinav Group', logo: '/assets/logos/Abhinav Group logo.png' },
   { name: 'DDS', logo: '/assets/logos/DDS logo.png' },
+  { name: 'Atelier Nova', logo: '/assets/logos/Atelier noua logo.png' },
+  { name: 'Chav Bhari', logo: '/assets/projects/Chav Bhari.png' },
+  { name: 'Dream Space Architects', logo: '/assets/logos/Dream Space Architects logo.png' },
+  { name: 'Saafa Banquets', logo: '/assets/logos/Saafa Banquets logo.jpg' },
+  { name: 'SKJ Jewellers', logo: '/assets/logos/SKJ elite logo.jpg' },
 ];
 
 const TESTIMONIALS_DATA = [
   {
     id: 1,
     quote: "TDN literally saved our launch. The rebranding went so hard our conversions grew by 120%. Absolute W.",
-    author: "Founder, Utopia",
+    author: "Founder, Chav Bhari",
     tag: "10/10 Rebranding",
     avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
     theme: "light",
@@ -39,7 +44,7 @@ const TESTIMONIALS_DATA = [
   {
     id: 2,
     quote: "The UI/UX design is pure main character energy. It is clean, snappy, and our clients keep talking about it.",
-    author: "Director, SKJ Elite",
+    author: "Director, SKJ Jewellers",
     tag: "Clean AF UI/UX",
     avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
     theme: "dark",
@@ -47,7 +52,7 @@ const TESTIMONIALS_DATA = [
   {
     id: 3,
     quote: "SEO ranking went crazy. We hit Page 1 on Google for our core terms. They don't miss.",
-    author: "Marketing Lead, Saarthi",
+    author: "Marketing Lead, Citara",
     tag: "+150% Organic Traffic",
     avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80",
     theme: "light",
@@ -55,8 +60,8 @@ const TESTIMONIALS_DATA = [
   {
     id: 4,
     quote: "Working with TDN felt like having an elite in-house design unit. The brand packaging got us into 50+ retail chains across India.",
-    author: "Co-Founder, Coco Pani",
-    tag: "FMCG Brand Scale",
+    author: "Co-Founder, Pink Walk",
+    tag: "Brand Packaging Scale",
     avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80",
     theme: "light",
   },
@@ -71,7 +76,7 @@ const TESTIMONIALS_DATA = [
   {
     id: 6,
     quote: "From identity overhaul to luxury digital web layout, TDN delivered beyond our highest expectations. Truly un-ignorable work.",
-    author: "VP Branding, Dangayach",
+    author: "VP Branding, Dangayach Group",
     tag: "Corporate Luxury Web",
     avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150&auto=format&fit=crop&q=80",
     theme: "light",

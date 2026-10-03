@@ -19,12 +19,12 @@ const PROJECTS = [
   },
   {
     num: '02',
-    title: 'COCO PANI',
-    category: 'FMCG',
-    tag: 'FMCG Scale',
-    image: '/assets/projects/Coco Paniii.png',
+    title: 'PINK WALK',
+    category: 'Fashion & Identity',
+    tag: 'Viral Fashion Brand',
+    image: '/assets/logos/pinkwalk logo.jpg',
     video: 'https://player.vimeo.com/external/371433846.sd.mp4?s=236da2f3c054e0f9b3ec836c2e399fa51b69f8c6&profile_id=139&oauth2_token_id=57447761',
-    link: '/work/cocopani',
+    link: '/work/pinkwalk',
   },
   {
     num: '03',
@@ -55,12 +55,12 @@ const PROJECTS = [
   },
   {
     num: '06',
-    title: 'YUMMKEEMO',
-    category: 'Branding & Packaging',
-    tag: 'Packaging Design',
-    image: '/assets/projects/Yumkeemo.png',
+    title: 'ATELIER NOVA',
+    category: 'Branding & Architecture',
+    tag: 'Design Systems',
+    image: '/assets/logos/Atelier noua logo.png',
     video: 'https://player.vimeo.com/external/403848777.sd.mp4?s=a7b05101d293d05260840b2efd489bdf11f2a36b&profile_id=139&oauth2_token_id=57447761',
-    link: '/work/yummkeemo',
+    link: '/work/atelier-noua',
   },
 ];
 

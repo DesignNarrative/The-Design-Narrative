@@ -25,6 +25,7 @@ import {
 const SERVICES_LIST = [
   {
     id: 'brand-design',
+    chapterNum: '01',
     category: 'BRANDING',
     title: 'BRAND DESIGN',
     tag: 'IDENTITY & PACKAGING',
@@ -37,6 +38,7 @@ const SERVICES_LIST = [
   },
   {
     id: 'ui-ux',
+    chapterNum: '02',
     category: 'DIGITAL',
     title: 'UI/UX DESIGN',
     tag: 'DIGITAL PRODUCTS',
@@ -48,19 +50,8 @@ const SERVICES_LIST = [
     dotColor: 'bg-cyan-500',
   },
   {
-    id: 'web-development',
-    category: 'DIGITAL',
-    title: 'WEB DEVELOPMENT',
-    tag: 'FAST & SCALABLE',
-    desc: 'Fast, modern, and scalable websites that convert visitors into buyers.',
-    deliverables: ['Next.js & React', 'E-Commerce', '3D Motion', 'API Integrations'],
-    image: '/assets/services/web-development.jpg',
-    link: '/services/ui-ux',
-    icon: Code2,
-    dotColor: 'bg-blue-500',
-  },
-  {
     id: 'social-media',
+    chapterNum: '03',
     category: 'MARKETING',
     title: 'SOCIAL MEDIA MARKETING',
     tag: 'VIRAL ENGAGEMENT',
@@ -73,6 +64,7 @@ const SERVICES_LIST = [
   },
   {
     id: 'seo',
+    chapterNum: '04',
     category: 'MARKETING',
     title: 'SEO & GROWTH',
     tag: 'ORGANIC RANKINGS',
@@ -82,18 +74,6 @@ const SERVICES_LIST = [
     link: '/services/seo',
     icon: TrendingUp,
     dotColor: 'bg-lime-500',
-  },
-  {
-    id: 'content-creative',
-    category: 'MARKETING',
-    title: 'CONTENT & CREATIVE',
-    tag: 'VISUALS & MOTION',
-    desc: 'Visuals, videos, and copywriting that connect with your audience and convert.',
-    deliverables: ['Brand Photography', 'Commercial Films', 'Motion Graphics', 'Copywriting'],
-    image: '/assets/services/content-creative.jpg',
-    link: '/services/social-media',
-    icon: Video,
-    dotColor: 'bg-purple-500',
   },
 ];
 
@@ -128,7 +108,7 @@ const PROCESS_STEPS = [
 
 const CASE_STUDIES = [
   {
-    client: 'Chaav Bhari',
+    client: 'Chav Bhari',
     service: 'Rebranding',
     metric: '+120% Conversions',
     image: '/assets/projects/Chav Bhari.png',
@@ -139,14 +119,14 @@ const CASE_STUDIES = [
     service: 'UI/UX Design',
     metric: '3x Engagement',
     image: '/assets/projects/Yarnen fashion.png',
-    link: '/work/yarnen',
+    link: '/work/yarnen-fashion',
   },
   {
-    client: 'Saarthi',
-    service: 'SEO & Growth',
-    metric: '+150% Organic Traffic',
-    image: '/assets/blogs/seo-growth-blog.jpg',
-    link: '/services/seo',
+    client: 'Dangayach Group',
+    service: 'Corporate Luxury Web',
+    metric: '+150% Digital Reach',
+    image: '/assets/projects/Dangayach.png',
+    link: '/work/dangayach-group',
   },
 ];
 
@@ -324,7 +304,7 @@ export default function ServicesPage() {
                       {/* Title overlay at bottom of image for cinematic depth */}
                       <div className="absolute bottom-5 left-6 right-6 z-10 text-white">
                         <span className="text-[10px] font-mono tracking-widest text-violet-300 font-bold uppercase block mb-1">
-                          CHAPTER 0{idx + 1} &bull; {service.category}
+                          CHAPTER {service.chapterNum} &bull; {service.category}
                         </span>
                         <h3 className="text-2xl sm:text-3xl md:text-4xl font-black tracking-tight uppercase drop-shadow-md">
                           {service.title}
