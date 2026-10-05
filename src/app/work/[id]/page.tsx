@@ -31,11 +31,22 @@ export default function CaseStudyPage({ params }: { params: Promise<{ id: string
       <section className="space-y-12">
         {/* Full-width image header */}
         <div className="relative w-full h-[55vh] rounded-3xl overflow-hidden shadow-lg border border-black/5 bg-[#050505] group">
-          <img
-            src={project.image}
-            alt={project.title}
-            className="w-full h-full object-cover filter brightness-[0.9] transition-transform duration-500 group-hover:scale-[1.01]"
-          />
+          {project.image.endsWith('.mp4') || project.image.includes('.mp4') ? (
+            <video
+              src={project.image}
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="w-full h-full object-cover filter brightness-[0.9] transition-transform duration-500 group-hover:scale-[1.01]"
+            />
+          ) : (
+            <img
+              src={project.image}
+              alt={project.title}
+              className="w-full h-full object-cover filter brightness-[0.9] transition-transform duration-500 group-hover:scale-[1.01]"
+            />
+          )}
           <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent pointer-events-none" />
           <div className="absolute bottom-8 left-8 space-y-2 text-white">
             <span className="text-[10px] font-mono tracking-widest uppercase text-violet-400">CASE STUDY</span>

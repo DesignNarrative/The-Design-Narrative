@@ -204,7 +204,7 @@ export default function HomePage() {
             loop
             playsInline
             className="w-full h-full object-cover filter brightness-[0.95] contrast-[1.05]"
-            src="/assets/videos/Home banner vedio.mp4"
+            src="/assets/videos/Homepage website video.mp4"
           />
         </div>
 

@@ -47,25 +47,38 @@ function WorkCard({ project, idx }: { project: Project; idx: number }) {
       >
         {/* Visual Cover / Loop video */}
         <div className="absolute inset-0 w-full h-full z-10 pointer-events-none overflow-hidden">
-          {/* Static Cover */}
-          <img
-            src={project.image}
-            alt={project.title}
-            className="w-full h-full object-cover transition-opacity duration-300"
-            style={{ opacity: isHovered ? 0 : 1 }}
-          />
+          {project.image.endsWith('.mp4') || project.image.includes('.mp4') ? (
+            <video
+              src={project.image}
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="w-full h-full object-cover filter brightness-[0.95] contrast-[1.05]"
+            />
+          ) : (
+            <>
+              {/* Static Cover */}
+              <img
+                src={project.image}
+                alt={project.title}
+                className="w-full h-full object-cover transition-opacity duration-300"
+                style={{ opacity: isHovered ? 0 : 1 }}
+              />
 
-          {/* Hover Walkthrough Video */}
-          <video
-            ref={videoRef}
-            src={project.video}
-            muted
-            loop
-            playsInline
-            preload="none"
-            className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300"
-            style={{ opacity: isHovered ? 0.35 : 0 }}
-          />
+              {/* Hover Walkthrough Video */}
+              <video
+                ref={videoRef}
+                src={project.video}
+                muted
+                loop
+                playsInline
+                preload="none"
+                className="absolute inset-0 w-full h-full object-cover transition-opacity duration-300"
+                style={{ opacity: isHovered ? 0.35 : 0 }}
+              />
+            </>
+          )}
 
           <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-transparent z-15 pointer-events-none" />
         </div>

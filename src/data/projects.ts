@@ -186,8 +186,8 @@ export const PROJECTS: Project[] = [
     year: '2023',
     client: 'Chav Bhari',
     services: ['Label illustrations', 'Box design templates', 'Product strategy'],
-    image: 'https://images.unsplash.com/photo-1563245372-f21724e3856d?w=800&auto=format&fit=crop&q=60',
-    video: 'https://player.vimeo.com/external/494252666.sd.mp4?s=3de3ecb70868f0a0c6a5a898b3c6a461e1b8b2b6&profile_id=139&oauth2_token_id=57447761',
+    image: '/assets/projects/chav bhari.mp4',
+    video: '/assets/videos/chav bhari.mp4',
     brief: 'Design packaging boxes for Chav Bhari, capturing rich local Indian culinary traditions.',
     approach: 'We hand-drawn custom vector overlays, paired with bright heritage color themes and clean fonts.',
     processVisuals: [
