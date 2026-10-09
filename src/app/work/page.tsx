@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Sparkles, ArrowUpRight } from 'lucide-react';
 import { PROJECTS, Project } from '@/data/projects';
 
-const FILTERS = ['All', 'Branding', 'UI-UX', 'Social', 'Packaging', 'Web Design'] as const;
+const FILTERS = ['All', 'Branding', 'Web Design', 'Social Media', 'SEO'] as const;
 type FilterType = typeof FILTERS[number];
 
 function WorkCard({ project, idx }: { project: Project; idx: number }) {
@@ -104,7 +104,42 @@ export default function WorkHubPage() {
   // Filter project lists
   const filteredProjects = PROJECTS.filter((project) => {
     if (activeFilter === 'All') return true;
-    return project.filter === activeFilter;
+    if (activeFilter === 'Branding') {
+      return (
+        project.filter === 'Branding' ||
+        project.filter === 'Packaging' ||
+        project.category.toLowerCase().includes('branding') ||
+        project.category.toLowerCase().includes('brand') ||
+        project.category.toLowerCase().includes('packaging')
+      );
+    }
+    if (activeFilter === 'Web Design') {
+      return (
+        project.filter === 'Web Design' ||
+        project.filter === 'UI-UX' ||
+        project.category.toLowerCase().includes('web') ||
+        project.category.toLowerCase().includes('ui') ||
+        project.category.toLowerCase().includes('ux')
+      );
+    }
+    if (activeFilter === 'Social Media') {
+      return (
+        project.filter === 'Social' ||
+        project.category.toLowerCase().includes('social') ||
+        project.category.toLowerCase().includes('entertainment')
+      );
+    }
+    if (activeFilter === 'SEO') {
+      return (
+        project.filter === 'Web Design' ||
+        project.services.some((s) => s.toLowerCase().includes('seo')) ||
+        project.brief.toLowerCase().includes('seo') ||
+        project.results.toLowerCase().includes('ranking') ||
+        project.results.toLowerCase().includes('traffic') ||
+        project.category.toLowerCase().includes('seo')
+      );
+    }
+    return true;
   });
 
   return (
