@@ -190,7 +190,7 @@ export default function HorizontalGallery() {
 
         <div className="flex items-center gap-4">
           <Link
-            href="/services"
+            href="/work"
             className="inline-flex items-center gap-2 text-xs font-bold text-gray-400 hover:text-white uppercase tracking-widest border border-white/15 hover:border-violet-500/40 px-6 py-3 rounded-full hover:bg-white/5 transition-all"
           >
             All Work <ArrowUpRight className="w-4 h-4" />

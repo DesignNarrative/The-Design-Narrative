@@ -11,7 +11,7 @@ const CHAPTERS = [
   {
     num: '01',
     title: 'Brand Design',
-    desc: "Strategy, naming, and visual identity that make your business people's main character. No templates.",
+    desc: "Strategy, naming, and visual identity that make your business people's main character.",
     image: '/assets/services/Brand Design.png',
     accentColor: '#8b5cf6',
     accent: 'text-violet-400 border-violet-500/20 bg-violet-500/5',
@@ -30,7 +30,7 @@ const CHAPTERS = [
   },
   {
     num: '03',
-    title: 'Social Marketing',
+    title: 'Social Media Marketing',
     desc: 'Compelling campaigns and feed-stopping page management designed to capture infinite attention.',
     image: '/assets/services/Social Media.png',
     accentColor: '#ec4899',
@@ -259,9 +259,7 @@ export default function ServicesPin() {
       </div>
 
       {/* 3. Bottom Live Scrolling Helper Cue */}
-      <div className="absolute bottom-8 left-6 right-6 md:left-12 md:right-12 z-20 flex justify-between items-center text-[10px] font-mono tracking-widest text-gray-400 uppercase pointer-events-none">
-        <span className="hidden sm:inline-block">THE DESIGN NARRATIVE &bull; CAPABILITIES</span>
-
+      <div className="absolute bottom-8 left-6 right-6 md:left-12 md:right-12 z-20 flex justify-end items-center text-[10px] font-mono tracking-widest text-gray-400 uppercase pointer-events-none">
         {/* Live Scroll indicator */}
         <div className="flex items-center gap-2 bg-black/60 px-4 py-1.5 rounded-full border border-white/10 backdrop-blur-md text-white shadow-lg mx-auto sm:mx-0">
           <span className="text-gray-400">SCROLL TO EXPLORE</span>

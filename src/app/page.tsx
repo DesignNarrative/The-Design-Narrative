@@ -14,7 +14,7 @@ const HorizontalGallery = dynamic(() => import('@/components/HorizontalGallery')
 const CLIENTS = [
   { name: 'Pink walk', logo: '/assets/logos/pinkwalk logo.jpg' },
   { name: 'AM to AM', logo: '/assets/logos/AM To AM logo.png' },
-  { name: 'Dangayach Group', logo: '/assets/projects/Dangayach.png' },
+  { name: 'Dangayach Group', logo: '/assets/logos/Dangayach group logo.png' },
   { name: 'Citara', logo: '/assets/logos/Citara Logo.jpg' },
   { name: 'Yarnen', logo: '/assets/logos/Yarnen logo.jpg' },
   { name: 'DNL Properties', logo: '/assets/logos/DNL Properties logo.png' },
@@ -26,7 +26,7 @@ const CLIENTS = [
   { name: 'Abhinav Group', logo: '/assets/logos/Abhinav Group logo.png' },
   { name: 'DDS', logo: '/assets/logos/DDS logo.png' },
   { name: 'Atelier Nova', logo: '/assets/logos/Atelier noua logo.png' },
-  { name: 'Chav Bhari', logo: '/assets/projects/Chav Bhari.png' },
+  { name: 'Chav Bhari', logo: '/assets/logos/Chav bhari logo.jpg' },
   { name: 'Dream Space Architects', logo: '/assets/logos/Dream Space Architects logo.png' },
   { name: 'Saafa Banquets', logo: '/assets/logos/Saafa Banquets logo.jpg' },
   { name: 'SKJ Jewellers', logo: '/assets/logos/SKJ elite logo.jpg' },
