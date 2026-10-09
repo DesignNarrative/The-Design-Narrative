@@ -431,4 +431,27 @@ export const PROJECTS: Project[] = [
     results: 'Helped launch packaging designs that unified three takeout store branches.',
     quote: 'Fun, energetic, and highly visible. It represents our day-and-night food model.',
   },
+  {
+    id: 'rel',
+    title: 'REL',
+    category: 'Brand Identity & Strategy',
+    filter: 'Branding',
+    year: '2024',
+    client: 'REL',
+    services: ['Brand identity', 'Visual strategy', 'Brand guidelines'],
+    image: '/assets/logos/REL logo.png',
+    video: 'https://player.vimeo.com/external/494252666.sd.mp4?s=3de3ecb70868f0a0c6a5a898b3c6a461e1b8b2b6&profile_id=139&oauth2_token_id=57447761',
+    brief: 'Formulate a bold, memorable identity system for REL.',
+    approach: 'We developed minimalist geometric marks, clean corporate palettes, and comprehensive brand guidelines.',
+    processVisuals: [
+      'https://images.unsplash.com/photo-1542744094-3a31f103e35f?w=600&q=80',
+      'https://images.unsplash.com/photo-1561070791-26c113006238?w=600&q=80',
+    ],
+    gallery: [
+      'https://images.unsplash.com/photo-1509343256512-d77a5cb3791b?w=800&q=80',
+      'https://images.unsplash.com/photo-1626785774573-4b799315345d?w=600&q=80',
+    ],
+    results: 'Delivered an un-ignorable brand system ready for scale.',
+    quote: 'Strategic, modern, and beautifully executed.',
+  },
 ];

@@ -30,6 +30,7 @@ const CLIENTS = [
   { name: 'Dream Space Architects', logo: '/assets/logos/Dream Space Architects logo.png' },
   { name: 'Saafa Banquets', logo: '/assets/logos/Saafa Banquets logo.jpg' },
   { name: 'SKJ Jewellers', logo: '/assets/logos/SKJ elite logo.jpg' },
+  { name: 'REL', logo: '/assets/logos/REL logo.png' },
 ];
 
 const TESTIMONIALS_DATA = [
