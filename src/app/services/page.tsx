@@ -77,8 +77,6 @@ const SERVICES_LIST = [
   },
 ];
 
-const SERVICE_FILTER_TABS = ['ALL', 'BRANDING', 'DIGITAL', 'MARKETING'];
-
 const PROCESS_STEPS = [
   {
     num: '01',
@@ -131,12 +129,7 @@ const CASE_STUDIES = [
 ];
 
 export default function ServicesPage() {
-  const [activeFilter, setActiveFilter] = useState('ALL');
   const [customMsg, setCustomMsg] = useState('');
-
-  const filteredServices = SERVICES_LIST.filter(
-    (service) => activeFilter === 'ALL' || service.category === activeFilter
-  );
 
   const handleFormSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -229,43 +222,24 @@ export default function ServicesPage() {
       {/* 2. SOLUTIONS FOR EVERY STAGE (Large 2-Column Cards Grid with Tabs & Animations) */}
       <section id="services-grid" className="py-20 md:py-28 px-6 md:px-12 max-w-7xl mx-auto border-t border-black/5">
         
-        {/* Section Header & Filter Tabs */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16">
-          <div className="space-y-4 max-w-2xl">
-            <span className="text-[11px] font-mono tracking-widest text-violet-600 font-bold uppercase block">
-              OUR SERVICES
-            </span>
-            <h2 className="text-3xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight leading-[0.95] text-[#111111]">
-              SOLUTIONS FOR EVERY <br />
-              STAGE OF <span className="font-serif italic font-normal text-violet-600">YOUR GROWTH.</span>
-            </h2>
-            <p className="text-sm md:text-base text-gray-500 font-medium leading-relaxed max-w-xl">
-              From brand identity to high-performing websites and campaigns &mdash; we help you build a strong digital presence that delivers real results.
-            </p>
-          </div>
-
-          {/* Category Filter Tabs */}
-          <div className="flex flex-wrap items-center gap-2 bg-[#f4f4f6] p-1.5 rounded-full border border-black/5 self-start lg:self-end">
-            {SERVICE_FILTER_TABS.map((tab) => (
-              <button
-                key={tab}
-                onClick={() => setActiveFilter(tab)}
-                className={`px-5 py-2 rounded-full text-xs font-mono font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer ${
-                  activeFilter === tab
-                    ? 'bg-black text-white shadow-md'
-                    : 'text-gray-600 hover:text-black hover:bg-black/5'
-                }`}
-              >
-                {tab}
-              </button>
-            ))}
-          </div>
+        {/* Section Header */}
+        <div className="max-w-2xl mb-16 space-y-4">
+          <span className="text-[11px] font-mono tracking-widest text-violet-600 font-bold uppercase block">
+            OUR SERVICES
+          </span>
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight leading-[0.95] text-[#111111]">
+            SOLUTIONS FOR EVERY <br />
+            STAGE OF <span className="font-serif italic font-normal text-violet-600">YOUR GROWTH.</span>
+          </h2>
+          <p className="text-sm md:text-base text-gray-500 font-medium leading-relaxed max-w-xl">
+            From brand identity to high-performing websites and campaigns &mdash; we help you build a strong digital presence that delivers real results.
+          </p>
         </div>
 
         {/* Large 2-Column Cards Grid */}
         <motion.div layout className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
           <AnimatePresence>
-            {filteredServices.map((service, idx) => {
+            {SERVICES_LIST.map((service, idx) => {
               const Icon = service.icon;
               return (
                 <motion.div
