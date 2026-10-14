@@ -18,7 +18,7 @@ import {
   MapPin,
 } from 'lucide-react';
 
-// Current team members dataset (images preserved as requested)
+// Current team members dataset
 const TEAM = [
   {
     name: 'Irfan Khan',
@@ -31,15 +31,17 @@ const TEAM = [
     name: 'Gauravi Pitre',
     role: 'Senior Designer',
     tagline: 'Color systems & grid wizardry.',
-    image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&auto=format&fit=crop&q=80',
+    image: '/assets/team/Creative Designer with Colorful Tools.png',
     dept: 'Brand Design',
+    type: 'design',
   },
   {
     name: 'Arjun Kotagi',
     role: 'SEO Specialist',
     tagline: 'Algorithm code cracker & ranking machine.',
-    image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&auto=format&fit=crop&q=80',
+    image: '/assets/team/Smiling SEO Strategist with Analytics Graphics.png',
     dept: 'Growth & SEO',
+    type: 'seo',
   },
   {
     name: 'Pratiksha Patil',
@@ -80,8 +82,9 @@ const TEAM = [
     name: 'Vidhi Dalvi',
     role: 'Video Editor',
     tagline: 'Pacing, sound design, & retention dynamics.',
-    image: 'https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=400&auto=format&fit=crop&q=80',
+    image: '/assets/team/Creative Video Editor Portrait.png',
     dept: 'Media Production',
+    type: 'video',
   },
   {
     name: 'Suresh Bugaliya',
@@ -475,17 +478,20 @@ export default function AboutPage() {
       {/* SECTION 5: FOUNDER SPOTLIGHT (Off-White / Crisp Light Section)             */}
       {/* ========================================================================= */}
       <section className="py-24 md:py-36 bg-white text-[#111111]">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
           
-          {/* Portrait frame with current image */}
-          <div className="lg:col-span-5 relative h-96 md:h-[480px] rounded-3xl overflow-hidden border border-black/10 shadow-xl bg-gray-100 group">
+          {/* Portrait frame with Mayuri's photo */}
+          <div className="lg:col-span-5 relative h-[480px] sm:h-[540px] md:h-[600px] lg:h-[620px] rounded-3xl overflow-hidden border border-black/10 shadow-xl bg-gray-100 group">
             <Image
-              src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&auto=format&fit=crop&q=80"
+              src="/assets/team/Mayuri.jpeg"
               alt="Mayuri Shende Kankariya - CEO & Founder"
               fill
-              className="object-cover filter grayscale group-hover:grayscale-0 contrast-110 transition-all duration-700"
+              className="object-cover filter grayscale group-hover:grayscale-0 contrast-105 transition-all duration-700"
+              style={{ objectPosition: 'center 18%' }}
+              sizes="(max-width: 1024px) 100vw, 42vw"
+              priority
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 via-25% to-transparent pointer-events-none" />
 
             <div className="absolute bottom-6 left-6 right-6 flex items-center justify-between gap-2">
               <div className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-black/70 backdrop-blur-md border border-white/15 text-[10px] font-mono font-bold text-white uppercase tracking-wider">
@@ -570,24 +576,48 @@ export default function AboutPage() {
           </p>
         </div>
 
-        {/* 10 team members with 3D interactive tilt cards (Current images used) */}
+        {/* 10 team members with 3D interactive tilt cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
           {TEAM.map((member, idx) => (
             <div
               key={idx}
               onMouseMove={handleCardMouseMove}
               onMouseLeave={handleCardMouseLeave}
-              className="bg-white hover:bg-white rounded-2xl overflow-hidden border border-black/5 hover:border-violet-500/40 p-4 flex flex-col items-center text-center transition-all duration-200 group origin-center shadow-sm hover:shadow-xl"
+              className="bg-white hover:bg-white rounded-2xl overflow-hidden border border-black/5 hover:border-violet-500/40 p-4 flex flex-col items-center text-center transition-all duration-300 group origin-center shadow-sm hover:shadow-xl relative"
               style={{ transformStyle: 'preserve-3d', willChange: 'transform' }}
             >
-              {/* Grayscale default -> colorized hover image */}
+              {/* Grayscale default -> colorized hover image with motion animations */}
               <div className="relative w-full aspect-square rounded-xl overflow-hidden mb-4 bg-gray-100 border border-black/5">
                 <Image
                   src={member.image}
                   alt={member.name}
                   fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 33vw, 20vw"
                   className="object-cover filter grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
                 />
+
+                {/* Role Specific Motion Graphics / Animation Overlays */}
+                {member.type === 'design' && (
+                  <div className="absolute inset-0 bg-gradient-to-tr from-pink-500/20 via-purple-500/15 to-amber-400/15 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                )}
+
+                {member.type === 'seo' && (
+                  <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/20 via-teal-500/15 to-cyan-400/15 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                )}
+
+                {member.type === 'video' && (
+                  <>
+                    <div className="absolute inset-0 bg-gradient-to-tr from-violet-500/20 via-indigo-500/15 to-rose-400/15 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                    {/* Audio Equalizer bars animation */}
+                    <div className="absolute bottom-2 left-2 z-10 flex items-end gap-0.5 px-1.5 py-1 rounded bg-black/70 backdrop-blur-sm border border-white/10">
+                      <span className="w-0.5 h-2 bg-violet-400 animate-pulse" style={{ animationDuration: '0.6s' }} />
+                      <span className="w-0.5 h-3.5 bg-pink-400 animate-pulse" style={{ animationDuration: '0.4s' }} />
+                      <span className="w-0.5 h-1.5 bg-cyan-400 animate-pulse" style={{ animationDuration: '0.7s' }} />
+                      <span className="w-0.5 h-3 bg-violet-300 animate-pulse" style={{ animationDuration: '0.5s' }} />
+                    </div>
+                  </>
+                )}
+
                 <div className="absolute top-2 right-2 px-2 py-0.5 rounded-md bg-black/70 backdrop-blur-md text-[8px] font-mono font-bold text-white border border-white/10">
                   {member.dept}
                 </div>
