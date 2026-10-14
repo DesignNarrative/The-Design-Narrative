@@ -8,7 +8,7 @@ export function buildPageSchemaJson(
   pageDescription: string
 ): string | null {
   if (!schema) return null;
-  const domain = settings.domain.replace(/\/+$/, '') || 'https://the-design-narrative.vercel.app';
+  const domain = settings.domain.replace(/\/+$/, '') || process.env.NEXT_PUBLIC_SITE_URL || 'https://thedesignnarrative.in';
   const fullUrl = pageUrl.startsWith('http') ? pageUrl : `${domain}${pageUrl.startsWith('/') ? '' : '/'}${pageUrl}`;
 
   if (schema.type === 'Custom') {

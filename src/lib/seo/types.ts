@@ -242,7 +242,7 @@ export function defaultTechnicalConfig(): TechnicalConfig {
     customLlmsTxt: `# The Design Narrative (TDN) - LLM Overview
 # Pune & Jaipur Creative Agency
 
-Site: https://the-design-narrative.vercel.app
+Site: https://thedesignnarrative.in
 Description: The Design Narrative (TDN) is an elite branding, UI/UX design, and digital growth agency headquartered in Pune with a creative lab in Jaipur.
 Specializations: Brand Identity, Luxury Packaging, Frictionless UI/UX, Social Media Marketing, Performance Ads, Technical SEO.
 Offices:
@@ -284,7 +284,7 @@ export function defaultSettings(): SeoSettings {
     siteName: 'The Design Narrative',
     separator: '|',
     tagline: 'Digital Marketing & Branding Agency Pune',
-    domain: '',
+    domain: 'https://thedesignnarrative.in',
     defaultOgImage: '',
     twitterHandle: '',
     technical: defaultTechnicalConfig(),

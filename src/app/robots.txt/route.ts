@@ -2,7 +2,7 @@ import { readDb } from '@/lib/seo/store';
 
 export async function GET() {
   const db = await readDb();
-  const domain = (db.settings.domain || 'https://the-design-narrative.vercel.app').replace(/\/+$/, '');
+  const domain = (db.settings.domain || process.env.NEXT_PUBLIC_SITE_URL || 'https://thedesignnarrative.in').replace(/\/+$/, '');
 
   if (db.settings.technical.customRobotsTxt?.trim()) {
     return new Response(db.settings.technical.customRobotsTxt.trim(), {

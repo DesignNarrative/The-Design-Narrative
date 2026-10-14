@@ -24,9 +24,13 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://thedesignnarrative.in'),
   title: 'The Design Narrative (TDN) | Digital Marketing & Branding Agency Pune',
   description: 'End-to-End Branding, UI/UX Design, Social Media Marketing, and SEO built for scalable growth. The main character energy your brand needs.',
   keywords: ['branding agency pune', 'uiux design agency', 'digital marketing pune', 'seo services', 'the design narrative'],
+  alternates: {
+    canonical: '/',
+  },
 };
 
 export default function RootLayout({

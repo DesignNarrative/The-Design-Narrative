@@ -105,8 +105,8 @@ export default function SettingsPage() {
         <Field label="Tagline" hint="Short description of the business. Available as %%tagline%%.">
           <input className={inputCls} value={settings.tagline} onChange={(e) => set('tagline', e.target.value)} />
         </Field>
-        <Field label="Live domain" tip="Your real website address, e.g. https://www.yourdomain.com (no trailing slash). Needed for correct preview URLs, canonical tags and the sitemap." hint="Leave empty until the final domain is ready. Must start with https://">
-          <input className={inputCls} placeholder="https://www.yourdomain.com" value={settings.domain} onChange={(e) => set('domain', e.target.value)} />
+        <Field label="Live domain" tip="Your real website address, e.g. https://thedesignnarrative.in (no trailing slash). Needed for correct preview URLs, canonical tags and the sitemap." hint="Defaults to https://thedesignnarrative.in. Must start with https://">
+          <input className={inputCls} placeholder="https://thedesignnarrative.in" value={settings.domain} onChange={(e) => set('domain', e.target.value)} />
         </Field>
         <div className="grid sm:grid-cols-2 gap-5">
           <Field label="Default social image" hint="Used when a page has no social image. 1200 × 630 recommended.">

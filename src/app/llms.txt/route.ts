@@ -2,8 +2,9 @@ import { readDb } from '@/lib/seo/store';
 
 export async function GET() {
   const db = await readDb();
+  const domain = (db.settings.domain || process.env.NEXT_PUBLIC_SITE_URL || 'https://thedesignnarrative.in').replace(/\/+$/, '');
   const content = db.settings.technical.customLlmsTxt || `# The Design Narrative (TDN) - LLMs.txt
-Site: https://the-design-narrative.vercel.app
+Site: ${domain}
 `;
 
   return new Response(content, {

@@ -10,7 +10,7 @@ export async function GET(req: Request) {
   const strategy = searchParams.get('strategy') === 'desktop' ? 'desktop' : 'mobile';
 
   const db = await readDb();
-  const domain = (db.settings.domain || 'https://the-design-narrative.vercel.app').replace(/\/+$/, '');
+  const domain = (db.settings.domain || process.env.NEXT_PUBLIC_SITE_URL || 'https://thedesignnarrative.in').replace(/\/+$/, '');
   const targetUrl = `${domain}${path.startsWith('/') ? '' : '/'}${path}`;
 
   try {

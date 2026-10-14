@@ -17,17 +17,17 @@ const CLIENTS = [
   { name: 'Dangayach Group', logo: '/assets/logos/Dangayach group logo.png' },
   { name: 'Citara', logo: '/assets/logos/Citara Logo.jpg' },
   { name: 'Yarnen', logo: '/assets/logos/Yarnen logo.jpg' },
-  { name: 'DNL Properties', logo: '/assets/logos/DNL Properties logo.png' },
+  { name: 'DNL Properties', logo: '/assets/logos/DNL Properties - English Logo - Purple Text with box.png' },
   { name: 'Pink West', logo: '/assets/logos/PinkWest logo.png' },
   { name: "O'Daisy", logo: '/assets/logos/Odaisy logo.png' },
-  { name: 'Northpoint School', logo: '/assets/logos/Northpoint School logo.png' },
+  { name: 'Northpoint School', logo: '/assets/logos/VVNS_Final logo_cc.jpg' },
   { name: 'All Set Green', logo: '/assets/logos/All set green logo.jpg' },
   { name: 'Tamanna Punjabi Group', logo: '/assets/logos/Tamanna Punjabi kapoor logo.jpg' },
   { name: 'Abhinav Group', logo: '/assets/logos/Abhinav Group logo.png' },
-  { name: 'DDS', logo: '/assets/logos/DDS logo.png' },
+  { name: 'DDS', logo: '/assets/logos/DDS_logo.png' },
   { name: 'Atelier Nova', logo: '/assets/logos/Atelier noua logo.png' },
   { name: 'Chav Bhari', logo: '/assets/logos/Chav bhari logo.jpg' },
-  { name: 'Dream Space Architects', logo: '/assets/logos/Dream Space Architects logo.png' },
+  { name: 'Dream Space Architects', logo: '/assets/logos/DSA logo.png' },
   { name: 'Saafa Banquets', logo: '/assets/logos/Saafa Banquets logo.jpg' },
   { name: 'SKJ Jewellers', logo: '/assets/logos/SKJ elite logo.jpg' },
   { name: 'REL', logo: '/assets/logos/REL logo.png' },
@@ -440,22 +440,13 @@ export default function HomePage() {
                     &ldquo;{item.quote}&rdquo;
                   </p>
 
-                  {/* Profile Details */}
-                  <div className={`pt-4 flex items-center gap-3 border-t ${isHeroDark ? 'border-white/10' : 'border-black/5'}`}>
-                    <div className="relative w-11 h-11 rounded-full overflow-hidden shrink-0 border border-black/10">
-                      <img
-                        src={item.avatar}
-                        alt={item.author}
-                        className="w-full h-full object-cover"
-                      />
+                  {/* Author Details (Text Only) */}
+                  <div className={`pt-4 border-t ${isHeroDark ? 'border-white/10' : 'border-black/5'} space-y-0.5`}>
+                    <div className={`text-xs md:text-sm font-extrabold uppercase ${isHeroDark ? 'text-white' : 'text-black'}`}>
+                      {item.author}
                     </div>
-                    <div className="space-y-0.5">
-                      <div className={`text-xs md:text-sm font-extrabold uppercase ${isHeroDark ? 'text-white' : 'text-black'}`}>
-                        {item.author}
-                      </div>
-                      <div className="text-[10px] font-mono font-bold text-gray-400 uppercase tracking-wider">
-                        {item.tag}
-                      </div>
+                    <div className="text-[10px] font-mono font-bold text-gray-400 uppercase tracking-wider">
+                      {item.tag}
                     </div>
                   </div>
                 </motion.div>
