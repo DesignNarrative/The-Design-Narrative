@@ -136,7 +136,7 @@ export function buildPageSchemaJson(
         name: settings.siteName,
         logo: {
           '@type': 'ImageObject',
-          url: `${domain}/assets/logos/TDN logo.png`,
+          url: `${domain}/assets/logos/TDN logo (1).png`,
         },
       },
       mainEntityOfPage: {

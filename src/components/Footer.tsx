@@ -19,9 +19,9 @@ export default function Footer() {
           {/* Column 1: Brand & Mission (4 cols on lg) */}
           <div className="md:col-span-12 lg:col-span-4 space-y-6">
             <Link href="/" className="inline-flex items-center gap-3 group">
-              <div className="relative w-9 h-9 overflow-hidden rounded-xl border border-white/15 bg-white/5 p-1 group-hover:border-violet-500/50 transition-colors">
+              <div className="relative w-9 h-9 overflow-hidden rounded-xl border border-white/15 bg-white p-1 group-hover:border-violet-500/50 transition-colors">
                 <Image
-                  src="/assets/logos/TDN logo.png"
+                  src="/assets/logos/TDN logo (1).png"
                   alt="TDN Logo"
                   fill
                   className="object-contain"
