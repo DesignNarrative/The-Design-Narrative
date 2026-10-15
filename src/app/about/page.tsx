@@ -21,77 +21,85 @@ import {
 // Current team members dataset
 const TEAM = [
   {
-    name: 'Irfan Khan',
+    name: 'IRFAN KHAN',
     role: 'CEO ALDS',
-    tagline: 'Scale operations & growth architecture.',
-    image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&auto=format&fit=crop&q=80',
+    image: '/assets/team/Irfan Khan.png',
     dept: 'Leadership',
   },
   {
-    name: 'Gauravi Pitre',
-    role: 'Senior Designer',
-    tagline: 'Color systems & grid wizardry.',
+    name: 'GAURAVI PITRE',
+    role: 'SENIOR GRAPHIC DESIGNER',
     image: '/assets/team/Creative Designer with Colorful Tools.png',
     dept: 'Brand Design',
     type: 'design',
   },
   {
-    name: 'Arjun Kotagi',
-    role: 'SEO Specialist',
-    tagline: 'Algorithm code cracker & ranking machine.',
+    name: 'ARJUN KOTAGI',
+    role: 'SEO SPECIALIST',
     image: '/assets/team/Smiling SEO Strategist with Analytics Graphics.png',
     dept: 'Growth & SEO',
     type: 'seo',
   },
   {
-    name: 'Pratiksha Patil',
-    role: 'Senior Tester',
-    tagline: 'Zero tolerance for bugs & friction.',
-    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&auto=format&fit=crop&q=80',
-    dept: 'Quality Assurance',
-  },
-  {
-    name: 'Vishnavi Dherenge',
-    role: 'UI UX Designer',
-    tagline: 'Frictionless wireframes & design systems.',
-    image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&auto=format&fit=crop&q=80',
-    dept: 'Product Design',
-  },
-  {
-    name: 'Vaishnavi Shingavi',
-    role: 'SMO Strategist',
-    tagline: 'Scroll-stopping content hooks & narrative.',
-    image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&auto=format&fit=crop&q=80',
-    dept: 'Social Media',
-  },
-  {
-    name: 'Shital Gadge',
-    role: 'Junior Tester',
-    tagline: 'Quality inspector & UX benchmark reviewer.',
-    image: 'https://images.unsplash.com/photo-1506919258185-6078bba55d2a?w=400&auto=format&fit=crop&q=80',
-    dept: 'Quality Assurance',
-  },
-  {
-    name: 'Kanika Sharma',
-    role: 'Performance Marketer',
-    tagline: 'Meta & Google ad conversion optimizer.',
-    image: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&auto=format&fit=crop&q=80',
-    dept: 'Performance Ads',
-  },
-  {
-    name: 'Vidhi Dalvi',
-    role: 'Video Editor',
-    tagline: 'Pacing, sound design, & retention dynamics.',
+    name: 'VIDHI DALVI',
+    role: 'VEDIO EDITOR',
     image: '/assets/team/Creative Video Editor Portrait.png',
     dept: 'Media Production',
     type: 'video',
   },
   {
-    name: 'Suresh Bugaliya',
-    role: 'Lead Developer',
-    tagline: 'Next.js, React & micro-animations compiler.',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&auto=format&fit=crop&q=80',
+    name: 'MAYUR BANGERA',
+    role: 'AI DEVELOPER',
+    image: '/assets/team/Mayur Bangera.png',
+    dept: 'AI & Engineering',
+  },
+  {
+    name: 'VAISHNAVI SHINGAVI',
+    role: 'SOCIAL MEDIA MANAGER',
+    image: '/assets/team/Vaishnavi.png',
+    dept: 'Social Media',
+  },
+  {
+    name: 'MEHZABI SHEIKH',
+    role: 'DIGITAL MARKETING LEAD',
+    image: '/assets/team/Mehzabi Sheikh.png',
+    dept: 'Digital Marketing',
+  },
+  {
+    name: 'KANIKA SHARMA',
+    role: 'PERFORMANCE MARKETER',
+    image: '/assets/team/Kanika.png',
+    dept: 'Performance Ads',
+  },
+  {
+    name: 'PRATIKSHA PATIL',
+    role: 'SENIOR TESTER',
+    image: '/assets/team/Pratiksha.png',
+    dept: 'Quality Assurance',
+  },
+  {
+    name: 'SHITAL GADGE',
+    role: 'JUNIOR TESTER',
+    image: '/assets/team/Sheetal.png',
+    dept: 'Quality Assurance',
+  },
+  {
+    name: 'SURESH BUGALIYA',
+    role: 'LEAD DEVELOPER',
+    image: '/assets/team/Suresh.png',
     dept: 'Engineering',
+  },
+  {
+    name: 'SWAPNIL',
+    role: 'AI VEDIO SPECIALIST',
+    image: '/assets/team/AI Video Specialist Creative Workspace.png',
+    dept: 'AI Media',
+  },
+  {
+    name: 'AISHWARYA PARDESHI',
+    role: 'HR MANAGER',
+    image: '/assets/team/HR Talent Engagement Cutout.png',
+    dept: 'People & Culture',
   },
 ];
 
@@ -486,7 +494,7 @@ export default function AboutPage() {
               src="/assets/team/Mayuri.jpeg"
               alt="Mayuri Shende Kankariya - CEO & Founder"
               fill
-              className="object-cover filter grayscale group-hover:grayscale-0 contrast-105 transition-all duration-700"
+              className="object-cover contrast-105 transition-all duration-700"
               style={{ objectPosition: 'center 18%' }}
               sizes="(max-width: 1024px) 100vw, 42vw"
               priority
@@ -576,65 +584,95 @@ export default function AboutPage() {
           </p>
         </div>
 
-        {/* 10 team members with 3D interactive tilt cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-          {TEAM.map((member, idx) => (
+        {/* Irfan Khan - CEO ALDS (Centered on Top) */}
+        <div className="flex justify-center w-full">
+          <div
+            onMouseMove={handleCardMouseMove}
+            onMouseLeave={handleCardMouseLeave}
+            className="w-full max-w-sm sm:max-w-md bg-white hover:bg-white rounded-3xl overflow-hidden border border-black/8 hover:border-violet-500/40 p-6 sm:p-7 flex flex-col items-center text-center transition-all duration-300 group origin-center shadow-sm hover:shadow-2xl hover:-translate-y-1.5 relative"
+            style={{ transformStyle: 'preserve-3d', willChange: 'transform' }}
+          >
+            <div className="relative w-full aspect-square rounded-2xl overflow-hidden mb-5 bg-[#f6f6f8] border border-black/5">
+              <Image
+                src={TEAM[0].image}
+                alt={TEAM[0].name}
+                fill
+                sizes="(max-width: 640px) 100vw, 448px"
+                className="object-contain p-2 group-hover:scale-105 transition-transform duration-500"
+                priority
+              />
+
+              {/* Department Tag */}
+              <div className="absolute top-3 right-3 px-2.5 py-1 rounded-md bg-black/75 backdrop-blur-md text-[9px] font-mono font-bold text-white border border-white/10 uppercase tracking-wider">
+                {TEAM[0].dept}
+              </div>
+            </div>
+
+            <h3 className="text-base sm:text-lg font-black uppercase text-[#111111] leading-tight">
+              {TEAM[0].name}
+            </h3>
+            
+            <div className="text-xs sm:text-sm font-mono font-bold text-violet-700 uppercase tracking-wider mt-2">
+              {TEAM[0].role}
+            </div>
+          </div>
+        </div>
+
+        {/* Remaining 12 Creative Crew Members (3-column grid) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+          {TEAM.slice(1).map((member, idx) => (
             <div
               key={idx}
               onMouseMove={handleCardMouseMove}
               onMouseLeave={handleCardMouseLeave}
-              className="bg-white hover:bg-white rounded-2xl overflow-hidden border border-black/5 hover:border-violet-500/40 p-4 flex flex-col items-center text-center transition-all duration-300 group origin-center shadow-sm hover:shadow-xl relative"
+              className="bg-white hover:bg-white rounded-3xl overflow-hidden border border-black/8 hover:border-violet-500/40 p-6 sm:p-7 flex flex-col items-center text-center transition-all duration-300 group origin-center shadow-sm hover:shadow-2xl hover:-translate-y-1.5 relative"
               style={{ transformStyle: 'preserve-3d', willChange: 'transform' }}
             >
-              {/* Grayscale default -> colorized hover image with motion animations */}
-              <div className="relative w-full aspect-square rounded-xl overflow-hidden mb-4 bg-gray-100 border border-black/5">
+              {/* Natural original colors (no grayscale) with hover zoom */}
+              <div className="relative w-full aspect-square rounded-2xl overflow-hidden mb-5 bg-[#f6f6f8] border border-black/5">
                 <Image
                   src={member.image}
                   alt={member.name}
                   fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 33vw, 20vw"
-                  className="object-cover filter grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-500"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-contain p-2 group-hover:scale-105 transition-transform duration-500"
                 />
 
                 {/* Role Specific Motion Graphics / Animation Overlays */}
                 {member.type === 'design' && (
-                  <div className="absolute inset-0 bg-gradient-to-tr from-pink-500/20 via-purple-500/15 to-amber-400/15 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-tr from-pink-500/10 via-purple-500/10 to-amber-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                 )}
 
                 {member.type === 'seo' && (
-                  <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/20 via-teal-500/15 to-cyan-400/15 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/10 via-teal-500/10 to-cyan-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                 )}
 
                 {member.type === 'video' && (
                   <>
-                    <div className="absolute inset-0 bg-gradient-to-tr from-violet-500/20 via-indigo-500/15 to-rose-400/15 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                    <div className="absolute inset-0 bg-gradient-to-tr from-violet-500/10 via-indigo-500/10 to-rose-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                     {/* Audio Equalizer bars animation */}
-                    <div className="absolute bottom-2 left-2 z-10 flex items-end gap-0.5 px-1.5 py-1 rounded bg-black/70 backdrop-blur-sm border border-white/10">
-                      <span className="w-0.5 h-2 bg-violet-400 animate-pulse" style={{ animationDuration: '0.6s' }} />
-                      <span className="w-0.5 h-3.5 bg-pink-400 animate-pulse" style={{ animationDuration: '0.4s' }} />
-                      <span className="w-0.5 h-1.5 bg-cyan-400 animate-pulse" style={{ animationDuration: '0.7s' }} />
-                      <span className="w-0.5 h-3 bg-violet-300 animate-pulse" style={{ animationDuration: '0.5s' }} />
+                    <div className="absolute bottom-3 left-3 z-10 flex items-end gap-0.5 px-2 py-1.5 rounded-md bg-black/75 backdrop-blur-md border border-white/10">
+                      <span className="w-0.5 h-2.5 bg-violet-400 animate-pulse" style={{ animationDuration: '0.6s' }} />
+                      <span className="w-0.5 h-4 bg-pink-400 animate-pulse" style={{ animationDuration: '0.4s' }} />
+                      <span className="w-0.5 h-2 bg-cyan-400 animate-pulse" style={{ animationDuration: '0.7s' }} />
+                      <span className="w-0.5 h-3.5 bg-violet-300 animate-pulse" style={{ animationDuration: '0.5s' }} />
                     </div>
                   </>
                 )}
 
-                <div className="absolute top-2 right-2 px-2 py-0.5 rounded-md bg-black/70 backdrop-blur-md text-[8px] font-mono font-bold text-white border border-white/10">
+                {/* Department Tag */}
+                <div className="absolute top-3 right-3 px-2.5 py-1 rounded-md bg-black/75 backdrop-blur-md text-[9px] font-mono font-bold text-white border border-white/10 uppercase tracking-wider">
                   {member.dept}
                 </div>
               </div>
 
-              <h3 className="text-sm font-black uppercase text-[#111111] leading-tight">
+              <h3 className="text-base sm:text-lg font-black uppercase text-[#111111] leading-tight">
                 {member.name}
               </h3>
               
-              <div className="text-[10px] font-mono font-bold text-violet-700 uppercase tracking-wider mt-1">
+              <div className="text-xs sm:text-sm font-mono font-bold text-violet-700 uppercase tracking-wider mt-2">
                 {member.role}
               </div>
-
-              {/* Tagline revealed on hover */}
-              <p className="text-[11px] text-gray-500 font-medium leading-relaxed mt-2.5 opacity-80 group-hover:opacity-100 group-hover:text-gray-700 transition-opacity duration-300">
-                {member.tagline}
-              </p>
             </div>
           ))}
         </div>
@@ -659,19 +697,19 @@ export default function AboutPage() {
             <div className="relative rounded-3xl overflow-hidden border border-white/10 bg-white/[0.03] p-6 md:p-8 space-y-6 group hover:border-violet-500/40 transition-colors">
               <div className="relative h-64 md:h-80 rounded-2xl overflow-hidden border border-white/10">
                 <Image
-                  src="/assets/contact-studio.jpg"
-                  alt="TDN Pune Headquarters"
+                  src="/assets/TDN Modern Reception Lobby.png"
+                  alt="TDN Pune Studio"
                   fill
-                  className="object-cover filter grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+                  className="object-cover group-hover:scale-105 transition-all duration-700"
                 />
                 <div className="absolute top-4 left-4 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/70 backdrop-blur-md border border-white/15 text-[9px] font-mono font-bold text-white uppercase tracking-widest">
-                  <MapPin className="w-3 h-3 text-violet-400" /> PUNE HQ
+                  <MapPin className="w-3 h-3 text-violet-400" /> PUNE STUDIO
                 </div>
               </div>
 
               <div className="space-y-3">
                 <h3 className="text-2xl font-black uppercase text-white tracking-tight">
-                  PUNE HEADQUARTERS
+                  PUNE STUDIO
                 </h3>
                 <p className="text-xs md:text-sm text-gray-400 leading-relaxed">
                   Our central innovation engine housing brand strategy labs, UI/UX interaction design, and core software engineering operations.

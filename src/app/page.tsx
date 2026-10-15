@@ -36,51 +36,59 @@ const CLIENTS = [
 const TESTIMONIALS_DATA = [
   {
     id: 1,
-    quote: "TDN literally saved our launch. The rebranding went so hard our conversions grew by 120%. Absolute W.",
+    name: "Amita",
     author: "Founder, Chav Bhari",
-    tag: "10/10 Rebranding",
-    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
-    theme: "light",
+    quote: "TDN literally saved our launch. The rebranding and packaging went so hard that our store footfall and delivery conversions grew by 120% within weeks.",
+    tag: "+120% Launch Growth",
+    avatar: "/assets/reviews/Amita.png",
   },
   {
     id: 2,
-    quote: "The UI/UX design is pure main character energy. It is clean, snappy, and our clients keep talking about it.",
-    author: "Director, SKJ Jewellers",
-    tag: "Clean AF UI/UX",
-    avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
-    theme: "dark",
+    name: "Suhani",
+    author: "Marketing Lead, Manglam Group",
+    quote: "Working with TDN on our flagship township campaigns redefined our digital presence. High-intent property enquiries shot up by 180% with their stunning visual architecture.",
+    tag: "+180% Lead Surge",
+    avatar: "/assets/reviews/suhani.png",
   },
   {
     id: 3,
-    quote: "SEO ranking went crazy. We hit Page 1 on Google for our core terms. They don't miss.",
-    author: "Marketing Lead, Citara",
-    tag: "+150% Organic Traffic",
-    avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80",
-    theme: "light",
+    name: "Rahul Nehra",
+    author: "Managing Director, Citara",
+    quote: "SEO and performance marketing went crazy. We hit Page 1 on Google for all core search terms. The website UX feels like walking into a 5-star luxury salon.",
+    tag: "+150% Organic Reach",
+    avatar: "/assets/reviews/Rahul Nehra.png",
   },
   {
     id: 4,
-    quote: "Working with TDN felt like having an elite in-house design unit. The brand packaging got us into 50+ retail chains across India.",
-    author: "Co-Founder, Pink Walk",
-    tag: "Brand Packaging Scale",
-    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80",
-    theme: "light",
+    name: "Archana Shende",
+    author: "Founder, Yarnen Fashion",
+    quote: "The e-commerce storefront TDN designed is snappy, modern, and effortless. We saw a 220% jump in direct-to-consumer sales during our very first season drop.",
+    tag: "+220% D2C Revenue",
+    avatar: "/assets/reviews/Archana Shende.png",
   },
   {
     id: 5,
-    quote: "The e-commerce experience is blazing fast and the conversions spoke for themselves in week 1. Incredible aesthetic sense.",
-    author: "E-Commerce Lead, Yarnen",
-    tag: "+220% Revenue Scale",
-    avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&auto=format&fit=crop&q=80",
-    theme: "dark",
+    name: "Priti Mundhe",
+    author: "Founder, DDS Dental Clinic",
+    quote: "TDN transformed our clinic's identity from clinical to warm, premium, and trustworthy. Patient consultations through the new digital booking portal doubled in two months.",
+    tag: "2x Patient Bookings",
+    avatar: "/assets/reviews/Priti Munde.png",
   },
   {
     id: 6,
-    quote: "From identity overhaul to luxury digital web layout, TDN delivered beyond our highest expectations. Truly un-ignorable work.",
-    author: "VP Branding, Dangayach Group",
-    tag: "Corporate Luxury Web",
-    avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150&auto=format&fit=crop&q=80",
-    theme: "light",
+    name: "Poonam Shende",
+    author: "Founder, Am to Am Salon",
+    quote: "The brand launch narrative and social media strategy were pure main character energy. Our salon openings were completely booked out from day one.",
+    tag: "Booked-Out Launch",
+    avatar: "/assets/reviews/Poonam Shende.png",
+  },
+  {
+    id: 7,
+    name: "Utkarsh & Priyanka Kankariya",
+    author: "Founder, Iceboat Studio",
+    quote: "TDN understands high design at a visceral level. The portfolio interface and brand narrative they crafted landed us multi-crore architectural commissions across India.",
+    tag: "Elite Portfolio Impact",
+    avatar: "/assets/reviews/Utkarsh & Priyanka Kankariya.png",
   },
 ];
 
@@ -400,7 +408,9 @@ export default function HomePage() {
             {[0, 1, 2].map((offset) => {
               const itemIdx = (activeTestimonialIdx + offset) % TESTIMONIALS_DATA.length;
               const item = TESTIMONIALS_DATA[itemIdx];
-              const isHeroDark = offset === 1; // Center card is dark hero card in 3-card layout
+              // Alternates dark/light on scroll so the center card flips between dark and light
+              const isDark = (activeTestimonialIdx + offset) % 2 === 1;
+              const isCenter = offset === 1;
 
               return (
                 <motion.div
@@ -409,15 +419,15 @@ export default function HomePage() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -15 }}
                   transition={{ duration: 0.3 }}
-                  className={`rounded-3xl p-7 md:p-8 flex flex-col justify-between min-h-[300px] md:min-h-[320px] transition-all duration-300 ${
-                    isHeroDark
-                      ? 'bg-[#13111c] text-white border border-violet-500/25 shadow-[0_20px_50px_rgba(139,92,246,0.3)] ring-1 ring-violet-500/20 md:-translate-y-2'
-                      : 'bg-white text-[#111111] border border-black/5 shadow-xl hover:shadow-2xl'
-                  }`}
+                  className={`rounded-3xl p-7 md:p-8 flex flex-col justify-between min-h-[320px] md:min-h-[350px] transition-all duration-300 ${
+                    isDark
+                      ? 'bg-[#13111c] text-white border border-violet-500/25 shadow-[0_20px_50px_rgba(139,92,246,0.3)] ring-1 ring-violet-500/20'
+                      : 'bg-white text-[#111111] border border-black/8 shadow-xl hover:shadow-2xl'
+                  } ${isCenter ? 'md:-translate-y-2.5 z-10' : ''}`}
                 >
                   {/* Top Stars & Quote icon */}
                   <div className="flex items-center justify-between">
-                    {isHeroDark ? (
+                    {isDark ? (
                       <>
                         <span className="text-3xl font-serif text-violet-400 font-bold leading-none">&ldquo;</span>
                         <div className="flex gap-1 text-violet-400">
@@ -427,26 +437,43 @@ export default function HomePage() {
                         </div>
                       </>
                     ) : (
-                      <div className="flex gap-1 text-amber-400">
-                        {Array(5).fill(null).map((_, sIdx) => (
-                          <Star key={sIdx} className="w-4 h-4 fill-amber-400 text-amber-400" />
-                        ))}
-                      </div>
+                      <>
+                        <span className="text-3xl font-serif text-amber-500 font-bold leading-none">&ldquo;</span>
+                        <div className="flex gap-1 text-amber-400">
+                          {Array(5).fill(null).map((_, sIdx) => (
+                            <Star key={sIdx} className="w-4 h-4 fill-amber-400 text-amber-400" />
+                          ))}
+                        </div>
+                      </>
                     )}
                   </div>
 
                   {/* Quote Text */}
-                  <p className={`text-sm md:text-base font-semibold leading-relaxed my-4 ${isHeroDark ? 'text-gray-200' : 'text-gray-700'}`}>
+                  <p className={`text-sm md:text-base font-semibold leading-relaxed my-4 ${isDark ? 'text-gray-200' : 'text-gray-700'}`}>
                     &ldquo;{item.quote}&rdquo;
                   </p>
 
-                  {/* Author Details (Text Only) */}
-                  <div className={`pt-4 border-t ${isHeroDark ? 'border-white/10' : 'border-black/5'} space-y-0.5`}>
-                    <div className={`text-xs md:text-sm font-extrabold uppercase ${isHeroDark ? 'text-white' : 'text-black'}`}>
-                      {item.author}
+                  {/* Author Details with Profile Picture */}
+                  <div className={`pt-4 border-t ${isDark ? 'border-white/10' : 'border-black/5'} flex items-center gap-3.5`}>
+                    <div className={`relative w-11 h-11 rounded-full overflow-hidden shrink-0 border ${isDark ? 'border-white/20' : 'border-black/10'} shadow-sm bg-gray-100`}>
+                      <Image
+                        src={item.avatar}
+                        alt={item.name}
+                        fill
+                        sizes="44px"
+                        className="object-cover"
+                      />
                     </div>
-                    <div className="text-[10px] font-mono font-bold text-gray-400 uppercase tracking-wider">
-                      {item.tag}
+                    <div className="space-y-0.5 min-w-0 flex-1 text-left">
+                      <div className={`text-xs md:text-sm font-extrabold uppercase truncate ${isDark ? 'text-white' : 'text-black'}`}>
+                        {item.name}
+                      </div>
+                      <div className="text-[10px] font-mono font-bold text-gray-400 uppercase tracking-wider truncate">
+                        {item.author}
+                      </div>
+                      <div className={`text-[10px] font-mono font-bold ${isDark ? 'text-violet-400' : 'text-violet-600'} uppercase tracking-wider`}>
+                        {item.tag}
+                      </div>
                     </div>
                   </div>
                 </motion.div>
