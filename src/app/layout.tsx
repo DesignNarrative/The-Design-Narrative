@@ -28,6 +28,16 @@ export const metadata: Metadata = {
   title: 'The Design Narrative (TDN) | Digital Marketing & Branding Agency Pune',
   description: 'End-to-End Branding, UI/UX Design, Social Media Marketing, and SEO built for scalable growth. The main character energy your brand needs.',
   keywords: ['branding agency pune', 'uiux design agency', 'digital marketing pune', 'seo services', 'the design narrative'],
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/icon.png', type: 'image/png', sizes: '512x512' },
+    ],
+    shortcut: '/favicon.ico',
+    apple: [
+      { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+  },
   alternates: {
     canonical: '/',
   },
