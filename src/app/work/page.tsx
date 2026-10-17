@@ -27,13 +27,8 @@ function WorkCard({ project, idx }: { project: Project; idx: number }) {
     }
   };
 
-  // Asymmetric height classes: 1st card big (covers screen), 2nd card small, 3rd card medium
-  const heightClass =
-    idx % 3 === 0
-      ? 'h-[85vh] min-h-[640px]'
-      : idx % 3 === 1
-      ? 'h-[55vh] min-h-[440px]'
-      : 'h-[70vh] min-h-[540px]';
+  // Asymmetric height classes to create masonry-style rhythm
+  const heightClass = idx % 3 === 0 ? 'h-[480px]' : idx % 3 === 1 ? 'h-[360px]' : 'h-[420px]';
 
   return (
     <motion.div
