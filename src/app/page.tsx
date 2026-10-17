@@ -171,25 +171,36 @@ export default function HomePage() {
   const whatsappLink = "https://wa.me/919850417266?text=Hey%20TDN!%20We%20saw%20your%20website%20and%20want%20to%20collaborate%20on%20our%20brand%20design/marketing.%20Let's%20talk!";
   const [customMsg, setCustomMsg] = useState('');
   const [activeTestimonialIdx, setActiveTestimonialIdx] = useState(0);
-  const [isTestimonialsHovered, setIsTestimonialsHovered] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
+  const pauseTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
 
+  const pauseBriefly = () => {
+    setIsPaused(true);
+    if (pauseTimeoutRef.current) clearTimeout(pauseTimeoutRef.current);
+    pauseTimeoutRef.current = setTimeout(() => {
+      setIsPaused(false);
+    }, 4000);
+  };
+
   const handleNextTestimonial = () => {
+    pauseBriefly();
     setActiveTestimonialIdx((prev) => (prev + 1) % TESTIMONIALS_DATA.length);
   };
 
   const handlePrevTestimonial = () => {
+    pauseBriefly();
     setActiveTestimonialIdx((prev) => (prev - 1 + TESTIMONIALS_DATA.length) % TESTIMONIALS_DATA.length);
   };
 
-  // Auto-scroll testimonials smoothly every 4.5s
+  // Continuous infinite auto-loop: when last card ends, first card shows up again
   useEffect(() => {
-    if (isTestimonialsHovered) return;
+    if (isPaused) return;
     const interval = setInterval(() => {
       setActiveTestimonialIdx((prev) => (prev + 1) % TESTIMONIALS_DATA.length);
-    }, 4500);
+    }, 4000);
     return () => clearInterval(interval);
-  }, [isTestimonialsHovered]);
+  }, [isPaused]);
 
   const handleWheel = (e: React.WheelEvent) => {
     if (Math.abs(e.deltaX) > 35) {
@@ -203,7 +214,7 @@ export default function HomePage() {
 
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchStartX(e.targetTouches[0].clientX);
-    setIsTestimonialsHovered(true);
+    pauseBriefly();
   };
 
   const handleTouchEnd = (e: React.TouchEvent) => {
@@ -217,7 +228,6 @@ export default function HomePage() {
       }
     }
     setTouchStartX(null);
-    setIsTestimonialsHovered(false);
   };
 
   // 3D Card Hover Tilt Calculations
@@ -433,19 +443,19 @@ export default function HomePage() {
 
         {/* Sliding Testimonials Carousel */}
         <div
-          onMouseEnter={() => setIsTestimonialsHovered(true)}
-          onMouseLeave={() => setIsTestimonialsHovered(false)}
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
           onWheel={handleWheel}
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
           className="relative max-w-7xl mx-auto px-4 md:px-12 flex items-center justify-center"
         >
           
-          {/* Left Arrow Button */}
+          {/* Left Arrow Button (Locked in fixed vertical center position) */}
           <button
             onClick={handlePrevTestimonial}
             aria-label="Previous Testimonials"
-            className="absolute left-2 lg:left-4 z-30 w-11 h-11 md:w-13 md:h-13 rounded-full bg-white shadow-xl border border-black/5 flex items-center justify-center text-black hover:scale-110 active:scale-95 transition-all duration-200 cursor-pointer"
+            className="absolute left-1 sm:left-2 lg:left-4 top-1/2 -translate-y-1/2 z-30 w-11 h-11 md:w-13 md:h-13 rounded-full bg-white shadow-xl border border-black/5 flex items-center justify-center text-black hover:scale-110 active:scale-95 transition-all duration-200 cursor-pointer"
           >
             <ArrowLeft className="w-5 h-5" />
           </button>
@@ -466,14 +476,14 @@ export default function HomePage() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -15 }}
                   transition={{ duration: 0.3 }}
-                  className={`rounded-3xl p-7 md:p-8 flex flex-col justify-between min-h-[320px] md:min-h-[350px] transition-all duration-300 ${
+                  className={`rounded-3xl p-7 md:p-8 flex flex-col justify-between h-[420px] md:h-[450px] transition-all duration-300 ${
                     isDark
                       ? 'bg-[#13111c] text-white border border-violet-500/25 shadow-[0_20px_50px_rgba(139,92,246,0.3)] ring-1 ring-violet-500/20'
                       : 'bg-white text-[#111111] border border-black/8 shadow-xl hover:shadow-2xl'
                   } ${isCenter ? 'md:-translate-y-2.5 z-10' : ''}`}
                 >
                   {/* Top Stars & Quote icon */}
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-center justify-between shrink-0">
                     {isDark ? (
                       <>
                         <span className="text-3xl font-serif text-violet-400 font-bold leading-none">&ldquo;</span>
@@ -496,12 +506,14 @@ export default function HomePage() {
                   </div>
 
                   {/* Quote Text */}
-                  <p className={`text-sm md:text-base font-semibold leading-relaxed my-4 ${isDark ? 'text-gray-200' : 'text-gray-700'}`}>
-                    &ldquo;{item.quote}&rdquo;
-                  </p>
+                  <div className="my-auto py-2 flex items-center overflow-y-auto no-scrollbar">
+                    <p className={`text-xs sm:text-sm md:text-base font-semibold leading-relaxed ${isDark ? 'text-gray-200' : 'text-gray-700'}`}>
+                      &ldquo;{item.quote}&rdquo;
+                    </p>
+                  </div>
 
                   {/* Author Details with Profile Picture */}
-                  <div className={`pt-4 border-t ${isDark ? 'border-white/10' : 'border-black/5'} flex items-center gap-3.5`}>
+                  <div className={`pt-4 border-t shrink-0 ${isDark ? 'border-white/10' : 'border-black/5'} flex items-center gap-3.5`}>
                     <div className={`relative w-11 h-11 rounded-full overflow-hidden shrink-0 border ${isDark ? 'border-white/20' : 'border-black/10'} shadow-sm bg-gray-100`}>
                       <Image
                         src={item.avatar}
@@ -528,11 +540,11 @@ export default function HomePage() {
             })}
           </div>
 
-          {/* Right Arrow Button */}
+          {/* Right Arrow Button (Locked in fixed vertical center position) */}
           <button
             onClick={handleNextTestimonial}
             aria-label="Next Testimonials"
-            className="absolute right-2 lg:right-4 z-30 w-11 h-11 md:w-13 md:h-13 rounded-full bg-white shadow-xl border border-black/5 flex items-center justify-center text-black hover:scale-110 active:scale-95 transition-all duration-200 cursor-pointer"
+            className="absolute right-1 sm:right-2 lg:right-4 top-1/2 -translate-y-1/2 z-30 w-11 h-11 md:w-13 md:h-13 rounded-full bg-white shadow-xl border border-black/5 flex items-center justify-center text-black hover:scale-110 active:scale-95 transition-all duration-200 cursor-pointer"
           >
             <ArrowRight className="w-5 h-5" />
           </button>
