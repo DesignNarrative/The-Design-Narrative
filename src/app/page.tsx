@@ -476,7 +476,7 @@ export default function HomePage() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -15 }}
                   transition={{ duration: 0.3 }}
-                  className={`rounded-3xl p-7 md:p-8 flex flex-col justify-between h-[420px] md:h-[450px] transition-all duration-300 ${
+                  className={`rounded-3xl p-6 sm:p-7 md:p-8 flex flex-col justify-between h-[480px] md:h-[510px] transition-all duration-300 ${
                     isDark
                       ? 'bg-[#13111c] text-white border border-violet-500/25 shadow-[0_20px_50px_rgba(139,92,246,0.3)] ring-1 ring-violet-500/20'
                       : 'bg-white text-[#111111] border border-black/8 shadow-xl hover:shadow-2xl'
@@ -505,9 +505,9 @@ export default function HomePage() {
                     )}
                   </div>
 
-                  {/* Quote Text */}
-                  <div className="my-auto py-2 flex items-center overflow-y-auto no-scrollbar">
-                    <p className={`text-xs sm:text-sm md:text-base font-semibold leading-relaxed ${isDark ? 'text-gray-200' : 'text-gray-700'}`}>
+                  {/* Quote Text - Perfectly sized so full text is visible without any cropping */}
+                  <div className="my-auto py-2 flex items-center">
+                    <p className={`text-xs sm:text-[13px] md:text-sm font-medium leading-relaxed ${isDark ? 'text-gray-200' : 'text-gray-700'}`}>
                       &ldquo;{item.quote}&rdquo;
                     </p>
                   </div>
@@ -524,10 +524,10 @@ export default function HomePage() {
                       />
                     </div>
                     <div className="space-y-0.5 min-w-0 flex-1 text-left">
-                      <div className={`text-xs md:text-sm font-extrabold uppercase truncate ${isDark ? 'text-white' : 'text-black'}`}>
+                      <div className={`text-xs md:text-sm font-extrabold uppercase leading-snug ${isDark ? 'text-white' : 'text-black'}`}>
                         {item.name}
                       </div>
-                      <div className="text-[10px] font-mono font-bold text-gray-400 uppercase tracking-wider truncate">
+                      <div className="text-[10px] font-mono font-bold text-gray-400 uppercase tracking-wider leading-snug">
                         {item.author}
                       </div>
                       <div className={`text-[10px] font-mono font-bold ${isDark ? 'text-violet-400' : 'text-violet-600'} uppercase tracking-wider`}>
