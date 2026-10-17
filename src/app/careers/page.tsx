@@ -1,29 +1,22 @@
 'use client';
 
+import { useState, useRef } from 'react';
 import Link from 'next/link';
-import { ArrowUpRight, Briefcase, Sparkles, MapPin, CheckCircle } from 'lucide-react';
+import { ArrowUpRight, Briefcase, Sparkles, MapPin, CheckCircle, ArrowLeft, ArrowRight } from 'lucide-react';
 
-const CULTURE_PHOTOS = [
-  {
-    title: 'Visual Brainstorms',
-    image: 'https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=600&auto=format&fit=crop&q=60',
-  },
-  {
-    title: 'Studio Coffee Runs',
-    image: 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=600&auto=format&fit=crop&q=60',
-  },
-  {
-    title: 'Typographic Sketching',
-    image: 'https://images.unsplash.com/photo-1509343256512-d77a5cb3791b?w=600&auto=format&fit=crop&q=60',
-  },
-  {
-    title: 'Team Lunches',
-    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&auto=format&fit=crop&q=60',
-  },
-  {
-    title: 'Sprint Code Reviews',
-    image: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=600&auto=format&fit=crop&q=60',
-  },
+const LIFE_PHOTOS = [
+  '/assets/life/lif1.jpeg',
+  '/assets/life/lif2.jpeg',
+  '/assets/life/lif3.jpeg',
+  '/assets/life/lif4.jpeg',
+  '/assets/life/lif5.jpeg',
+  '/assets/life/lif6.jpeg',
+  '/assets/life/lif7.jpeg',
+  '/assets/life/lif8.jpeg',
+  '/assets/life/lif9.jpeg',
+  '/assets/life/lif10.jpeg',
+  '/assets/life/lif11.jpeg',
+  '/assets/life/lif12.jpeg',
 ];
 
 const JOBS = [
@@ -66,16 +59,38 @@ const JOBS = [
 ];
 
 export default function CareersPage() {
+  const galleryRef = useRef<HTMLDivElement>(null);
+  const [isPaused, setIsPaused] = useState(false);
+  const pauseTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  const handleManualScroll = (direction: 'left' | 'right') => {
+    const el = galleryRef.current;
+    if (!el) return;
+
+    // Temporarily pause auto-scroll when manually navigating
+    setIsPaused(true);
+    if (pauseTimeoutRef.current) clearTimeout(pauseTimeoutRef.current);
+    pauseTimeoutRef.current = setTimeout(() => {
+      setIsPaused(false);
+    }, 4000);
+
+    const scrollAmount = window.innerWidth * 0.6;
+    el.scrollBy({
+      left: direction === 'left' ? -scrollAmount : scrollAmount,
+      behavior: 'smooth',
+    });
+  };
+
   const getApplyLink = (jobTitle: string) => {
     const text = encodeURIComponent(`Hey TDN! I want to apply for the ${jobTitle} position. Let's chat.`);
     return `https://wa.me/919850417266?text=${text}`;
   };
 
   return (
-    <div className="relative min-h-screen bg-white text-[#111111] py-16 px-6 md:px-12 max-w-7xl mx-auto space-y-24">
+    <div className="relative min-h-screen bg-white text-[#111111] py-16 space-y-24">
       
       {/* 1. HERO SECTION (Collage Graphic grid) */}
-      <section className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pt-8">
+      <section className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pt-8">
         <div className="lg:col-span-6 space-y-6">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/5 border border-black/10 text-[10px] font-bold text-[#111111] tracking-widest uppercase">
             <Briefcase className="w-3.5 h-3.5" /> WE ARE HIRING
@@ -116,35 +131,69 @@ export default function CareersPage() {
         </div>
       </section>
 
-      {/* 2. LIFE AT TDN (Scroll-driven horizontal photo gallery) */}
-      <section className="space-y-6">
-        <div className="space-y-1.5 border-b border-black/5 pb-4">
-          <span className="text-[10px] font-mono tracking-widest text-gray-400 uppercase">OUR WORLD</span>
-          <h2 className="text-2xl md:text-3xl font-black uppercase text-[#111111]">LIFE AT TDN</h2>
+      {/* 2. LIFE AT TDN (Autoscrolling & Manual Gallery - Edge to Edge Fullscreen) */}
+      <section className="w-full space-y-6 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-black/5 pb-4">
+          <div className="space-y-1.5">
+            <span className="text-[10px] font-mono tracking-widest text-gray-400 uppercase">OUR WORLD</span>
+            <h2 className="text-2xl md:text-3xl font-black uppercase text-[#111111]">LIFE AT TDN</h2>
+          </div>
+
+          {/* Manual Scroll Controls */}
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => handleManualScroll('left')}
+              aria-label="Scroll left"
+              className="w-10 h-10 rounded-full border border-black/10 hover:border-black/30 bg-white hover:bg-black/5 flex items-center justify-center transition-all cursor-pointer shadow-sm active:scale-95 text-black"
+            >
+              <ArrowLeft className="w-4 h-4" />
+            </button>
+            <button
+              onClick={() => handleManualScroll('right')}
+              aria-label="Scroll right"
+              className="w-10 h-10 rounded-full border border-black/10 hover:border-black/30 bg-white hover:bg-black/5 flex items-center justify-center transition-all cursor-pointer shadow-sm active:scale-95 text-black"
+            >
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
         </div>
 
-        <div className="flex overflow-x-auto gap-6 pb-6 no-scrollbar snap-x snap-mandatory">
-          {CULTURE_PHOTOS.map((photo, idx) => (
-            <div
-              key={idx}
-              className="snap-start shrink-0 w-[65vw] md:w-[320px] h-64 relative rounded-2xl overflow-hidden shadow-md border border-black/5 group"
-            >
-              <img
-                src={photo.image}
-                alt={photo.title}
-                className="object-cover w-full h-full group-hover:scale-103 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-              <div className="absolute bottom-4 left-4 text-[9px] font-mono text-white/90 uppercase font-bold tracking-wider">
-                {photo.title}
+        {/* Scrolling Strip - covers entire screen width */}
+        <div
+          ref={galleryRef}
+          className="relative flex overflow-x-auto no-scrollbar w-full py-2 cursor-grab active:cursor-grabbing"
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        >
+          <div
+            className="animate-marquee flex gap-6 items-center"
+            style={{
+              animationPlayState: isPaused ? 'paused' : undefined,
+              animationDuration: '30s',
+            }}
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+            onTouchStart={() => setIsPaused(true)}
+            onTouchEnd={() => setIsPaused(false)}
+          >
+            {LIFE_PHOTOS.concat(LIFE_PHOTOS).map((src, idx) => (
+              <div
+                key={idx}
+                className="shrink-0 w-[78vw] sm:w-[380px] md:w-[440px] lg:w-[480px] h-[360px] sm:h-[420px] md:h-[480px] lg:h-[500px] relative rounded-3xl overflow-hidden shadow-md border border-black/5 group"
+              >
+                <img
+                  src={src}
+                  alt="Life at TDN"
+                  className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700 ease-out"
+                  loading="lazy"
+                />
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
 
       {/* 3. OPEN OPENINGS (Detailed Cards) */}
-      <section className="space-y-8">
+      <section className="max-w-7xl mx-auto px-6 md:px-12 space-y-8">
         <div className="space-y-1.5 border-b border-black/5 pb-4">
           <span className="text-[10px] font-mono tracking-widest text-gray-400 uppercase">CAREER BOARD</span>
           <h2 className="text-2xl md:text-3xl font-black uppercase text-[#111111]">OPEN OPENINGS</h2>
@@ -192,7 +241,7 @@ export default function CareersPage() {
                   href={getApplyLink(job.title)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl bg-black hover:bg-black/85 text-white text-xs font-bold uppercase tracking-widest shadow-md hover:scale-[1.02] active:scale-98 transition-all duration-200"
+                  className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl bg-violet-600 hover:bg-violet-700 text-white text-xs font-bold uppercase tracking-widest shadow-md hover:scale-[1.02] active:scale-98 transition-all duration-200"
                 >
                   Apply via WhatsApp <ArrowUpRight className="w-4 h-4 text-white" />
                 </Link>
