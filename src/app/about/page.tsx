@@ -289,51 +289,17 @@ export default function AboutPage() {
       </section>
 
       {/* ========================================================================= */}
-      {/* SECTION 2: CINEMATIC STORY PIN REVEAL (Dark Video Backdrop)               */}
+      {/* SECTION 2: CINEMATIC STORY VIDEO (Fullscreen Video Backdrop)              */}
       {/* ========================================================================= */}
-      <section className="relative w-full py-16 px-4 sm:px-6 md:px-12 max-w-7xl mx-auto">
-        <div className="relative w-full h-[55vh] md:h-[70vh] rounded-3xl overflow-hidden border border-white/10 shadow-2xl group bg-[#090909]">
-          {/* Autoplay Video Loop */}
-          <video
-            src="/assets/videos/Home banner vedio.mp4"
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="absolute inset-0 w-full h-full object-cover filter brightness-[0.38] contrast-110 group-hover:scale-105 transition-transform duration-1000 ease-out"
-          />
-
-          {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#080808] via-black/40 to-transparent pointer-events-none" />
-
-          {/* Center Story Narrative */}
-          <div className="absolute inset-0 z-20 flex flex-col justify-end p-8 md:p-16 space-y-4 max-w-3xl text-white">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-violet-600/30 border border-violet-400/40 text-[9px] font-mono font-bold text-violet-300 uppercase tracking-widest backdrop-blur-md w-fit">
-              <Award className="w-3 h-3 text-violet-400" />
-              ORIGIN STORY &bull; EST. 2017
-            </div>
-
-            <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tight text-white leading-tight">
-              FROM A PUNE STUDIO <br />
-              <span className="font-serif italic font-normal text-violet-400 lowercase">
-                to a national brand powerhouse.
-              </span>
-            </h2>
-
-            <p className="text-xs md:text-base text-gray-300 font-medium leading-relaxed max-w-2xl">
-              TDN was founded with a singular thesis: design should do far more than look pretty. It must dictate consumer perception, establish defensible market positioning, and turn digital interactions into compounding revenue.
-            </p>
-
-            <div className="flex flex-wrap items-center gap-4 pt-2">
-              <span className="inline-flex items-center gap-1.5 text-[11px] font-mono font-bold text-white bg-white/10 border border-white/10 px-3.5 py-1.5 rounded-full backdrop-blur-md">
-                <MapPin className="w-3.5 h-3.5 text-violet-400" /> Pune Headquarters
-              </span>
-              <span className="inline-flex items-center gap-1.5 text-[11px] font-mono font-bold text-white bg-white/10 border border-white/10 px-3.5 py-1.5 rounded-full backdrop-blur-md">
-                <MapPin className="w-3.5 h-3.5 text-violet-400" /> Jaipur Creative Lab
-              </span>
-            </div>
-          </div>
-        </div>
+      <section className="relative w-full h-[95vh] bg-[#050505] overflow-hidden">
+        <video
+          src="/assets/videos/Home banner vedio.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover filter brightness-[0.95] contrast-[1.05]"
+        />
       </section>
 
       {/* ========================================================================= */}
