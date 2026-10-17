@@ -38,7 +38,7 @@ const TESTIMONIALS_DATA = [
     id: 1,
     name: "Amita",
     author: "Founder, Chav Bhari",
-    quote: "TDN literally saved our launch. The rebranding and packaging went so hard that our store footfall and delivery conversions grew by 120% within weeks.",
+    quote: "The new logo and packaging perfectly capture the essence of Chav Bhaari. The packaging stands out on store shelves, looks distinctive compared to competitors, and gives our brand a stronger, more memorable identity.",
     tag: "+120% Launch Growth",
     avatar: "/assets/reviews/Amita.png",
   },
@@ -46,7 +46,7 @@ const TESTIMONIALS_DATA = [
     id: 2,
     name: "Suhani",
     author: "Marketing Lead, Manglam Group",
-    quote: "Working with TDN on our flagship township campaigns redefined our digital presence. High-intent property enquiries shot up by 180% with their stunning visual architecture.",
+    quote: "The strategic social media campaigns for Pinkwalk and Pinkwest strengthened our brand presence across Jaipur. Through engaging reels, consistent social media branding, and targeted paid ads, TDN helped to build awareness, boost business interest, and attract more potential investors.",
     tag: "+180% Lead Surge",
     avatar: "/assets/reviews/suhani.png",
   },
@@ -54,7 +54,7 @@ const TESTIMONIALS_DATA = [
     id: 3,
     name: "Rahul Nehra",
     author: "Managing Director, Citara",
-    quote: "SEO and performance marketing went crazy. We hit Page 1 on Google for all core search terms. The website UX feels like walking into a 5-star luxury salon.",
+    quote: "Building Citara from scratch was a transformative journey. From creating our logo and brand identity to theatre wall graphics, social media campaigns, website design, SEO, and investor pitch decks, every element came together to establish a strong brand presence. The consistent digital support and impactful branding helped us expand to 50+ franchise locations across India, bringing our vision of a distinctive cinema experience to life.",
     tag: "+150% Organic Reach",
     avatar: "/assets/reviews/Rahul Nehra.png",
   },
@@ -62,7 +62,7 @@ const TESTIMONIALS_DATA = [
     id: 4,
     name: "Archana Shende",
     author: "Founder, Yarnen Fashion",
-    quote: "The e-commerce storefront TDN designed is snappy, modern, and effortless. We saw a 220% jump in direct-to-consumer sales during our very first season drop.",
+    quote: "From brand identity and engaging social media content to photoshoot support, E-Commerce website design, and SEO, every touchpoint was built to strengthen our brand. The cohesive branding and digital strategy helped boost our online presence and business growth.",
     tag: "+220% D2C Revenue",
     avatar: "/assets/reviews/Archana Shende.png",
   },
@@ -171,6 +171,8 @@ export default function HomePage() {
   const whatsappLink = "https://wa.me/919850417266?text=Hey%20TDN!%20We%20saw%20your%20website%20and%20want%20to%20collaborate%20on%20our%20brand%20design/marketing.%20Let's%20talk!";
   const [customMsg, setCustomMsg] = useState('');
   const [activeTestimonialIdx, setActiveTestimonialIdx] = useState(0);
+  const [isTestimonialsHovered, setIsTestimonialsHovered] = useState(false);
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
 
   const handleNextTestimonial = () => {
     setActiveTestimonialIdx((prev) => (prev + 1) % TESTIMONIALS_DATA.length);
@@ -178,6 +180,44 @@ export default function HomePage() {
 
   const handlePrevTestimonial = () => {
     setActiveTestimonialIdx((prev) => (prev - 1 + TESTIMONIALS_DATA.length) % TESTIMONIALS_DATA.length);
+  };
+
+  // Auto-scroll testimonials smoothly every 4.5s
+  useEffect(() => {
+    if (isTestimonialsHovered) return;
+    const interval = setInterval(() => {
+      setActiveTestimonialIdx((prev) => (prev + 1) % TESTIMONIALS_DATA.length);
+    }, 4500);
+    return () => clearInterval(interval);
+  }, [isTestimonialsHovered]);
+
+  const handleWheel = (e: React.WheelEvent) => {
+    if (Math.abs(e.deltaX) > 35) {
+      if (e.deltaX > 0) {
+        handleNextTestimonial();
+      } else {
+        handlePrevTestimonial();
+      }
+    }
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStartX(e.targetTouches[0].clientX);
+    setIsTestimonialsHovered(true);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX !== null) {
+      const touchEndX = e.changedTouches[0].clientX;
+      const diff = touchStartX - touchEndX;
+      if (diff > 40) {
+        handleNextTestimonial();
+      } else if (diff < -40) {
+        handlePrevTestimonial();
+      }
+    }
+    setTouchStartX(null);
+    setIsTestimonialsHovered(false);
   };
 
   // 3D Card Hover Tilt Calculations
@@ -392,7 +432,14 @@ export default function HomePage() {
         </div>
 
         {/* Sliding Testimonials Carousel */}
-        <div className="relative max-w-7xl mx-auto px-4 md:px-12 flex items-center justify-center">
+        <div
+          onMouseEnter={() => setIsTestimonialsHovered(true)}
+          onMouseLeave={() => setIsTestimonialsHovered(false)}
+          onWheel={handleWheel}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+          className="relative max-w-7xl mx-auto px-4 md:px-12 flex items-center justify-center"
+        >
           
           {/* Left Arrow Button */}
           <button
