@@ -62,7 +62,7 @@ const TEAM = [
   {
     name: 'MEHZABI SHEIKH',
     role: 'DIGITAL MARKETING LEAD',
-    image: '/assets/team/Mehzabi Sheikh.png',
+    image: '/assets/team/Mehzabi.png',
     dept: 'Digital Marketing',
   },
   {
@@ -729,10 +729,10 @@ export default function AboutPage() {
             <div className="relative rounded-3xl overflow-hidden border border-white/10 bg-white/[0.03] p-6 md:p-8 space-y-6 group hover:border-violet-500/40 transition-colors">
               <div className="relative h-64 md:h-80 rounded-2xl overflow-hidden border border-white/10">
                 <Image
-                  src="/assets/contact-desk.jpg"
+                  src="/assets/TDN Office Meeting Discussion.png"
                   alt="TDN Jaipur Creative Studio"
                   fill
-                  className="object-cover filter grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+                  className="object-cover group-hover:scale-105 transition-all duration-700"
                 />
                 <div className="absolute top-4 left-4 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/70 backdrop-blur-md border border-white/15 text-[9px] font-mono font-bold text-white uppercase tracking-widest">
                   <MapPin className="w-3 h-3 text-violet-400" /> JAIPUR STUDIO
