@@ -119,7 +119,7 @@ export default function ServicesPage() {
 
               <h1 className="text-4xl sm:text-6xl md:text-7xl font-black uppercase tracking-tight leading-[0.95] text-[#111111]">
                 DIGITAL MAGIC <br />
-                <span className="font-serif italic font-normal text-gray-500 lowercase">
+                <span className="font-serif italic font-normal text-violet-600 lowercase">
                   crafted for growing
                 </span> <br />
                 brands.
@@ -134,11 +134,11 @@ export default function ServicesPage() {
             {/* Metrics Strip */}
             <div className="grid grid-cols-3 gap-6 pt-6 border-t border-black/10 max-w-lg">
               <div>
-                <div className="text-2xl md:text-3xl font-black text-black">50+</div>
+                <div className="text-2xl md:text-3xl font-black text-black">18+</div>
                 <div className="text-[10px] md:text-xs text-gray-500 font-medium">Brands Worked With</div>
               </div>
               <div>
-                <div className="text-2xl md:text-3xl font-black text-black">3+</div>
+                <div className="text-2xl md:text-3xl font-black text-black">2+</div>
                 <div className="text-[10px] md:text-xs text-gray-500 font-medium">Cities</div>
               </div>
               <div>
