@@ -298,11 +298,7 @@ export default function HomePage() {
         {/* WebGL interactive refraction canvas overlay */}
 
 
-        {/* Scroll Cue Tag */}
-        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20 flex flex-col items-center gap-1.5 text-[9px] font-mono tracking-widest uppercase text-gray-400">
-          <span>keep scrolling, it gets better.</span>
-          <div className="w-[1px] h-6 bg-white/30 animate-pulse mt-1" />
-        </div>
+
       </section>
 
       {/* SECTION 2: TRUST / CLIENT MARQUEE & STATS STRIP (Off-White Background) */}
