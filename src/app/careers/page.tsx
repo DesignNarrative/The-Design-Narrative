@@ -92,17 +92,29 @@ export default function CareersPage() {
       {/* 1. HERO SECTION (Collage Graphic grid) */}
       <section className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center pt-8">
         <div className="lg:col-span-6 space-y-6">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/5 border border-black/10 text-[10px] font-bold text-[#111111] tracking-widest uppercase">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-violet-50 border border-violet-200 text-[10px] font-bold text-violet-700 tracking-widest uppercase">
             <Briefcase className="w-3.5 h-3.5" /> WE ARE HIRING
           </div>
 
-          <h1 className="text-4xl md:text-7xl font-black uppercase tracking-tight leading-[1.0] text-[#111111]">
-            FEEL FULFILLED. <br />
-            HAVE FUN. <br />
-            <span className="font-serif italic font-normal lowercase text-gray-500">
-              shape the future.
-            </span>
+          <h1 className="text-4xl sm:text-6xl md:text-7xl font-black uppercase tracking-tight leading-[0.98] text-[#111111]">
+            Make Your Next <br />
+            <span className="font-serif italic font-normal text-violet-600 normal-case">Move Matter</span>
           </h1>
+
+          <div className="text-lg md:text-xl font-bold uppercase tracking-wide text-[#111111]">
+            Create. Innovate. <span className="text-violet-600 font-extrabold">Grow with Us.</span>
+          </div>
+
+          <p className="text-sm md:text-base text-gray-600 font-medium max-w-xl leading-relaxed">
+            Passionate about creativity and digital growth? Send your resume and portfolio to{" "}
+            <a
+              href="mailto:ceo@thedesignnarrative.in"
+              className="text-violet-600 font-bold underline hover:text-violet-700 transition-colors"
+            >
+              ceo@thedesignnarrative.in
+            </a>{" "}
+            and take the next step in your career.
+          </p>
         </div>
 
         {/* Collage grid visual */}

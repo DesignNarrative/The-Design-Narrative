@@ -44,29 +44,24 @@ const LOCATIONS = [
 
 const FAQS = [
   {
-    question: 'How long does a creative/branding project take?',
+    question: 'What services does The Design Narrative offer?',
     answer:
-      'It usually takes 2-4 weeks depending on the scope. We follow a structured process to ensure world-class quality and deliver on time at every stage.',
+      'The Design Narrative offers SEO, social media management, branding, and website design services. These services help businesses improve search visibility, build brand recognition, and generate enquiries.',
   },
   {
-    question: 'Do you collaborate with early-stage startups?',
+    question: 'What makes The Design Narrative different from other digital marketing agencies in Pune?',
     answer:
-      'Yes! We work alongside funded startups, emerging D2C brands, and established enterprises to craft bespoke identities, high-converting digital products, and performance engines.',
+      'The Design Narrative brings branding, website design, and digital marketing together to create a more consistent brand experience. This integrated approach helps align creative decisions with business and marketing goals.',
   },
   {
-    question: 'What does your design and marketing workflow look like?',
+    question: 'Which businesses can work with The Design Narrative?',
     answer:
-      'Our 4-step framework includes Discover (research & strategy), Plan (wireframing & moodboards), Design & Develop (high-fidelity execution & engineering), and Scale (testing, launch & growth optimization).',
+      'The Design Narrative can support businesses seeking stronger branding, better search visibility, engaging social media, or a more effective website. Add your actual client industries to demonstrate relevant experience.',
   },
   {
-    question: 'Do you offer ongoing support after the project is completed?',
+    question: 'How does The Design Narrative approach digital marketing projects?',
     answer:
-      'Absolutely. We offer retainer partnerships for continuous brand stewardship, design systems maintenance, web performance updates, and ongoing social media / SEO campaigns.',
-  },
-  {
-    question: 'Can we schedule a meeting before starting?',
-    answer:
-      'Of course! You can book a free 30-minute discovery consultation with our strategy team or send us your requirements via WhatsApp to start the conversation immediately.',
+      'The process begins with understanding your business, target audience, and objectives before developing a tailored strategy. Execution and performance reviews help identify opportunities for improvement.',
   },
 ];
 

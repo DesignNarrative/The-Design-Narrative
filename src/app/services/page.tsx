@@ -242,10 +242,7 @@ export default function ServicesPage() {
                       </div>
 
                       {/* Action Bar */}
-                      <div className="flex items-center justify-between pt-4 border-t border-black/5">
-                        <span className="text-[11px] font-mono font-bold text-gray-400 uppercase tracking-widest">
-                          Explore Service
-                        </span>
+                      <div className="flex items-center justify-end pt-4 border-t border-black/5">
                         <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-black text-white text-[11px] font-black uppercase tracking-wider group-hover:bg-violet-600 group-hover:shadow-lg transition-all duration-300 shadow-sm">
                           EXPLORE SERVICE <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-200" />
                         </div>
