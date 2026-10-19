@@ -130,14 +130,25 @@ export default function Footer() {
                 CTS 927, Office No.302, Sanas Memories,<br />
                 F.C. Road, Pune &ndash; 411005
               </p>
-              <div className="pt-1">
-                <a
-                  href="tel:+919850417266"
-                  className="text-gray-300 hover:text-violet-400 font-mono text-[11px] font-bold transition-colors inline-flex items-center gap-1"
-                >
-                  <Phone className="w-3 h-3 text-violet-400" />
-                  +91 9850 417 266
-                </a>
+              <div className="pt-1 space-y-1.5">
+                <div>
+                  <a
+                    href="tel:+919850417266"
+                    className="text-gray-300 hover:text-violet-400 font-mono text-[11px] font-bold transition-colors inline-flex items-center gap-1.5"
+                  >
+                    <Phone className="w-3 h-3 text-violet-400" />
+                    +91 9850 417 266
+                  </a>
+                </div>
+                <div>
+                  <a
+                    href="mailto:ceo@thedesignnarrative.in"
+                    className="text-gray-300 hover:text-violet-400 font-mono text-[11px] font-bold transition-colors inline-flex items-center gap-1.5 break-all"
+                  >
+                    <Mail className="w-3 h-3 text-violet-400 shrink-0" />
+                    ceo@thedesignnarrative.in
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -152,14 +163,25 @@ export default function Footer() {
                 8 Khaliya house, Raj Bhawan Road, Gayatri Nagar,<br />
                 Sodala, Jaipur &ndash; 302015
               </p>
-              <div className="pt-1">
-                <a
-                  href="tel:+917387234785"
-                  className="text-gray-300 hover:text-violet-400 font-mono text-[11px] font-bold transition-colors inline-flex items-center gap-1"
-                >
-                  <Phone className="w-3 h-3 text-violet-400" />
-                  +91 7387 234 785
-                </a>
+              <div className="pt-1 space-y-1.5">
+                <div>
+                  <a
+                    href="tel:+917387234785"
+                    className="text-gray-300 hover:text-violet-400 font-mono text-[11px] font-bold transition-colors inline-flex items-center gap-1.5"
+                  >
+                    <Phone className="w-3 h-3 text-violet-400" />
+                    +91 7387 234 785
+                  </a>
+                </div>
+                <div>
+                  <a
+                    href="mailto:digital@thedesignnarrative.in"
+                    className="text-gray-300 hover:text-violet-400 font-mono text-[11px] font-bold transition-colors inline-flex items-center gap-1.5 break-all"
+                  >
+                    <Mail className="w-3 h-3 text-violet-400 shrink-0" />
+                    digital@thedesignnarrative.in
+                  </a>
+                </div>
               </div>
             </div>
           </div>

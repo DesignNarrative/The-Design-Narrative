@@ -771,6 +771,12 @@ export default function HomePage() {
                 >
                   ENQUIRE NOW <ArrowUpRight className="w-4 h-4" />
                 </Link>
+                <a
+                  href="mailto:ceo@thedesignnarrative.in"
+                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-white/[0.06] border border-white/20 text-white font-bold text-xs uppercase tracking-wider hover:bg-white/10 hover:border-white/40 hover:scale-105 active:scale-95 transition-all duration-200"
+                >
+                  <Mail className="w-3.5 h-3.5" /> EMAIL CEO
+                </a>
               </div>
             </form>
           </div>

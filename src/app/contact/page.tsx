@@ -75,7 +75,7 @@ const SERVICE_OPTIONS = [
   'UI/UX & Web Development',
   'Social Media Marketing',
   'SEO & Organic Growth',
-  'Branding + Website + Marketing + SEO',
+  'Complete Growth Package',
   'Custom Requirement',
 ];
 
