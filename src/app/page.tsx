@@ -5,7 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowUpRight, Sparkles, MessageCircle, HelpCircle, MapPin, Phone, Mail, Award, CheckCircle, ArrowLeft, ArrowRight, Star, BarChart3 } from 'lucide-react';
+import { ArrowUpRight, Sparkles, MessageCircle, HelpCircle, MapPin, Phone, Mail, Award, CheckCircle, ArrowLeft, ArrowRight, Star, BarChart3, ChevronDown } from 'lucide-react';
 
 // Dynamic client-side components to disable SSR conflicts
 const ServicesPin = dynamic(() => import('@/components/ServicesPin'), { ssr: false });
@@ -125,6 +125,29 @@ const BLOGS = [
   },
 ];
 
+const HOME_FAQS = [
+  {
+    question: "What does a digital marketing agency in Pune do?",
+    answer: "A digital marketing agency in Pune plans and runs the online work that brings you customers: SEO, social media, paid ads, content, and website design.",
+  },
+  {
+    question: "How much does digital marketing cost in Pune?",
+    answer: "Costs depend on scope and channels. Small businesses commonly start with a monthly retainer for SEO or social media, while larger campaigns with paid ads cost more.",
+  },
+  {
+    question: "How long does SEO take to show results?",
+    answer: "Most sites see movement in impressions within 2 to 3 months and meaningful leads within 4 to 6, depending on competition and the site's starting point.",
+  },
+  {
+    question: "Do you work with small businesses and startups?",
+    answer: "Yes. We build plans around your budget and begin with the channels most likely to pay back first.",
+  },
+  {
+    question: "How do I choose a digital marketing agency in Pune?",
+    answer: "Ask for named case studies, how they report results, who actually does the work, and what the contract terms are.",
+  },
+];
+
 // Stat counter hook component
 function StatCounter({ target, suffix = '', duration = 1500 }: { target: number; suffix?: string; duration?: number }) {
   const [count, setCount] = useState(0);
@@ -174,6 +197,11 @@ export default function HomePage() {
   const [isPaused, setIsPaused] = useState(false);
   const pauseTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const [touchStartX, setTouchStartX] = useState<number | null>(null);
+  const [expandedFaq, setExpandedFaq] = useState<number | null>(0);
+
+  const toggleFaq = (idx: number) => {
+    setExpandedFaq(expandedFaq === idx ? null : idx);
+  };
 
   const pauseBriefly = () => {
     setIsPaused(true);
@@ -330,21 +358,12 @@ export default function HomePage() {
         <div className="lg:col-span-5 space-y-6">
           <span className="text-[10px] font-mono tracking-widest text-gray-400 uppercase font-bold">OUR CORE MANIFESTO</span>
           
-          <h2 className="text-4xl md:text-6xl lg:text-7xl font-black uppercase tracking-tight leading-[0.95] text-[#111111]">
-            WE DON&apos;T DO <br />
-            TEMPLATES. <br />
-            WE DO <br />
-            <span className="relative inline-block font-serif italic font-normal lowercase text-violet-600">
-              stories
-              <svg className="absolute -bottom-1.5 left-0 w-full h-3 text-violet-500 pointer-events-none" viewBox="0 0 100 20" preserveAspectRatio="none">
-                <path d="M 2 14 Q 50 4 98 12" stroke="currentColor" strokeWidth="4" fill="none" strokeLinecap="round" />
-              </svg>
-            </span> <br />
-            THAT STICK.
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tight leading-[1.05] text-[#111111]">
+            Digital Marketing Agency in Pune That Turns <span className="font-serif italic font-normal text-violet-600">Attention</span> into Leads
           </h2>
           
-          <p className="text-xs md:text-sm text-gray-500 font-semibold max-w-md leading-relaxed">
-            Great communication isn&apos;t built on generic blocks. We deep-dive into your vision and build visual systems that demand attention.
+          <p className="text-xs sm:text-sm text-gray-600 font-medium max-w-md leading-relaxed">
+            The Design Narrative is a digital marketing agency in Pune. We handle SEO, social media marketing, branding, and website design for businesses that want enquiries, not just followers. One team plans and runs all of it, so your website, content, and campaigns pull in the same direction.
           </p>
 
           <div className="pt-2">
@@ -629,6 +648,75 @@ export default function HomePage() {
               </div>
             </Link>
           ))}
+        </div>
+      </section>
+
+      {/* SECTION 7.5: FAQ's (Frequently Asked Questions) */}
+      <section className="py-20 md:py-28 px-6 md:px-12 max-w-7xl mx-auto border-t border-black/5">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          {/* Left Column Headline */}
+          <div className="lg:col-span-5 space-y-4">
+            <span className="text-[11px] font-mono tracking-widest text-violet-600 font-bold uppercase block">
+              COMMON QUESTIONS
+            </span>
+            <h2 className="text-3xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight leading-[0.95] text-[#111111]">
+              FAQ’S
+            </h2>
+            <p className="text-xs sm:text-sm text-gray-500 font-medium leading-relaxed max-w-md pt-2">
+              Everything you need to know about working with a digital marketing agency in Pune.
+            </p>
+          </div>
+
+          {/* Right Column Accordion List */}
+          <div className="lg:col-span-7 space-y-4">
+            {HOME_FAQS.map((faq, idx) => {
+              const isExpanded = expandedFaq === idx;
+              return (
+                <motion.div
+                  key={idx}
+                  layout
+                  className={`rounded-2xl border transition-all duration-300 overflow-hidden ${
+                    isExpanded
+                      ? 'border-violet-600/30 bg-[#f9f9fb] shadow-md'
+                      : 'border-black/10 bg-white hover:border-black/20'
+                  }`}
+                >
+                  <button
+                    onClick={() => toggleFaq(idx)}
+                    className="w-full flex items-center justify-between p-6 sm:p-7 text-left cursor-pointer transition-colors"
+                  >
+                    <h3 className="text-sm sm:text-base font-black text-black pr-4 leading-snug">
+                      {faq.question}
+                    </h3>
+                    <div
+                      className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 border transition-all duration-300 ${
+                        isExpanded
+                          ? 'bg-black text-white border-black rotate-180'
+                          : 'bg-[#f4f4f6] text-black border-black/5'
+                      }`}
+                    >
+                      <ChevronDown className="w-4 h-4" />
+                    </div>
+                  </button>
+
+                  <AnimatePresence initial={false}>
+                    {isExpanded && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3, ease: 'easeInOut' }}
+                      >
+                        <div className="px-6 sm:px-7 pb-6 sm:pb-7 text-xs sm:text-sm text-gray-600 font-medium leading-relaxed border-t border-black/5 pt-4">
+                          {faq.answer}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
       </section>
 
