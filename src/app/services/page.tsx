@@ -25,12 +25,9 @@ import {
 const SERVICES_LIST = [
   {
     id: 'brand-design',
-    chapterNum: '01',
-    category: 'BRANDING',
     title: 'BRAND DESIGN',
     tag: 'IDENTITY & PACKAGING',
-    desc: 'Strategy, naming, and packaging design built to stand out.',
-    deliverables: ['Visual Identity', 'Luxury Packaging', 'Brand Guidelines', 'Naming & Strategy'],
+    desc: 'Naming, brand strategy, visual identity, brand guidelines, and packaging design for businesses that are launching or repositioning.',
     image: '/assets/services/Brand Design Card.png',
     link: '/services/brand-design',
     icon: Paintbrush,
@@ -38,12 +35,9 @@ const SERVICES_LIST = [
   },
   {
     id: 'ui-ux',
-    chapterNum: '02',
-    category: 'DIGITAL',
     title: 'UI/UX DESIGN',
     tag: 'DIGITAL PRODUCTS',
-    desc: 'Websites and apps shaped by user behavior with snappy, high-converting layouts.',
-    deliverables: ['Design Systems', 'Mobile App UI', 'Wireframes & Prototypes', 'Conversion UX'],
+    desc: 'Wireframes, prototypes, design systems and mobile app interfaces, built around how people actually use your site and designed to turn visits into enquiries.',
     image: '/assets/services/UiUX Card.png',
     link: '/services/ui-ux',
     icon: Layers,
@@ -51,12 +45,9 @@ const SERVICES_LIST = [
   },
   {
     id: 'social-media',
-    chapterNum: '03',
-    category: 'MARKETING',
     title: 'SOCIAL MEDIA MARKETING',
     tag: 'VIRAL ENGAGEMENT',
-    desc: 'Compelling campaigns and feed-stopping content designed to capture attention.',
-    deliverables: ['Short-form Reels', 'Content Calendar', 'Viral Growth Engine', 'Paid Ads'],
+    desc: 'Content calendars, short-form video and paid campaigns for the platforms your customers use.',
     image: '/assets/services/Social Media Card.png',
     link: '/services/social-media',
     icon: Share2,
@@ -64,12 +55,9 @@ const SERVICES_LIST = [
   },
   {
     id: 'seo',
-    chapterNum: '04',
-    category: 'MARKETING',
     title: 'SEO & GROWTH',
     tag: 'ORGANIC RANKINGS',
-    desc: 'Ranking optimization that gets you organic Page 1 slots on Google.',
-    deliverables: ['Technical SEO', 'High-Intent Keywords', 'Entity Search', 'Content Moats'],
+    desc: 'Technical SEO, keyword research, and content that brings in search traffic and turns it into leads. We improve your visibility, and we don’t promise a ranking.',
     image: '/assets/services/SEO Card.png',
     link: '/services/seo',
     icon: TrendingUp,
@@ -81,25 +69,25 @@ const PROCESS_STEPS = [
   {
     num: '01',
     title: 'Discover',
-    desc: 'Understand your brand, goals and audience.',
+    desc: 'We learn your brand, goals, and audience.',
     icon: Search,
   },
   {
     num: '02',
     title: 'Plan',
-    desc: 'Build a bespoke strategy that fits your growth needs.',
+    desc: 'We build a strategy around your growth goals and budget.',
     icon: Compass,
   },
   {
     num: '03',
-    title: 'Design & Develop',
-    desc: 'Bring ideas to life with world-class creativity & tech.',
+    title: 'Design and develop',
+    desc: 'We create and build the work.',
     icon: Boxes,
   },
   {
     num: '04',
     title: 'Grow',
-    desc: 'Track, optimize and scale for measurable ROI.',
+    desc: 'We track results and report on leads and traffic.',
     icon: BarChart3,
   },
 ];
@@ -138,7 +126,7 @@ export default function ServicesPage() {
               </h1>
 
               <p className="text-sm md:text-base text-gray-600 font-medium max-w-xl leading-relaxed">
-                Strategy, design and digital solutions that help you stand out, connect with your audience, and grow faster.
+                The Design Narrative offers brand design, UI/UX design, SEO, and social media marketing from studios in Pune and Jaipur. One team handles all four, so your identity, website, and marketing pull in the same direction.
               </p>
             </div>
 
@@ -239,9 +227,6 @@ export default function ServicesPage() {
 
                       {/* Title overlay at bottom of image for cinematic depth */}
                       <div className="absolute bottom-5 left-6 right-6 z-10 text-white">
-                        <span className="text-[10px] font-mono tracking-widest text-violet-300 font-bold uppercase block mb-1">
-                          CHAPTER {service.chapterNum} &bull; {service.category}
-                        </span>
                         <h3 className="text-2xl sm:text-3xl md:text-4xl font-black tracking-tight uppercase drop-shadow-md">
                           {service.title}
                         </h3>
@@ -254,25 +239,12 @@ export default function ServicesPage() {
                         <p className="text-xs sm:text-sm text-gray-600 font-medium leading-relaxed">
                           {service.desc}
                         </p>
-
-                        {/* Deliverables / Capabilities Pills */}
-                        <div className="flex flex-wrap gap-1.5 pt-1">
-                          {service.deliverables.map((item, dIdx) => (
-                            <span
-                              key={dIdx}
-                              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#f6f6f8] text-[10px] font-mono font-semibold text-gray-700 border border-black/5 group-hover:border-violet-500/20 transition-colors"
-                            >
-                              <span className="w-1 h-1 rounded-full bg-violet-500" />
-                              {item}
-                            </span>
-                          ))}
-                        </div>
                       </div>
 
                       {/* Action Bar */}
                       <div className="flex items-center justify-between pt-4 border-t border-black/5">
                         <span className="text-[11px] font-mono font-bold text-gray-400 uppercase tracking-widest">
-                          Deep-Dive Chapter
+                          Explore Service
                         </span>
                         <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-black text-white text-[11px] font-black uppercase tracking-wider group-hover:bg-violet-600 group-hover:shadow-lg transition-all duration-300 shadow-sm">
                           EXPLORE SERVICE <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform duration-200" />
