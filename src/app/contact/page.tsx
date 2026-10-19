@@ -140,7 +140,7 @@ I'm reaching out from your website contact page:
               <h1 className="text-4xl sm:text-6xl md:text-7xl font-black uppercase tracking-tight leading-[0.95] text-[#111111]">
                 LET&apos;S TURN <br />
                 YOUR IDEAS INTO <br />
-                <span className="font-serif italic font-normal text-gray-500 lowercase">
+                <span className="font-serif italic font-normal text-violet-600 lowercase">
                   impact.
                 </span>
               </h1>
