@@ -5,7 +5,6 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
-  Sparkles,
   ArrowUpRight,
   Award,
   Plus,
@@ -219,30 +218,19 @@ export default function AboutPage() {
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-violet-100/60 rounded-full blur-[120px] pointer-events-none -z-10" />
 
         <div className="space-y-8">
-          {/* Eyebrow badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/[0.04] border border-black/10 text-[10px] font-mono font-bold tracking-widest text-violet-700 uppercase">
-            <Sparkles className="w-3.5 h-3.5 text-violet-600 animate-pulse" />
-            INSIDE TDN &bull; PUNE &amp; JAIPUR
-          </div>
-
-          {/* Two-tier oversized editorial headline */}
+          {/* Hero headline */}
           <div className="space-y-1 md:space-y-3">
-            <h1 className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black uppercase tracking-tighter text-[#111111] leading-[0.92]">
-              DIFFERENT MINDS.
+            <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black uppercase tracking-tighter text-[#111111] leading-[0.95]">
+              A Digital Marketing and <br className="hidden sm:inline" />
+              <span className="font-serif italic font-normal text-violet-600 normal-case">Branding Agency</span> in Pune
             </h1>
-            <div className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-serif italic font-normal text-violet-600 tracking-tight leading-[1.0] pl-1 md:pl-2">
-              One standard.
-            </div>
           </div>
 
           {/* Narrative & Metrics Split Row */}
           <div className="pt-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-end border-t border-black/10">
             <div className="lg:col-span-7 space-y-4">
-              <span className="text-[10px] font-mono tracking-widest text-gray-500 uppercase">
-                WHO WE ARE &bull; OUR PURPOSE
-              </span>
               <p className="text-lg md:text-2xl text-gray-700 font-light leading-relaxed max-w-2xl">
-                We are a multidisciplinary collective united by an obsession for bold ideas, honest collaboration, and digital experiences that are built to command authority and endure.
+                The Design Narrative (TDN) is a digital marketing and branding agency in Pune, founded in 2017, with a creative studio in Jaipur. We handle brand design, UI/UX and website design, SEO, and social media for businesses that want their design and marketing to produce results they can measure.
               </p>
             </div>
 
@@ -320,46 +308,79 @@ export default function AboutPage() {
               </span>
             </h2>
             <p className="text-base md:text-xl text-gray-600 font-light leading-relaxed max-w-3xl">
-              We reject cookie-cutter templates, superficial trends, and hollow metrics. Every identity, UI architecture, and search campaign we architect is custom-crafted to build deep customer trust and compound over years.
+              Branding and digital marketing agency in Pune, we don’t use templates or chase trends. Every brand identity, website, and SEO campaign is built for one client and judged by results: more enquiries, better search visibility, and customers who trust you. We’ve worked this way since 2017.
             </p>
           </div>
 
-          {/* 3 Pillars Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white border border-black/5 hover:border-violet-500/40 rounded-2xl p-8 space-y-4 transition-all duration-300 hover:-translate-y-1 shadow-sm">
-              <div className="w-12 h-12 rounded-xl bg-violet-50 border border-violet-200 flex items-center justify-center text-violet-700 font-mono font-black text-sm">
-                01
-              </div>
-              <h3 className="text-lg font-black uppercase text-[#111111] tracking-wide">
-                Strategic Intent
+          {/* Measurement Framework / 3 Pillars */}
+          <div className="space-y-6">
+            <div className="flex items-center gap-3">
+              <span className="w-2.5 h-2.5 rounded-full bg-violet-600 inline-block animate-pulse" />
+              <h3 className="text-xl sm:text-2xl md:text-3xl font-black uppercase tracking-tight text-[#111111]">
+                &ldquo;How we measure it&rdquo;
               </h3>
-              <p className="text-xs md:text-sm text-gray-600 leading-relaxed">
-                Every visual asset, layout grid, and typographic hierarchy serves a direct commercial objective. We design for clarity, prestige, and seamless conversion.
-              </p>
             </div>
 
-            <div className="bg-white border border-black/5 hover:border-violet-500/40 rounded-2xl p-8 space-y-4 transition-all duration-300 hover:-translate-y-1 shadow-sm">
-              <div className="w-12 h-12 rounded-xl bg-violet-50 border border-violet-200 flex items-center justify-center text-violet-700 font-mono font-black text-sm">
-                02
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {/* Card 01 - Brand */}
+              <div className="bg-white border border-black/5 hover:border-violet-500/40 rounded-2xl p-8 space-y-5 transition-all duration-300 hover:-translate-y-1 shadow-sm flex flex-col justify-between">
+                <div className="space-y-4">
+                  <div className="w-12 h-12 rounded-xl bg-violet-50 border border-violet-200 flex items-center justify-center text-violet-700 font-mono font-black text-sm">
+                    01
+                  </div>
+                  <h4 className="text-xl font-black uppercase text-[#111111] tracking-wide">
+                    Brand
+                  </h4>
+                  <p className="text-xs md:text-sm text-gray-600 leading-relaxed">
+                    We review your logo, colours and tone across your website, social profiles and printed material, and flag anything off-brand.
+                  </p>
+                </div>
+                <div className="pt-4 border-t border-black/5">
+                  <div className="text-[11px] font-mono font-medium text-violet-700 bg-violet-50/80 px-3 py-2 rounded-xl border border-violet-100 flex items-center gap-1.5">
+                    <span className="font-bold text-violet-900">Checked with:</span> a brand consistency audit
+                  </div>
+                </div>
               </div>
-              <h3 className="text-lg font-black uppercase text-[#111111] tracking-wide">
-                Uncompromising Craft
-              </h3>
-              <p className="text-xs md:text-sm text-gray-600 leading-relaxed">
-                Zero shortcuts. Bespoke digital experiences engineered with clean code, buttery 60fps animations, and relentless attention to real-world performance.
-              </p>
-            </div>
 
-            <div className="bg-white border border-black/5 hover:border-violet-500/40 rounded-2xl p-8 space-y-4 transition-all duration-300 hover:-translate-y-1 shadow-sm">
-              <div className="w-12 h-12 rounded-xl bg-violet-50 border border-violet-200 flex items-center justify-center text-violet-700 font-mono font-black text-sm">
-                03
+              {/* Card 02 - Website */}
+              <div className="bg-white border border-black/5 hover:border-violet-500/40 rounded-2xl p-8 space-y-5 transition-all duration-300 hover:-translate-y-1 shadow-sm flex flex-col justify-between">
+                <div className="space-y-4">
+                  <div className="w-12 h-12 rounded-xl bg-violet-50 border border-violet-200 flex items-center justify-center text-violet-700 font-mono font-black text-sm">
+                    02
+                  </div>
+                  <h4 className="text-xl font-black uppercase text-[#111111] tracking-wide">
+                    Website
+                  </h4>
+                  <p className="text-xs md:text-sm text-gray-600 leading-relaxed">
+                    We track page speed and count the enquiries that come in through forms, calls and WhatsApp.
+                  </p>
+                </div>
+                <div className="pt-4 border-t border-black/5">
+                  <div className="text-[11px] font-mono font-medium text-violet-700 bg-violet-50/80 px-3 py-2 rounded-xl border border-violet-100 flex items-center gap-1.5">
+                    <span className="font-bold text-violet-900">Checked with:</span> Google PageSpeed Insights and GA4
+                  </div>
+                </div>
               </div>
-              <h3 className="text-lg font-black uppercase text-[#111111] tracking-wide">
-                Compounding Impact
-              </h3>
-              <p className="text-xs md:text-sm text-gray-600 leading-relaxed">
-                We build enduring brand equity. Our work is structured to remain iconic and continue driving high search rank and customer loyalty as your business scales.
-              </p>
+
+              {/* Card 03 - SEO */}
+              <div className="bg-white border border-black/5 hover:border-violet-500/40 rounded-2xl p-8 space-y-5 transition-all duration-300 hover:-translate-y-1 shadow-sm flex flex-col justify-between">
+                <div className="space-y-4">
+                  <div className="w-12 h-12 rounded-xl bg-violet-50 border border-violet-200 flex items-center justify-center text-violet-700 font-mono font-black text-sm">
+                    03
+                  </div>
+                  <h4 className="text-xl font-black uppercase text-[#111111] tracking-wide">
+                    SEO
+                  </h4>
+                  <p className="text-xs md:text-sm text-gray-600 leading-relaxed">
+                    We report rankings, organic traffic, and leads every month.
+                  </p>
+                </div>
+                <div className="pt-4 border-t border-black/5">
+                  <div className="text-[11px] font-mono font-medium text-violet-700 bg-violet-50/80 px-3 py-2 rounded-xl border border-violet-100 flex items-center gap-1.5">
+                    <span className="font-bold text-violet-900">Checked with:</span> Google Search Console and GA4
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
