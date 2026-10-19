@@ -42,7 +42,7 @@ const TEAM = [
   },
   {
     name: 'VIDHI DALVI',
-    role: 'VEDIO EDITOR',
+    role: 'VIDEO EDITOR',
     image: '/assets/team/Creative Video Editor Portrait.png',
     dept: 'Media Production',
     type: 'video',
@@ -91,7 +91,7 @@ const TEAM = [
   },
   {
     name: 'SWAPNIL',
-    role: 'AI VEDIO SPECIALIST',
+    role: 'AI VIDEO SPECIALIST',
     image: '/assets/team/AI Video Specialist Creative Workspace.png',
     dept: 'AI Media',
   },

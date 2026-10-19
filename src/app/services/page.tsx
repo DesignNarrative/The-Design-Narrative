@@ -104,29 +104,6 @@ const PROCESS_STEPS = [
   },
 ];
 
-const CASE_STUDIES = [
-  {
-    client: 'Chav Bhari',
-    service: 'Rebranding',
-    metric: '+120% Conversions',
-    image: '/assets/projects/Chav Bhari.png',
-    link: '/work/chav-bhari',
-  },
-  {
-    client: 'Yarnen',
-    service: 'UI/UX Design',
-    metric: '3x Engagement',
-    image: '/assets/projects/Yarnen fashion.png',
-    link: '/work/yarnen-fashion',
-  },
-  {
-    client: 'Dangayach Group',
-    service: 'Corporate Luxury Web',
-    metric: '+150% Digital Reach',
-    image: '/assets/projects/Dangayach.png',
-    link: '/work/dangayach-group',
-  },
-];
 
 export default function ServicesPage() {
   const [customMsg, setCustomMsg] = useState('');
@@ -165,21 +142,6 @@ export default function ServicesPage() {
               </p>
             </div>
 
-            {/* Action Buttons */}
-            <div className="flex flex-wrap items-center gap-4">
-              <a
-                href="#services-grid"
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full bg-black text-white text-xs font-black uppercase tracking-wider hover:bg-neutral-800 hover:scale-105 active:scale-95 transition-all shadow-md cursor-pointer"
-              >
-                EXPLORE OUR SERVICES <ArrowRight className="w-4 h-4" />
-              </a>
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full border border-black/15 text-black text-xs font-bold uppercase tracking-wider hover:bg-black/5 hover:scale-105 active:scale-95 transition-all"
-              >
-                GET A FREE CONSULTATION
-              </Link>
-            </div>
 
             {/* Metrics Strip */}
             <div className="grid grid-cols-3 gap-6 pt-6 border-t border-black/10 max-w-lg">
@@ -375,71 +337,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* 4. REAL RESULTS (Brands That Grew With Us) */}
-      <section className="py-20 md:py-28 px-6 md:px-12 max-w-7xl mx-auto border-t border-black/5">
-        
-        {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
-          <div className="space-y-3">
-            <span className="text-[11px] font-mono tracking-widest text-violet-600 font-bold uppercase block">
-              REAL RESULTS
-            </span>
-            <h2 className="text-3xl sm:text-5xl font-black uppercase tracking-tight leading-[0.95] text-[#111111]">
-              BRANDS THAT <br className="hidden sm:block" />
-              <span className="font-serif italic font-normal text-violet-600">GREW WITH US.</span>
-            </h2>
-            <p className="text-xs sm:text-sm text-gray-500 font-medium max-w-md leading-relaxed">
-              A glimpse of what&apos;s possible when strategy, design and execution come together.
-            </p>
-          </div>
 
-          <Link
-            href="/work"
-            className="inline-flex items-center gap-1.5 px-6 py-3 rounded-full border border-black/15 text-xs font-black uppercase tracking-wider hover:bg-black hover:text-white transition-all duration-200 self-start md:self-auto shrink-0 shadow-sm"
-          >
-            VIEW ALL CASE STUDIES <ArrowUpRight className="w-4 h-4" />
-          </Link>
-        </div>
-
-        {/* 3 Case Study Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {CASE_STUDIES.map((cs, idx) => (
-            <Link
-              key={idx}
-              href={cs.link}
-              className="group bg-white rounded-3xl overflow-hidden border border-black/5 shadow-xl hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 flex flex-col justify-between"
-            >
-              <div className="relative aspect-[16/11] w-full overflow-hidden bg-gray-100">
-                <Image
-                  src={cs.image}
-                  alt={cs.client}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
-                />
-              </div>
-
-              <div className="p-6 md:p-7 flex flex-col justify-between flex-grow gap-4">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h3 className="text-lg font-black text-black group-hover:text-violet-600 transition-colors">
-                      {cs.client}
-                    </h3>
-                    <div className="text-[11px] font-mono text-gray-400 uppercase font-bold">{cs.service}</div>
-                  </div>
-                  <div className="w-8 h-8 rounded-full border border-black/10 flex items-center justify-center text-black group-hover:bg-black group-hover:text-white transition-colors">
-                    <ArrowUpRight className="w-4 h-4" />
-                  </div>
-                </div>
-
-                <div className="pt-3 border-t border-black/5 flex items-center justify-between text-xs font-black text-violet-600">
-                  <span>{cs.metric}</span>
-                  <span className="text-[10px] font-mono uppercase text-gray-400 font-medium">Impact</span>
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </section>
 
       {/* 5. DIDN'T FIND WHAT YOU'RE LOOKING FOR? (Custom Requirement CTA) */}
       <section className="py-16 md:py-24 px-6 md:px-12 max-w-7xl mx-auto">

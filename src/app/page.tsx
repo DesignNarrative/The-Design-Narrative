@@ -70,7 +70,7 @@ const TESTIMONIALS_DATA = [
     id: 5,
     name: "Priti Mundhe",
     author: "Founder, DDS Dental Clinic",
-    quote: "TDN transformed our clinic's identity from clinical to warm, premium, and trustworthy. Patient consultations through the new digital booking portal doubled in two months.",
+    quote: "The rebranding transformed our clinic’s identity into something warm, premium, and trustworthy. The refreshed look and calming environment created a more welcoming experience for our patients, making our brand feel more professional and reassuring.",
     tag: "2x Patient Bookings",
     avatar: "/assets/reviews/Priti Munde.png",
   },
@@ -677,17 +677,11 @@ export default function HomePage() {
 
               {/* Buttons row */}
               <div className="flex flex-wrap items-center gap-4">
-                <button
-                  type="submit"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-white text-black font-extrabold text-xs uppercase tracking-wider shadow-lg hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer"
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-white text-black font-extrabold text-xs uppercase tracking-wider shadow-lg hover:scale-105 active:scale-95 transition-all duration-200"
                 >
                   ENQUIRE NOW <ArrowUpRight className="w-4 h-4" />
-                </button>
-                <Link
-                  href="mailto:ceo@thedesignnarrative.in"
-                  className="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-white/[0.04] border border-white/15 text-white font-bold text-xs uppercase tracking-wider hover:bg-white/10 hover:border-white/30 hover:scale-105 active:scale-95 transition-all duration-200"
-                >
-                  EMAIL CEO
                 </Link>
               </div>
             </form>

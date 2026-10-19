@@ -172,7 +172,7 @@ export default function Footer() {
             &copy; {currentYear} The Design Narrative. All rights reserved.
           </p>
           <div className="flex items-center gap-6 font-mono text-[11px]">
-            <span>PUNE &bull; JAIPUR &bull; BENGALURU &bull; MUMBAI</span>
+            <span>PUNE &bull; JAIPUR</span>
           </div>
         </div>
 

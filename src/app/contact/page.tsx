@@ -75,7 +75,7 @@ const SERVICE_OPTIONS = [
   'UI/UX & Web Development',
   'Social Media Marketing',
   'SEO & Organic Growth',
-  'Full Growth Suite',
+  'Branding + Website + Marketing + SEO',
   'Custom Requirement',
 ];
 
@@ -88,11 +88,8 @@ export default function ContactPage() {
     message: '',
   });
 
-  const [activeLocation, setActiveLocation] = useState<'pune' | 'jaipur'>('pune');
   const [expandedFaq, setExpandedFaq] = useState<number | null>(0); // First FAQ open by default
   const [copiedEmail, setCopiedEmail] = useState(false);
-
-  const selectedOffice = LOCATIONS.find((loc) => loc.id === activeLocation) || LOCATIONS[0];
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
@@ -313,124 +310,97 @@ I'm reaching out from your website contact page:
 
       {/* 2. FIND US HERE / OUR OFFICES SECTION */}
       <section className="py-20 md:py-28 px-6 md:px-12 max-w-7xl mx-auto border-t border-black/5">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-stretch">
-          
-          {/* Left Studio Visual Card with "IDEAS BRANDS PEOPLE" */}
-          <div className="lg:col-span-6 relative min-h-[440px] md:min-h-[500px] rounded-[2.5rem] overflow-hidden shadow-2xl border border-black/5 bg-[#09090b] group">
-            <Image
-              src="/assets/contact-studio.jpg"
-              alt="The Design Narrative Creative Studio"
-              fill
-              className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent pointer-events-none" />
-
-            {/* Bottom-Left Branding Pillar */}
-            <div className="absolute bottom-8 left-8 z-10 text-white space-y-1">
-              <div className="text-xl sm:text-2xl font-black uppercase tracking-tight leading-tight">
-                IDEAS <br />
-                BRANDS <br />
-                PEOPLE
-              </div>
-              <span className="text-[10px] font-mono text-violet-300 tracking-widest uppercase block pt-1">
-                TDN CREATIVE LABS
-              </span>
-            </div>
-
-            {/* Bottom-Right Location Indicator */}
-            <div className="absolute bottom-8 right-8 z-10 w-11 h-11 rounded-2xl bg-white/15 backdrop-blur-md flex items-center justify-center border border-white/20 text-white group-hover:scale-110 transition-transform duration-300 shadow-lg">
-              <MapPin className="w-5 h-5 text-violet-400" />
-            </div>
+        <div className="space-y-12">
+          {/* Section Header */}
+          <div className="max-w-2xl space-y-4">
+            <span className="text-[11px] font-mono tracking-widest text-violet-600 font-bold uppercase block">
+              OUR OFFICES
+            </span>
+            <h2 className="text-3xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight leading-[0.95] text-[#111111]">
+              FIND US <br />
+              HERE.
+            </h2>
+            <p className="text-sm md:text-base text-gray-600 font-medium leading-relaxed">
+              Come say hello! We work from two locations and collaborate with clients across the globe.
+            </p>
           </div>
 
-          {/* Right Office Switcher, Interactive Map & Address Details */}
-          <div className="lg:col-span-6 flex flex-col justify-between space-y-8">
-            <div className="space-y-4">
-              <span className="text-[11px] font-mono tracking-widest text-violet-600 font-bold uppercase block">
-                OUR OFFICES
-              </span>
-              <h2 className="text-3xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight leading-[0.95] text-[#111111]">
-                FIND US <br />
-                HERE.
-              </h2>
-              <p className="text-sm md:text-base text-gray-600 font-medium leading-relaxed">
-                Come say hello! We work from two locations and collaborate with clients across the globe.
-              </p>
-            </div>
-
-            {/* Location Switcher Tabs */}
-            <div className="flex items-center gap-2 bg-[#f4f4f6] p-1.5 rounded-full border border-black/5 self-start">
-              {LOCATIONS.map((loc) => {
-                const isActive = activeLocation === loc.id;
-                return (
-                  <button
-                    key={loc.id}
-                    onClick={() => setActiveLocation(loc.id as 'pune' | 'jaipur')}
-                    className={`relative px-6 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider transition-all duration-300 cursor-pointer ${
-                      isActive ? 'bg-black text-white shadow-md' : 'text-gray-600 hover:text-black hover:bg-black/5'
-                    }`}
-                  >
-                    {loc.label}
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* Interactive Embedded Map View with Custom Pin Badge */}
-            <div className="relative w-full h-56 sm:h-64 rounded-3xl overflow-hidden border border-black/10 shadow-md bg-gray-100">
-              <iframe
-                key={selectedOffice.id}
-                title={selectedOffice.title}
-                src={selectedOffice.mapUrl}
-                className="w-full h-full border-0 filter grayscale contrast-125 opacity-90"
-                allowFullScreen
-                loading="lazy"
-              />
-              {/* Floating Pin Indicator Pill */}
-              <div className="absolute top-4 left-4 z-10 flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/85 backdrop-blur-md text-white text-[10px] font-mono font-bold tracking-wider uppercase border border-white/15 shadow-lg">
-                <span className="w-2 h-2 rounded-full bg-violet-400 animate-pulse" />
-                <span>{selectedOffice.pinName}</span>
-              </div>
-            </div>
-
-            {/* Address & Direct Actions Bar */}
-            <div className="space-y-4 pt-2">
-              <div className="flex items-start gap-3">
-                <MapPin className="w-4 h-4 text-violet-600 shrink-0 mt-1" />
-                <p className="text-xs sm:text-sm font-semibold text-gray-700 leading-relaxed">
-                  {selectedOffice.address}
-                </p>
-              </div>
-
-              <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-black/5">
-                <div className="space-y-1">
-                  <a
-                    href={`tel:${selectedOffice.phone.replace(/\s+/g, '')}`}
-                    className="flex items-center gap-2 text-xs font-bold text-black hover:text-violet-600 transition-colors"
-                  >
-                    <Phone className="w-3.5 h-3.5 text-gray-500" /> {selectedOffice.phone}
-                  </a>
-                  <a
-                    href={`mailto:${selectedOffice.email}`}
-                    className="flex items-center gap-2 text-xs font-bold text-gray-600 hover:text-black transition-colors"
-                  >
-                    <Mail className="w-3.5 h-3.5 text-gray-400" /> {selectedOffice.email}
-                  </a>
+          {/* Side-by-Side Office Cards with Large Colorful Maps */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+            {LOCATIONS.map((loc) => (
+              <div
+                key={loc.id}
+                className="bg-white rounded-[2rem] border border-black/10 shadow-xl hover:shadow-2xl transition-all duration-300 p-6 sm:p-8 flex flex-col justify-between space-y-6"
+              >
+                {/* Office Header */}
+                <div className="flex items-center justify-between pb-4 border-b border-black/5">
+                  <div>
+                    <span className="text-[10px] font-mono tracking-widest text-violet-600 font-bold uppercase block">
+                      {loc.label}
+                    </span>
+                    <h3 className="text-xl sm:text-2xl font-black uppercase text-black">
+                      {loc.title}
+                    </h3>
+                  </div>
+                  <div className="w-10 h-10 rounded-full bg-violet-50 text-violet-600 flex items-center justify-center border border-violet-100 shadow-sm">
+                    <MapPin className="w-5 h-5" />
+                  </div>
                 </div>
 
-                <a
-                  href={selectedOffice.directionUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-black text-white text-[11px] font-bold uppercase tracking-wider hover:bg-neutral-800 hover:scale-105 active:scale-95 transition-all shadow-sm"
-                >
-                  GET DIRECTIONS <ArrowRight className="w-3.5 h-3.5" />
-                </a>
+                {/* Large Colorful Interactive Map */}
+                <div className="relative w-full h-80 sm:h-96 rounded-2xl overflow-hidden border border-black/10 shadow-md bg-gray-100">
+                  <iframe
+                    title={loc.title}
+                    src={loc.mapUrl}
+                    className="w-full h-full border-0"
+                    allowFullScreen
+                    loading="lazy"
+                  />
+                  {/* Floating Pin Indicator Pill */}
+                  <div className="absolute top-4 left-4 z-10 flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/85 backdrop-blur-md text-white text-[10px] font-mono font-bold tracking-wider uppercase border border-white/15 shadow-lg">
+                    <span className="w-2 h-2 rounded-full bg-violet-400 animate-pulse" />
+                    <span>{loc.pinName}</span>
+                  </div>
+                </div>
+
+                {/* Address & Direct Actions Bar */}
+                <div className="space-y-4 pt-2">
+                  <div className="flex items-start gap-3">
+                    <MapPin className="w-4 h-4 text-violet-600 shrink-0 mt-1" />
+                    <p className="text-xs sm:text-sm font-semibold text-gray-700 leading-relaxed">
+                      {loc.address}
+                    </p>
+                  </div>
+
+                  <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-black/5">
+                    <div className="space-y-1">
+                      <a
+                        href={`tel:${loc.phone.replace(/\s+/g, '')}`}
+                        className="flex items-center gap-2 text-xs font-bold text-black hover:text-violet-600 transition-colors"
+                      >
+                        <Phone className="w-3.5 h-3.5 text-gray-500" /> {loc.phone}
+                      </a>
+                      <a
+                        href={`mailto:${loc.email}`}
+                        className="flex items-center gap-2 text-xs font-bold text-gray-600 hover:text-black transition-colors"
+                      >
+                        <Mail className="w-3.5 h-3.5 text-gray-400" /> {loc.email}
+                      </a>
+                    </div>
+
+                    <a
+                      href={loc.directionUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-black text-white text-[11px] font-bold uppercase tracking-wider hover:bg-neutral-800 hover:scale-105 active:scale-95 transition-all shadow-sm"
+                    >
+                      GET DIRECTIONS <ArrowRight className="w-3.5 h-3.5" />
+                    </a>
+                  </div>
+                </div>
               </div>
-            </div>
-
+            ))}
           </div>
-
         </div>
       </section>
 

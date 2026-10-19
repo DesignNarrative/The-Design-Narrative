@@ -183,7 +183,9 @@ export default function CareersPage() {
                 <img
                   src={src}
                   alt="Life at TDN"
-                  className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-700 ease-out"
+                  className={`object-cover w-full h-full group-hover:scale-105 transition-transform duration-700 ease-out ${
+                    src.includes('lif6.jpeg') ? 'object-top' : 'object-center'
+                  }`}
                   loading="lazy"
                 />
               </div>

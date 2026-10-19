@@ -68,7 +68,7 @@ export default function Navbar() {
             rel="noopener noreferrer"
             className="flex items-center gap-1.5 px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#111111] hover:bg-[#111111]/85 text-white shadow-sm hover:scale-105 active:scale-95 transition-all duration-200"
           >
-            Slide into DMs <ArrowUpRight className="w-3.5 h-3.5" />
+            Let&apos;s Connect <ArrowUpRight className="w-3.5 h-3.5" />
           </Link>
         </div>
 
@@ -114,7 +114,7 @@ export default function Navbar() {
                 onClick={() => setIsOpen(false)}
                 className="flex items-center justify-center gap-2 px-5 py-4 rounded-xl text-sm font-bold uppercase tracking-wider bg-[#111111] text-white w-full"
               >
-                Slide into DMs <ArrowUpRight className="w-4 h-4" />
+                Let&apos;s Connect <ArrowUpRight className="w-4 h-4" />
               </Link>
             </div>
           </motion.div>
