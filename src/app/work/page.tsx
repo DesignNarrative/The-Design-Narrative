@@ -9,6 +9,39 @@ import { PROJECTS, Project } from '@/data/projects';
 const FILTERS = ['All', 'Branding', 'Web Design', 'Social Media', 'SEO'] as const;
 type FilterType = typeof FILTERS[number];
 
+const FILTER_PROJECT_MAP: Record<Exclude<FilterType, 'All'>, string[]> = {
+  'Branding': [
+    'dds-logistics',
+    'am-to-am',
+    'atelier-noua',
+    'chav-bhari',
+    'skj-jewellers',
+    'odaisy-preschool',
+    'northpoint-school',
+    'citara-cinema-showbiz',
+  ],
+  'Web Design': [
+    'abhinav-group',
+    'dds-logistics',
+    'dream-space-architects',
+    'yarnen-fashion',
+    'all-set-green',
+    'tamanna-punjabi',
+    'dangayach-group',
+  ],
+  'Social Media': [
+    'pinkwalk',
+    'pink-west',
+    'yarnen-fashion',
+  ],
+  'SEO': [
+    'abhinav-group',
+    'yarnen-fashion',
+    'citara-cinema-showbiz',
+    'dnl-properties',
+  ],
+};
+
 function WorkCard({ project, idx }: { project: Project; idx: number }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isHovered, setIsHovered] = useState(false);
@@ -90,7 +123,8 @@ function WorkCard({ project, idx }: { project: Project; idx: number }) {
           </span>
           
           <h2 className="text-xl md:text-2xl font-black uppercase tracking-tight text-white group-hover:text-violet-400 transition-colors flex justify-between items-center">
-            {project.title} <ArrowUpRight className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity" />
+            {project.title}
+            <ArrowUpRight className="w-5 h-5 opacity-0 group-hover:opacity-100 transition-opacity shrink-0 ml-2" />
           </h2>
         </div>
       </Link>
@@ -101,46 +135,13 @@ function WorkCard({ project, idx }: { project: Project; idx: number }) {
 export default function WorkHubPage() {
   const [activeFilter, setActiveFilter] = useState<FilterType>('All');
 
-  // Filter project lists
-  const filteredProjects = PROJECTS.filter((project) => {
-    if (activeFilter === 'All') return true;
-    if (activeFilter === 'Branding') {
-      return (
-        project.filter === 'Branding' ||
-        project.filter === 'Packaging' ||
-        project.category.toLowerCase().includes('branding') ||
-        project.category.toLowerCase().includes('brand') ||
-        project.category.toLowerCase().includes('packaging')
-      );
-    }
-    if (activeFilter === 'Web Design') {
-      return (
-        project.filter === 'Web Design' ||
-        project.filter === 'UI-UX' ||
-        project.category.toLowerCase().includes('web') ||
-        project.category.toLowerCase().includes('ui') ||
-        project.category.toLowerCase().includes('ux')
-      );
-    }
-    if (activeFilter === 'Social Media') {
-      return (
-        project.filter === 'Social' ||
-        project.category.toLowerCase().includes('social') ||
-        project.category.toLowerCase().includes('entertainment')
-      );
-    }
-    if (activeFilter === 'SEO') {
-      return (
-        project.filter === 'Web Design' ||
-        project.services.some((s) => s.toLowerCase().includes('seo')) ||
-        project.brief.toLowerCase().includes('seo') ||
-        project.results.toLowerCase().includes('ranking') ||
-        project.results.toLowerCase().includes('traffic') ||
-        project.category.toLowerCase().includes('seo')
-      );
-    }
-    return true;
-  });
+  // Filter project lists by explicit category collections
+  const filteredProjects =
+    activeFilter === 'All'
+      ? PROJECTS
+      : FILTER_PROJECT_MAP[activeFilter]
+          .map((id) => PROJECTS.find((p) => p.id === id))
+          .filter((p): p is Project => Boolean(p));
 
   return (
     <div className="relative min-h-screen bg-white text-[#111111] py-16 px-6 md:px-12 max-w-7xl mx-auto space-y-12">

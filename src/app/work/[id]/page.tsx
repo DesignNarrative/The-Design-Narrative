@@ -5,6 +5,9 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowUpRight, Sparkles, CheckCircle, Award } from 'lucide-react';
 import { PROJECTS } from '@/data/projects';
+import ChavBhariCaseStudy from '@/components/ChavBhariCaseStudy';
+import DDSCaseStudy from '@/components/DDSCaseStudy';
+import YarnenCaseStudy from '@/components/YarnenCaseStudy';
 
 export default function CaseStudyPage({ params }: { params: Promise<{ id: string }> }) {
   const resolvedParams = use(params);
@@ -18,6 +21,26 @@ export default function CaseStudyPage({ params }: { params: Promise<{ id: string
   // Find next project in the sequence to construct the infinite loop navigation
   const currentIndex = PROJECTS.findIndex((p) => p.id === id);
   const nextProject = PROJECTS[(currentIndex + 1) % PROJECTS.length];
+  const nextProjects = [
+    PROJECTS[(currentIndex + 1) % PROJECTS.length],
+    PROJECTS[(currentIndex + 2) % PROJECTS.length],
+    PROJECTS[(currentIndex + 3) % PROJECTS.length],
+  ];
+
+  // Dedicated bespoke layout for Chav Bhari
+  if (id === 'chav-bhari') {
+    return <ChavBhariCaseStudy nextProjects={nextProjects} />;
+  }
+
+  // Dedicated bespoke layout for DDS
+  if (id === 'dds-logistics') {
+    return <DDSCaseStudy nextProjects={nextProjects} />;
+  }
+
+  // Dedicated bespoke layout for Yarnen
+  if (id === 'yarnen-fashion') {
+    return <YarnenCaseStudy nextProjects={nextProjects} />;
+  }
 
   return (
     <div className="relative min-h-screen bg-white text-[#111111] py-16 px-6 md:px-12 max-w-7xl mx-auto space-y-24">

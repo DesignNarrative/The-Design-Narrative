@@ -65,12 +65,6 @@ const TEAM = [
     dept: 'Digital Marketing',
   },
   {
-    name: 'KANIKA SHARMA',
-    role: 'PERFORMANCE MARKETER',
-    image: '/assets/team/Kanika.png',
-    dept: 'Performance Ads',
-  },
-  {
     name: 'PRATIKSHA PATIL',
     role: 'SENIOR TESTER',
     image: '/assets/team/Pratiksha.png',
@@ -605,16 +599,27 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* Remaining 12 Creative Crew Members (3-column grid) */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
-          {TEAM.slice(1).map((member, idx) => (
-            <div
-              key={idx}
-              onMouseMove={handleCardMouseMove}
-              onMouseLeave={handleCardMouseLeave}
-              className="bg-white hover:bg-white rounded-3xl overflow-hidden border border-black/8 hover:border-violet-500/40 p-6 sm:p-7 flex flex-col items-center text-center transition-all duration-300 group origin-center shadow-sm hover:shadow-2xl hover:-translate-y-1.5 relative"
-              style={{ transformStyle: 'preserve-3d', willChange: 'transform' }}
-            >
+        {/* Remaining 11 Creative Crew Members (Desktop: 6-column grid; Tablet: 2-column grid) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-8 md:gap-10">
+          {TEAM.slice(1).map((member, idx) => {
+            // Indices 0..8 (Rows 1-3) span 2 columns on lg (3 per row)
+            // Index 9 (Swapnil) starts at column 2 of 6, centering the last row of 2 cards
+            // Index 10 (Aishwarya) spans columns 4-5 on lg; centered across 2 cols on tablet
+            let colSpanClasses = 'sm:col-span-1 lg:col-span-2';
+            if (idx === 9) {
+              colSpanClasses = 'sm:col-span-1 lg:col-start-2 lg:col-span-2';
+            } else if (idx === 10) {
+              colSpanClasses = 'sm:col-span-2 sm:max-w-md sm:mx-auto lg:max-w-none lg:mx-0 lg:col-span-2 w-full';
+            }
+
+            return (
+              <div
+                key={idx}
+                onMouseMove={handleCardMouseMove}
+                onMouseLeave={handleCardMouseLeave}
+                className={`${colSpanClasses} bg-white hover:bg-white rounded-3xl overflow-hidden border border-black/8 hover:border-violet-500/40 p-6 sm:p-7 flex flex-col items-center text-center transition-all duration-300 group origin-center shadow-sm hover:shadow-2xl hover:-translate-y-1.5 relative`}
+                style={{ transformStyle: 'preserve-3d', willChange: 'transform' }}
+              >
               {/* Natural original colors (no grayscale) with hover zoom */}
               <div className="relative w-full aspect-square rounded-2xl overflow-hidden mb-5 bg-[#f6f6f8] border border-black/5">
                 <Image
@@ -661,8 +666,9 @@ export default function AboutPage() {
                 {member.role}
               </div>
             </div>
-          ))}
-        </div>
+          );
+        })}
+      </div>
       </section>
 
       {/* ========================================================================= */}
