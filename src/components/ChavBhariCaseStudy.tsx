@@ -94,7 +94,7 @@ export default function ChavBhariCaseStudy({ nextProjects }: { nextProjects: Pro
       </motion.section>
 
       {/* Main Content Flow Container (Part 2) */}
-      <div className="max-w-7xl mx-auto px-6 md:px-12 py-12 md:py-16 space-y-16 md:space-y-24">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 pt-12 md:pt-16 pb-4 md:pb-6">
         {/* ========================================================================= */}
         {/* 5. CHALLENGE                                                              */}
         {/* ========================================================================= */}
@@ -112,30 +112,36 @@ export default function ChavBhariCaseStudy({ nextProjects }: { nextProjects: Pro
             &ldquo;Creating an identity that roots the brand in Maharashtrian heritage while giving it a modern, premium look that stands out on the shelf.&rdquo;
           </p>
         </motion.section>
+      </div>
 
-        {/* ========================================================================= */}
-        {/* 6. SIDE-BY-SIDE: packaging 1.png & packaging 2.png                        */}
-        {/* ========================================================================= */}
+      {/* ========================================================================= */}
+      {/* 6. SIDE-BY-SIDE: packaging 1.png & packaging 2.png (Full Width, Big Size) */}
+      {/* ========================================================================= */}
+      <div className="w-full px-2 sm:px-4 md:px-6 my-8 md:my-14">
         <motion.section
           variants={fadeInUp}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-60px' }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center"
+          className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-6 w-full items-stretch"
         >
-          <img
-            src="/assets/projects/chav-bhari/packaging 1.png"
-            alt="Chav Bhari Packaging Showcase 1"
-            className="w-full h-auto max-h-[550px] block object-contain mx-auto rounded-2xl md:rounded-3xl shadow-xl transition-transform duration-500 hover:scale-[1.02]"
-            loading="lazy"
-          />
+          <div className="w-full h-[55vh] md:h-[75vh] lg:h-[85vh] overflow-hidden rounded-2xl md:rounded-3xl shadow-xl bg-transparent">
+            <img
+              src="/assets/projects/chav-bhari/packaging 1.png"
+              alt="Chav Bhari Packaging Showcase 1"
+              className="w-full h-full object-cover block rounded-2xl md:rounded-3xl transition-transform duration-500 hover:scale-[1.01]"
+              loading="lazy"
+            />
+          </div>
 
-          <img
-            src="/assets/projects/chav-bhari/packaging 2.png"
-            alt="Chav Bhari Packaging Showcase 2"
-            className="w-full h-auto max-h-[550px] block object-contain mx-auto rounded-2xl md:rounded-3xl shadow-xl transition-transform duration-500 hover:scale-[1.02]"
-            loading="lazy"
-          />
+          <div className="w-full h-[55vh] md:h-[75vh] lg:h-[85vh] overflow-hidden rounded-2xl md:rounded-3xl shadow-xl bg-transparent">
+            <img
+              src="/assets/projects/chav-bhari/packaging 2.png"
+              alt="Chav Bhari Packaging Showcase 2"
+              className="w-full h-full object-cover block rounded-2xl md:rounded-3xl transition-transform duration-500 hover:scale-[1.01]"
+              loading="lazy"
+            />
+          </div>
         </motion.section>
       </div>
 
@@ -176,41 +182,47 @@ export default function ChavBhariCaseStudy({ nextProjects }: { nextProjects: Pro
             We designed a bold Devanagari logo in mustard yellow, set against earthy brown and black, with hand-drawn spice illustrations and the tagline &ldquo;महाराष्ट्राचा खरा स्वाद.&rdquo;
           </p>
         </motion.section>
+      </div>
 
-        {/* ========================================================================= */}
-        {/* 9. SIDE-BY-SIDE: chav bhari (1).mp4 (video) & Label.jpg (image)           */}
-        {/* ========================================================================= */}
+      {/* ========================================================================= */}
+      {/* 9. SIDE-BY-SIDE: chav bhari (1).mp4 (video) & Label.jpg (image)           */}
+      {/* ========================================================================= */}
+      <div className="w-full px-2 sm:px-4 md:px-6 my-8 md:my-14">
         <motion.section
           variants={fadeInUp}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-60px' }}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center"
+          className="grid grid-cols-1 md:grid-cols-2 gap-3 md:gap-6 w-full items-stretch"
         >
-          {/* Video: pure video, no black bars on sides */}
-          <div className="flex justify-center w-full">
+          {/* Video: pure video, no white background, covers space with no side bars */}
+          <div className="w-full h-[60vh] md:h-[80vh] overflow-hidden rounded-2xl md:rounded-3xl shadow-xl bg-transparent">
             <video
               src="/assets/projects/chav-bhari/chav bhari (1).mp4"
               autoPlay
               muted
               loop
               playsInline
-              controls
-              className="w-auto max-w-full max-h-[60vh] rounded-2xl md:rounded-3xl shadow-2xl block mx-auto"
+              disablePictureInPicture
+              controlsList="nodownload noplaybackrate nofullscreen noremoteplayback"
+              className="w-full h-full object-cover block rounded-2xl md:rounded-3xl pointer-events-none"
             />
           </div>
 
-          {/* Image: Label.jpg, pure image, fits cleanly without scroll */}
-          <div className="flex justify-center w-full">
+          {/* Image: Label.jpg, side by side, cropped slightly from top only, bottom intact */}
+          <div className="w-full h-[60vh] md:h-[80vh] overflow-hidden rounded-2xl md:rounded-3xl shadow-xl bg-transparent">
             <img
               src="/assets/projects/chav-bhari/Label.jpg"
               alt="Chav Bhari Spice Label"
-              className="w-auto max-w-full max-h-[60vh] object-contain rounded-2xl md:rounded-3xl shadow-2xl block mx-auto"
+              className="w-full h-full object-cover object-bottom block rounded-2xl md:rounded-3xl transition-transform duration-500 hover:scale-[1.01]"
               loading="lazy"
             />
           </div>
         </motion.section>
+      </div>
 
+      {/* Main Content Flow Container (Part 4) */}
+      <div className="max-w-7xl mx-auto px-6 md:px-12 py-12 md:py-16 space-y-16 md:space-y-24">
         {/* ========================================================================= */}
         {/* 10. IMPACT: Pure Text (No black card background)                          */}
         {/* ========================================================================= */}

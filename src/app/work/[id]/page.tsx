@@ -8,18 +8,43 @@ import { PROJECTS } from '@/data/projects';
 import ChavBhariCaseStudy from '@/components/ChavBhariCaseStudy';
 import DDSCaseStudy from '@/components/DDSCaseStudy';
 import YarnenCaseStudy from '@/components/YarnenCaseStudy';
+import IceboatCaseStudy from '@/components/IceboatCaseStudy';
+import DangayachCaseStudy from '@/components/DangayachCaseStudy';
+import NorthpointCaseStudy from '@/components/NorthpointCaseStudy';
+import CitaraCaseStudy from '@/components/CitaraCaseStudy';
+import AbhinavCaseStudy from '@/components/AbhinavCaseStudy';
+import AceHospitalCaseStudy from '@/components/AceHospitalCaseStudy';
+import OdaisyCaseStudy from '@/components/OdaisyCaseStudy';
+import PinkwestCaseStudy from '@/components/PinkwestCaseStudy';
+import AmToAmCaseStudy from '@/components/AmToAmCaseStudy';
+import PinkwalkCaseStudy from '@/components/PinkwalkCaseStudy';
+import DreamSpaceCaseStudy from '@/components/DreamSpaceCaseStudy';
+import DNLCaseStudy from '@/components/DNLCaseStudy';
+import RELCaseStudy from '@/components/RELCaseStudy';
 
 export default function CaseStudyPage({ params }: { params: Promise<{ id: string }> }) {
   const resolvedParams = use(params);
   const id = resolvedParams.id;
-  const project = PROJECTS.find((p) => p.id === id);
+  const project = PROJECTS.find((p) => p.id === id) || 
+    (id === 'tamanna-punjabi' ? PROJECTS.find((p) => p.id === 'iceboat') : undefined) ||
+    (id === 'dangayach' ? PROJECTS.find((p) => p.id === 'dangayach-group') : undefined) ||
+    (id === 'citara' || id === 'citara-cinema' ? PROJECTS.find((p) => p.id === 'citara-cinema-showbiz') : undefined) ||
+    (id === 'abhinav' ? PROJECTS.find((p) => p.id === 'abhinav-group') : undefined) ||
+    (id === 'ace-hospitals' || id === 'ace-hospital' ? PROJECTS.find((p) => p.id === 'skj-jewellers') : undefined) ||
+    (id === 'odaisy' ? PROJECTS.find((p) => p.id === 'odaisy-preschool') : undefined) ||
+    (id === 'pinkwest' ? PROJECTS.find((p) => p.id === 'pink-west') : undefined) ||
+    (id === 'amtoam' ? PROJECTS.find((p) => p.id === 'am-to-am') : undefined) ||
+    (id === 'pink-walk' ? PROJECTS.find((p) => p.id === 'pinkwalk') : undefined) ||
+    (id === 'dream-space' ? PROJECTS.find((p) => p.id === 'dream-space-architects') : undefined) ||
+    (id === 'dnl' ? PROJECTS.find((p) => p.id === 'dnl-properties') : undefined) ||
+    (id === 'rel-group' || id === 'rural-enhancers' ? PROJECTS.find((p) => p.id === 'rel') : undefined);
 
   if (!project) {
     notFound();
   }
 
   // Find next project in the sequence to construct the infinite loop navigation
-  const currentIndex = PROJECTS.findIndex((p) => p.id === id);
+  const currentIndex = PROJECTS.findIndex((p) => p.id === project.id);
   const nextProject = PROJECTS[(currentIndex + 1) % PROJECTS.length];
   const nextProjects = [
     PROJECTS[(currentIndex + 1) % PROJECTS.length],
@@ -40,6 +65,71 @@ export default function CaseStudyPage({ params }: { params: Promise<{ id: string
   // Dedicated bespoke layout for Yarnen
   if (id === 'yarnen-fashion') {
     return <YarnenCaseStudy nextProjects={nextProjects} />;
+  }
+
+  // Dedicated bespoke layout for Iceboat
+  if (id === 'iceboat' || id === 'tamanna-punjabi') {
+    return <IceboatCaseStudy nextProjects={nextProjects} />;
+  }
+
+  // Dedicated bespoke layout for Dangayach
+  if (id === 'dangayach-group' || id === 'dangayach') {
+    return <DangayachCaseStudy nextProjects={nextProjects} />;
+  }
+
+  // Dedicated bespoke layout for Northpoint School
+  if (id === 'northpoint-school') {
+    return <NorthpointCaseStudy nextProjects={nextProjects} />;
+  }
+
+  // Dedicated bespoke layout for Citara Cinema
+  if (id === 'citara-cinema-showbiz' || id === 'citara-cinema' || id === 'citara') {
+    return <CitaraCaseStudy nextProjects={nextProjects} />;
+  }
+
+  // Dedicated bespoke layout for Abhinav Group
+  if (id === 'abhinav-group' || id === 'abhinav') {
+    return <AbhinavCaseStudy nextProjects={nextProjects} />;
+  }
+
+  // Dedicated bespoke layout for Ace Hospitals
+  if (id === 'skj-jewellers' || id === 'ace-hospitals' || id === 'ace-hospital') {
+    return <AceHospitalCaseStudy nextProjects={nextProjects} />;
+  }
+
+  // Dedicated bespoke layout for Odaisy
+  if (id === 'odaisy-preschool' || id === 'odaisy') {
+    return <OdaisyCaseStudy nextProjects={nextProjects} />;
+  }
+
+  // Dedicated bespoke layout for Pinkwest
+  if (id === 'pink-west' || id === 'pinkwest') {
+    return <PinkwestCaseStudy nextProjects={nextProjects} />;
+  }
+
+  // Dedicated bespoke layout for Am to Am
+  if (id === 'am-to-am' || id === 'amtoam') {
+    return <AmToAmCaseStudy nextProjects={nextProjects} />;
+  }
+
+  // Dedicated bespoke layout for Pinkwalk
+  if (id === 'pinkwalk' || id === 'pink-walk') {
+    return <PinkwalkCaseStudy nextProjects={nextProjects} />;
+  }
+
+  // Dedicated bespoke layout for Dream Space Architects
+  if (id === 'dream-space-architects' || id === 'dream-space') {
+    return <DreamSpaceCaseStudy nextProjects={nextProjects} />;
+  }
+
+  // Dedicated bespoke layout for DNL Properties
+  if (id === 'dnl-properties' || id === 'dnl') {
+    return <DNLCaseStudy nextProjects={nextProjects} />;
+  }
+
+  // Dedicated bespoke layout for REL (Rural Enhancers Group)
+  if (id === 'rel' || id === 'rel-group' || id === 'rural-enhancers') {
+    return <RELCaseStudy nextProjects={nextProjects} />;
   }
 
   return (

@@ -72,28 +72,30 @@ export default function YarnenCaseStudy({ nextProjects }: { nextProjects: Projec
             </div>
           </div>
         </motion.section>
+      </div>
 
-        {/* ========================================================================= */}
-        {/* 4. VIDEO: Mobile Mockup.mp4 (Pure video, responsive, no black bars)        */}
-        {/* ========================================================================= */}
-        <motion.section
-          variants={fadeInUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-60px' }}
-          className="flex justify-center w-full"
-        >
-          <video
-            src="/assets/projects/yarnen/Mobile Mockup.mp4"
-            autoPlay
-            muted
-            loop
-            playsInline
-            controls
-            className="w-auto max-w-full max-h-[68vh] rounded-2xl md:rounded-3xl shadow-2xl block mx-auto"
-          />
-        </motion.section>
+      {/* ========================================================================= */}
+      {/* 4. FULL-SCREEN VIDEO: yarnennn Website video.mp4 (Edge-to-Edge, Uncropped) */}
+      {/* ========================================================================= */}
+      <motion.section
+        variants={fadeInUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: '-60px' }}
+        className="w-full my-8 md:my-14 overflow-hidden"
+      >
+        <video
+          src="/assets/projects/yarnen/yarnennn Website video.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="w-full h-auto block pointer-events-none"
+        />
+      </motion.section>
 
+      {/* Main Content Flow Container (Part 2) */}
+      <div className="max-w-7xl mx-auto px-6 md:px-12 py-12 md:py-16 space-y-16 md:space-y-24">
         {/* ========================================================================= */}
         {/* 5. CHALLENGE                                                              */}
         {/* ========================================================================= */}
@@ -111,36 +113,55 @@ export default function YarnenCaseStudy({ nextProjects }: { nextProjects: Projec
             &ldquo;Standing out in a market full of fast fashion by making linen feel fresh, contemporary, and sustainable, while appealing to modern consumers.&rdquo;
           </p>
         </motion.section>
+      </div>
 
-        {/* ========================================================================= */}
-        {/* 6. SIDE-BY-SIDE: Social media.jpg & Website desktop.jpg                   */}
-        {/* ========================================================================= */}
+      {/* ========================================================================= */}
+      {/* 6. 3-COLUMN SHOWCASE: Social media.jpg, Mobile Mockup.mp4, Website desktop.jpg */}
+      {/* ========================================================================= */}
+      <div className="w-full px-3 sm:px-5 md:px-8 my-8 md:my-14">
         <motion.section
           variants={fadeInUp}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-60px' }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center"
+          className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8 items-center w-full"
         >
-          <div className="relative w-full aspect-[3/2] rounded-2xl md:rounded-3xl overflow-hidden shadow-xl bg-gray-100 group">
+          {/* Left: Social media.jpg */}
+          <div className="flex justify-center w-full">
             <img
               src="/assets/projects/yarnen/Social media.jpg"
               alt="Yarnen Social Media Curation & Visual Language"
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+              className="w-full h-auto max-h-[82vh] object-contain rounded-2xl md:rounded-3xl shadow-xl transition-transform duration-500 hover:scale-[1.02] block mx-auto"
               loading="lazy"
             />
           </div>
 
-          <div className="relative w-full aspect-[3/2] rounded-2xl md:rounded-3xl overflow-hidden shadow-xl bg-gray-100 group">
+          {/* Center: Mobile Mockup.mp4 */}
+          <div className="flex justify-center w-full">
+            <video
+              src="/assets/projects/yarnen/Mobile Mockup.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="w-auto max-w-full h-auto max-h-[82vh] object-contain rounded-2xl md:rounded-3xl shadow-xl block mx-auto pointer-events-none bg-transparent"
+            />
+          </div>
+
+          {/* Right: Website desktop.jpg */}
+          <div className="flex justify-center w-full">
             <img
               src="/assets/projects/yarnen/Website desktop.jpg"
               alt="Yarnen Official E-commerce Desktop Interface"
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+              className="w-full h-auto max-h-[82vh] object-contain rounded-2xl md:rounded-3xl shadow-xl transition-transform duration-500 hover:scale-[1.02] block mx-auto"
               loading="lazy"
             />
           </div>
         </motion.section>
+      </div>
 
+      {/* Main Content Flow Container (Part 3) */}
+      <div className="max-w-7xl mx-auto px-6 md:px-12 py-12 md:py-16 space-y-16 md:space-y-24">
         {/* ========================================================================= */}
         {/* 7. BRAND STRATEGY                                                         */}
         {/* ========================================================================= */}

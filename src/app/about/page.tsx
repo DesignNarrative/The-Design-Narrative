@@ -224,7 +224,7 @@ export default function AboutPage() {
           <div className="pt-12 grid grid-cols-1 lg:grid-cols-12 gap-12 items-end border-t border-black/10">
             <div className="lg:col-span-7 space-y-4">
               <p className="text-lg md:text-2xl text-gray-700 font-light leading-relaxed max-w-2xl">
-                The Design Narrative (TDN) is a digital marketing and branding agency in Pune, founded in 2017, with a creative studio in Jaipur. We handle brand design, UI/UX and website design, SEO, and social media for businesses that want their design and marketing to produce results they can measure.
+                The Design Narrative (TDN) is Strategic Branding & Digital Marketing agency in Pune, Founded in 2021, with a creative studio in Jaipur. We handle brand design, UI/UX and website design, SEO, and social media for businesses that want their design and marketing to produce results they can measure.
               </p>
             </div>
 

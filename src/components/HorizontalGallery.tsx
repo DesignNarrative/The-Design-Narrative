@@ -55,12 +55,12 @@ const PROJECTS = [
   },
   {
     num: '06',
-    title: 'ATELIER NOUA',
-    category: 'Branding & Architecture',
-    tag: 'Design Systems',
-    image: '/assets/projects/Atliear Nouaaaa.png',
+    title: 'DNL PROPERTIES',
+    category: 'Performance Marketing',
+    tag: 'Dubai Luxury Real Estate',
+    image: '/assets/projects/dnl/Pool Clubhouse.jpg',
     video: 'https://player.vimeo.com/external/403848777.sd.mp4?s=a7b05101d293d05260840b2efd489bdf11f2a36b&profile_id=139&oauth2_token_id=57447761',
-    link: '/work/atelier-noua',
+    link: '/work/dnl-properties',
   },
 ];
 

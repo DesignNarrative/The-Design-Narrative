@@ -13,20 +13,19 @@ const FILTER_PROJECT_MAP: Record<Exclude<FilterType, 'All'>, string[]> = {
   'Branding': [
     'dds-logistics',
     'am-to-am',
-    'atelier-noua',
     'chav-bhari',
     'skj-jewellers',
     'odaisy-preschool',
     'northpoint-school',
     'citara-cinema-showbiz',
+    'iceboat',
   ],
   'Web Design': [
     'abhinav-group',
     'dds-logistics',
     'dream-space-architects',
     'yarnen-fashion',
-    'all-set-green',
-    'tamanna-punjabi',
+    'iceboat',
     'dangayach-group',
   ],
   'Social Media': [
@@ -80,13 +79,16 @@ function WorkCard({ project, idx }: { project: Project; idx: number }) {
       >
         {/* Visual Cover / Loop video */}
         <div className="absolute inset-0 w-full h-full z-10 pointer-events-none overflow-hidden">
-          {project.image.endsWith('.mp4') || project.image.includes('.mp4') ? (
+          {(project.video && (project.video.endsWith('.mp4') || project.video.includes('.mp4'))) ||
+          (project.image && (project.image.endsWith('.mp4') || project.image.includes('.mp4'))) ? (
             <video
-              src={project.image}
+              key={project.video || project.image}
+              src={project.video && (project.video.endsWith('.mp4') || project.video.includes('.mp4')) ? project.video : project.image}
               autoPlay
               muted
               loop
               playsInline
+              onLoadedData={(e) => e.currentTarget.play().catch(() => {})}
               className="w-full h-full object-cover filter brightness-[0.95] contrast-[1.05]"
             />
           ) : (
@@ -136,12 +138,17 @@ export default function WorkHubPage() {
   const [activeFilter, setActiveFilter] = useState<FilterType>('All');
 
   // Filter project lists by explicit category collections
-  const filteredProjects =
+  const rawProjects =
     activeFilter === 'All'
       ? PROJECTS
       : FILTER_PROJECT_MAP[activeFilter]
           .map((id) => PROJECTS.find((p) => p.id === id))
           .filter((p): p is Project => Boolean(p));
+
+  // Temporarily excluded cards: All Set Green and Atelier Noua
+  const filteredProjects = rawProjects.filter(
+    (p) => p.id !== 'all-set-green' && p.id !== 'atelier-noua'
+  );
 
   return (
     <div className="relative min-h-screen bg-white text-[#111111] py-16 px-6 md:px-12 max-w-7xl mx-auto space-y-12">

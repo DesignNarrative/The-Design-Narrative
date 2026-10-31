@@ -27,9 +27,10 @@ export default function Navbar() {
         <Link href="/" className="flex items-center gap-3 group">
           <div className="relative w-10 h-10 overflow-hidden rounded-lg border border-black/10 group-hover:border-black transition-colors">
             <Image
-              src="/assets/logos/TDN logo (1).png"
+              src="/assets/logos/TDN logo (2).png"
               alt="The Design Narrative Logo"
               fill
+              sizes="40px"
               className="object-contain p-1 group-hover:scale-105 transition-transform duration-300"
             />
           </div>

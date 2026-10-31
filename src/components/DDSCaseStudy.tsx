@@ -114,45 +114,50 @@ export default function DDSCaseStudy({ nextProjects }: { nextProjects: Project[]
             &ldquo;Creating an identity that feels clean, trustworthy, and welcoming, while reflecting the clinic’s technology-led precision and its soothing, sophisticated environment.&rdquo;
           </p>
         </motion.section>
+      </div>
 
-        {/* ========================================================================= */}
-        {/* 6. 3 IMAGES BESIDE EACH OTHER: Signage.png, Wall graphics_1, Wall Graphics_2*/}
-        {/* ========================================================================= */}
+      {/* ========================================================================= */}
+      {/* 6. 3 CLINIC IMAGES: Signage, Wall graphics 1, Wall Graphics 2 (Full Width) */}
+      {/* ========================================================================= */}
+      <div className="w-full px-3 sm:px-5 md:px-8 my-8 md:my-14">
         <motion.section
           variants={fadeInUp}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-60px' }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 items-center"
+          className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 items-center w-full"
         >
-          <div className="relative w-full aspect-[4/5] rounded-2xl md:rounded-3xl overflow-hidden shadow-xl bg-gray-100 group">
+          <div className="relative w-full aspect-[4/5] rounded-2xl md:rounded-3xl overflow-hidden shadow-xl group">
             <img
               src="/assets/projects/dds/Signage.png"
               alt="DDS Clinic Exterior Signage"
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
               loading="lazy"
             />
           </div>
 
-          <div className="relative w-full aspect-[4/5] rounded-2xl md:rounded-3xl overflow-hidden shadow-xl bg-gray-100 group">
+          <div className="relative w-full aspect-[4/5] rounded-2xl md:rounded-3xl overflow-hidden shadow-xl group">
             <img
               src="/assets/projects/dds/Wall graphics_1.png"
               alt="DDS Interior Wall Graphics 1"
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
               loading="lazy"
             />
           </div>
 
-          <div className="relative w-full aspect-[4/5] rounded-2xl md:rounded-3xl overflow-hidden shadow-xl bg-gray-100 group">
+          <div className="relative w-full aspect-[4/5] rounded-2xl md:rounded-3xl overflow-hidden shadow-xl group">
             <img
               src="/assets/projects/dds/Wall Graphics_2.jpeg"
               alt="DDS Interior Wall Graphics 2"
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
               loading="lazy"
             />
           </div>
         </motion.section>
+      </div>
 
+      {/* Main Content Flow Container (Part 3) */}
+      <div className="max-w-7xl mx-auto px-6 md:px-12 py-12 md:py-16 space-y-16 md:space-y-24">
         {/* ========================================================================= */}
         {/* 7. BRAND STRATEGY                                                         */}
         {/* ========================================================================= */}
@@ -170,36 +175,49 @@ export default function DDSCaseStudy({ nextProjects }: { nextProjects: Project[]
             A refined logo, cohesive stationery, and calming wall graphics were designed around the clinic’s “Diagnose. Design. Smile.” philosophy, balancing clinical expertise with warmth.
           </p>
         </motion.section>
+      </div>
 
-        {/* ========================================================================= */}
-        {/* 8. TWO IMAGES SIDE BY SIDE: Stationery Design.png & Website.jpg           */}
-        {/* ========================================================================= */}
+      {/* ========================================================================= */}
+      {/* 8. TOP IMAGE: Stationery Design.png (Pure Image, Curved Corners, No White BG) */}
+      {/* ========================================================================= */}
+      <div className="w-full flex justify-center px-4 sm:px-6 md:px-8 my-8 md:my-14">
         <motion.section
           variants={fadeInUp}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-60px' }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center"
+          className="inline-block"
         >
-          <div className="relative w-full aspect-[16/10] sm:aspect-[16/9] rounded-2xl md:rounded-3xl overflow-hidden shadow-xl bg-gray-100 group">
-            <img
-              src="/assets/projects/dds/Stationery Design.png"
-              alt="DDS Corporate Stationery Design"
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-              loading="lazy"
-            />
-          </div>
-
-          <div className="relative w-full aspect-[16/10] sm:aspect-[16/9] rounded-2xl md:rounded-3xl overflow-hidden shadow-xl bg-gray-100 group">
-            <img
-              src="/assets/projects/dds/Website.jpg"
-              alt="DDS Official Website Interface"
-              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-              loading="lazy"
-            />
-          </div>
+          <img
+            src="/assets/projects/dds/Stationery Design.png"
+            alt="DDS Corporate Stationery Design"
+            className="w-auto max-w-full h-auto max-h-[85vh] md:max-h-[90vh] rounded-2xl md:rounded-3xl shadow-2xl block mx-auto transition-transform duration-700 hover:scale-[1.01]"
+            loading="lazy"
+          />
         </motion.section>
+      </div>
 
+      {/* ========================================================================= */}
+      {/* 8B. BOTTOM IMAGE: Website.jpg (Full Screen Like Hero Banner, No White BG) */}
+      {/* ========================================================================= */}
+      <motion.section
+        variants={fadeInUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: '-60px' }}
+        className="relative w-full h-[85vh] md:h-screen overflow-hidden my-8 md:my-14 bg-[#280718] shadow-2xl"
+      >
+        <img
+          src="/assets/projects/dds/Website.jpg"
+          alt="DDS Official Website Interface"
+          className="w-full h-full object-cover filter brightness-[0.98] contrast-[1.02]"
+          loading="lazy"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20 pointer-events-none" />
+      </motion.section>
+
+      {/* Main Content Flow Container (Part 4) */}
+      <div className="max-w-7xl mx-auto px-6 md:px-12 py-12 md:py-16 space-y-16 md:space-y-24">
         {/* ========================================================================= */}
         {/* 9. IMPACT: Pure text on canvas, no background card                        */}
         {/* ========================================================================= */}
