@@ -257,52 +257,54 @@ export default function ServicesPage() {
       </section>
 
       {/* 3. OUR PROCESS (From Idea to Impact) */}
-      <section className="py-20 md:py-28 px-6 md:px-12 max-w-7xl mx-auto border-t border-black/5">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          
-          {/* Left Process Headline */}
-          <div className="lg:col-span-4 space-y-6">
+      <section className="py-20 md:py-28 px-6 md:px-12 max-w-7xl mx-auto border-t border-black/5 space-y-12 md:space-y-16">
+        {/* Section Header: Headline & Description */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div className="space-y-4 max-w-xl">
             <span className="text-[11px] font-mono tracking-widest text-violet-600 font-bold uppercase block">
               OUR PROCESS
             </span>
-            <h2 className="text-4xl md:text-5xl font-black uppercase tracking-tight leading-[0.95] text-[#111111]">
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight leading-[0.95] text-[#111111]">
               FROM IDEA <br />
               TO <span className="font-serif italic font-normal text-violet-600">IMPACT.</span>
             </h2>
-            <p className="text-xs sm:text-sm text-gray-500 font-medium leading-relaxed max-w-sm">
-              A simple, collaborative process to turn your goals into a powerful digital presence.
-            </p>
           </div>
+          <p className="text-sm md:text-base text-gray-500 font-medium leading-relaxed max-w-md">
+            A simple, collaborative process to turn your goals into a powerful digital presence.
+          </p>
+        </div>
 
-          {/* Right Process 4-Step Cards */}
-          <div className="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-            {PROCESS_STEPS.map((step, idx) => {
-              const StepIcon = step.icon;
-              return (
-                <div
-                  key={idx}
-                  className="bg-[#fafafc] rounded-2xl p-6 border border-black/5 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 space-y-4 flex flex-col justify-between"
-                >
-                  <div className="flex items-center justify-between">
-                    <div className="w-10 h-10 rounded-xl bg-violet-50 flex items-center justify-center text-violet-600">
-                      <StepIcon className="w-5 h-5" />
-                    </div>
-                    <span className="text-xs font-mono font-bold text-gray-400">{step.num}</span>
-                  </div>
-
-                  <div className="space-y-1.5">
-                    <h3 className="text-sm font-black text-black uppercase tracking-tight">
-                      {step.title}
-                    </h3>
-                    <p className="text-[11px] text-gray-500 font-medium leading-relaxed">
-                      {step.desc}
-                    </p>
+        {/* 4-Step Process Cards Grid (Perfect Alignment & Equal Heights) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+          {PROCESS_STEPS.map((step, idx) => {
+            const StepIcon = step.icon;
+            return (
+              <div
+                key={idx}
+                className="bg-[#fafafc] rounded-2xl p-6 sm:p-7 border border-black/5 border-t-2 border-t-violet-600/30 hover:border-t-violet-600 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-200 flex flex-col justify-start group"
+              >
+                {/* Top: Step Number & Icon */}
+                <div className="flex items-center justify-between mb-6">
+                  <span className="text-2xl sm:text-3xl font-mono font-black text-violet-600 tracking-tight">
+                    {step.num}
+                  </span>
+                  <div className="w-10 h-10 rounded-xl bg-violet-50 flex items-center justify-center text-violet-600 group-hover:bg-violet-600 group-hover:text-white transition-colors duration-200">
+                    <StepIcon className="w-5 h-5" />
                   </div>
                 </div>
-              );
-            })}
-          </div>
 
+                {/* Title & Description with exact vertical alignment */}
+                <div className="space-y-2 flex-1">
+                  <h3 className="text-base sm:text-lg font-black text-black uppercase tracking-tight min-h-[2.5rem] flex items-center">
+                    {step.title}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-gray-500 font-medium leading-relaxed">
+                    {step.desc}
+                  </p>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </section>
 

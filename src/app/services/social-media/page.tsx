@@ -1,240 +1,516 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
-import { ArrowUpRight, Sparkles, MessageCircle } from 'lucide-react';
+import { motion, AnimatePresence, type Variants } from 'framer-motion';
+import { 
+  Sparkles, 
+  ArrowRight, 
+  ChevronDown, 
+  Share2, 
+  Target, 
+  HelpCircle, 
+  ArrowUpRight, 
+  TrendingUp, 
+  BarChart3, 
+  Video, 
+  Layers, 
+  Users2,
+  MessageCircle,
+  Building,
+  UtensilsCrossed,
+  Briefcase,
+  Rocket
+} from 'lucide-react';
 
-const STORY_SLIDES = [
+const FAQ_ITEMS = [
   {
-    title: 'PinkWalk Campaigns',
-    desc: 'Increasing retail footfalls and brand visibility by 150% through high-retention vertical fashion reels.',
-    image: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800&auto=format&fit=crop&q=60',
-    tag: 'FASHION CAMPAIGN',
+    q: '1. How much does social media marketing cost in Pune?',
+    a: 'Social media marketing costs depend on the number of platforms, content requirements, campaign complexity, and advertising budget. The right package should align with your business goals and expected outcomes.',
   },
   {
-    title: 'Utopia Launch Grid',
-    desc: 'Creating custom, color-themed organic grids that co-exist with influencer assets to drive high brand authority.',
-    image: 'https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=800&auto=format&fit=crop&q=60',
-    tag: 'BRAND CO-PARTNER',
+    q: '2. Which social media marketing agency in Pune is right for my business?',
+    a: 'Choose an agency that understands your audience, creates platform-specific content, and connects social media activities with business goals. Review its creative work, strategy, and reporting approach before making a decision.',
   },
   {
-    title: 'Yarnen Marketing Feed',
-    desc: 'Managing full page visuals, captions, post pacing, and targeted meta ads to scale online traffic by 120%.',
-    image: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?w=800&auto=format&fit=crop&q=60',
-    tag: 'E-COMMERCE METRIC',
+    q: '3. What services does a social media marketing agency provide?',
+    a: 'Services typically include social media management, content creation, reels, campaign planning, paid advertising, and performance reporting. These activities help businesses build visibility, engage audiences, and generate enquiries.',
+  },
+  {
+    q: '4. Which social media platform is best for my business?',
+    a: 'LinkedIn is useful for B2B audiences, while Instagram and Facebook can help consumer-facing and local businesses reach potential customers. The right platform depends on your industry, audience behaviour, and marketing objectives.',
+  },
+  {
+    q: '5. How can social media marketing generate leads for my business?',
+    a: 'Strategic content, targeted advertising, and clear calls to action can encourage potential customers to enquire about your products or services. Lead forms, website visits, and WhatsApp messages can help convert interest into sales opportunities.',
+  },
+  {
+    q: '6. How long does social media marketing take to show results?',
+    a: 'Engagement and reach can improve within weeks, while consistent brand growth and lead generation generally require ongoing effort. Results depend on your strategy, audience, industry, and advertising budget.',
+  },
+  {
+    q: '7. Can social media marketing help local businesses in Pune attract more customers?',
+    a: 'Yes, location-focused content, local campaigns, and targeted advertising can help Pune businesses reach relevant audiences. These efforts can support enquiries, bookings, store visits, and local brand awareness.',
+  },
+  {
+    q: '8. How do you measure the success of social media marketing campaigns?',
+    a: 'Campaign performance is measured through reach, engagement, website traffic, enquiries, conversions, and cost per lead. The most important metrics depend on your business objectives and marketing investment.',
+  },
+];
+
+const INDUSTRIES = [
+  {
+    title: 'Real Estate & Properties',
+    desc: 'Project launches, floor plan walk-throughs, lifestyle visuals, and targeted ad campaigns driving serious site visit bookings.',
+    icon: Building,
+    image: '/assets/services/social-media/Modern Homes, Digital Showcase.png',
+  },
+  {
+    title: 'Restaurants & Hospitality',
+    desc: 'High-appetite food reels, ambience spotlights, chef stories, and weekend promotion campaigns turning scrollers into diners.',
+    icon: UtensilsCrossed,
+    image: '/assets/services/social-media/Restaurant Social Media Showcase.png',
+  },
+  {
+    title: 'High-Growth Startups',
+    desc: 'Founder storytelling, product drops, hiring showcases, and agile social growth loops that build loyal early communities.',
+    icon: Rocket,
+    image: '/assets/services/social-media/Collaborative Startup Team in Modern Office.png',
+  },
+  {
+    title: 'Professional Services',
+    desc: 'Authority-building LinkedIn carousels, client success breakdowns, and lead-gen campaigns establishing industry trust.',
+    icon: Briefcase,
+    image: '/assets/services/social-media/Professional Services Meeting.png',
   },
 ];
 
 export default function SocialMediaPage() {
-  const [customMsg, setCustomMsg] = useState('');
-  const [activeStory, setActiveStory] = useState(0);
-  const [progress, setProgress] = useState(0);
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
 
-  const getWhatsAppLink = (serviceName: string) => {
-    const text = encodeURIComponent(`Hey TDN! We want to enquire about your Social Media offering: ${serviceName}. Let's chat.`);
+  const toggleFaq = (idx: number) => {
+    setOpenFaq(openFaq === idx ? null : idx);
+  };
+
+  const fadeInUp: Variants = {
+    hidden: { opacity: 0, y: 35 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.65, ease: [0.16, 1, 0.3, 1] },
+    },
+  };
+
+  const getWhatsAppLink = () => {
+    const text = encodeURIComponent(
+      "Hey TDN! We'd like to consult with you on Social Media Marketing & Campaigns for our business. Let's talk!"
+    );
     return `https://wa.me/919850417266?text=${text}`;
   };
 
-  const handleFormSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!customMsg.trim()) return;
-    const text = encodeURIComponent(`Hey TDN! We need a custom Social Media campaign package: ${customMsg}`);
-    window.open(`https://wa.me/919850417266?text=${text}`, '_blank');
-  };
-
-  // Instagram story auto-cycle interval (5 seconds)
-  useEffect(() => {
-    setProgress(0);
-    const interval = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) {
-          setActiveStory((prevStory) => (prevStory + 1) % STORY_SLIDES.length);
-          return 0;
-        }
-        return prev + 2; // Increments to reach 100% in 5s (100ms * 50 steps)
-      });
-    }, 100);
-
-    return () => clearInterval(interval);
-  }, [activeStory]);
-
-  const handlePrevStory = () => {
-    setActiveStory((prev) => (prev === 0 ? STORY_SLIDES.length - 1 : prev - 1));
-  };
-
-  const handleNextStory = () => {
-    setActiveStory((prev) => (prev + 1) % STORY_SLIDES.length);
-  };
-
   return (
-    <div className="relative min-h-screen bg-white text-[#111111] py-16 px-6 md:px-12 max-w-7xl mx-auto">
+    <div className="relative min-h-screen bg-[#fafafc] text-[#111111] overflow-x-hidden">
       
-      {/* Back link */}
-      <Link href="/services" className="text-xs font-bold text-gray-400 hover:text-black uppercase tracking-widest flex items-center gap-1.5 mb-12">
-        &larr; Back to Services
-      </Link>
-
-      {/* 1. HERO SECTION (Phone Frame Feed Mockup) */}
-      <section className="relative w-full h-[50vh] bg-[#050505] rounded-3xl overflow-hidden flex flex-col lg:flex-row items-center justify-between p-8 md:p-12 mb-24 shadow-lg">
-        <div className="relative z-20 max-w-lg space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 border border-white/20 text-[9px] font-mono font-bold text-white tracking-widest uppercase">
-            <MessageCircle className="w-3.5 h-3.5 text-pink-400" /> SOCIAL MARKETING
-          </div>
-
-          <h1 className="text-3xl md:text-6xl font-black uppercase tracking-tight leading-[1.0] text-white">
-            stopping the <br />
-            <span className="font-serif italic font-normal lowercase text-pink-400">
-              infinite scroll.
-            </span>
-          </h1>
-        </div>
-
-        {/* Smartphone Screen Scroll representation */}
-        <div className="w-full lg:w-1/2 flex items-center justify-center pt-8 lg:pt-0">
-          <div className="relative w-44 aspect-[9/19] bg-[#111111] rounded-[36px] p-2.5 border-4 border-white/10 shadow-2xl overflow-hidden">
-            {/* Phone notch */}
-            <div className="absolute top-4 left-1/2 transform -translate-x-1/2 w-16 h-4 bg-black rounded-full z-30" />
-            <div className="w-full h-full rounded-[28px] overflow-hidden bg-black relative z-10">
-              <video
-                autoPlay
-                muted
-                loop
-                playsInline
-                src="https://player.vimeo.com/external/403848777.sd.mp4?s=a7b05101d293d05260840b2efd489bdf11f2a36b&profile_id=139&oauth2_token_id=57447761"
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </div>
-        </div>
+      {/* ========================================================================= */}
+      {/* 1. TOP HERO BANNER: Banner - Sunset Social Media Workspace.png            */}
+      {/* ========================================================================= */}
+      <section className="relative w-full overflow-hidden bg-[#050505]">
+        <img
+          src="/assets/services/social-media/Banner - Sunset Social Media Workspace.png"
+          alt="Sunset Social Media Workspace - The Design Narrative"
+          className="w-full h-auto max-h-[85vh] object-cover object-center block"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 pointer-events-none" />
       </section>
 
-      {/* 2. INSTAGRAM STORY CAROUSEL SECTION */}
-      <section className="mb-24 space-y-8 max-w-4xl mx-auto">
-        <div className="space-y-2 border-b border-black/5 pb-4">
-          <span className="text-[10px] font-mono tracking-widest text-gray-400 uppercase">CREATIVE Retainer case studies</span>
-          <h2 className="text-2xl md:text-3xl font-black uppercase text-[#111111]">CAMPAIGN REELS</h2>
+      {/* Main Flow Container */}
+      <div className="max-w-7xl mx-auto px-6 md:px-12 py-16 md:py-24 space-y-20 md:space-y-32">
+        
+        {/* Navigation Breadcrumb */}
+        <div className="flex items-center justify-between border-b border-black/10 pb-6">
+          <Link
+            href="/services"
+            className="text-xs font-mono font-bold text-gray-500 hover:text-black uppercase tracking-widest flex items-center gap-2 transition-colors"
+          >
+            &larr; <span>Back to All Services</span>
+          </Link>
+          <span className="text-[10px] font-mono tracking-widest uppercase font-bold px-3 py-1 rounded-full bg-rose-600/10 text-rose-700 border border-rose-600/20">
+            ATTENTION & PERFORMANCE MARKETING
+          </span>
         </div>
 
-        {/* Custom stories UI Card */}
-        <div className="relative w-full md:w-[480px] aspect-[9/16] mx-auto rounded-3xl overflow-hidden shadow-2xl bg-[#050505] text-white flex flex-col justify-between p-6">
-          
-          {/* Story Progress bars */}
-          <div className="absolute top-4 left-6 right-6 z-30 flex gap-1.5">
-            {STORY_SLIDES.map((_, idx) => (
-              <div key={idx} className="h-1 bg-white/20 rounded-full flex-grow overflow-hidden">
-                <div
-                  className="h-full bg-white rounded-full transition-all duration-100 ease-linear"
-                  style={{
-                    width: idx === activeStory ? `${progress}%` : (idx < activeStory ? '100%' : '0%'),
-                  }}
+        {/* ========================================================================= */}
+        {/* 2. TITLE SECTION                                                          */}
+        {/* ========================================================================= */}
+        <motion.section
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-60px' }}
+          className="space-y-4 max-w-5xl"
+        >
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-rose-500/10 border border-rose-500/20 text-rose-600 text-xs font-mono font-bold tracking-widest uppercase">
+            <Sparkles className="w-3.5 h-3.5 text-rose-600" /> PUNE SOCIAL MEDIA AGENCY
+          </div>
+
+          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black uppercase tracking-tight leading-[0.95] text-[#111111]">
+            Social Media Marketing Agency in Pune
+          </h1>
+        </motion.section>
+
+        {/* ========================================================================= */}
+        {/* 3. INTRODUCTION / OVERVIEW                                                */}
+        {/* ========================================================================= */}
+        <motion.section
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-60px' }}
+          className="space-y-6 max-w-4xl pt-4"
+        >
+          <p className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-serif text-gray-900 leading-relaxed font-normal">
+            Your social media should do more than fill your feed. We help Pune businesses turn attention into meaningful engagement through strategic content, targeted campaigns, and consistent audience interaction that builds brand awareness, trust, and business growth.
+          </p>
+        </motion.section>
+
+        {/* ========================================================================= */}
+        {/* 4. OUR SOCIAL MEDIA SERVICES (4 Core Capabilities with Visuals)          */}
+        {/* ========================================================================= */}
+        <section className="space-y-16 md:space-y-24 pt-8 border-t border-black/10">
+          <motion.div
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-60px' }}
+            className="space-y-3"
+          >
+            <span className="text-[11px] font-mono tracking-widest text-rose-600 font-bold uppercase block">
+              SERVICES & CHANNELS
+            </span>
+            <h2 className="text-4xl sm:text-6xl md:text-7xl font-black uppercase tracking-tight text-[#111111]">
+              Our Social Media Services
+            </h2>
+          </motion.div>
+
+          <div className="space-y-20 md:space-y-32">
+            
+            {/* SERVICE 1: Social Media Management */}
+            <motion.div
+              variants={fadeInUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-60px' }}
+              className="space-y-6"
+            >
+              <div className="max-w-3xl space-y-2">
+                <span className="text-xs font-mono font-black text-rose-600 tracking-widest uppercase block">
+                  01 &bull; END-TO-END FEED DIRECTION
+                </span>
+                <h3 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight text-[#111111]">
+                  Social Media Management
+                </h3>
+                <p className="text-lg sm:text-xl md:text-2xl font-serif text-gray-700 leading-relaxed font-normal">
+                  Content calendars, design, captions, publishing, and community replies across Instagram, Facebook, and LinkedIn.
+                </p>
+              </div>
+
+              <div className="w-full overflow-hidden rounded-2xl md:rounded-3xl shadow-2xl bg-black/5 mt-6">
+                <img
+                  src="/assets/services/social-media/Social Media Content Planning Workspace.png"
+                  alt="Social Media Content Planning Workspace"
+                  className="w-full h-auto max-h-[85vh] object-cover block transition-transform duration-700 hover:scale-[1.01]"
+                  loading="lazy"
+                />
+              </div>
+            </motion.div>
+
+            {/* SERVICE 2: Paid Social Campaigns */}
+            <motion.div
+              variants={fadeInUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-60px' }}
+              className="space-y-6"
+            >
+              <div className="max-w-3xl space-y-2">
+                <span className="text-xs font-mono font-black text-rose-600 tracking-widest uppercase block">
+                  02 &bull; HIGH-ROI PERFORMANCE ADS
+                </span>
+                <h3 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight text-[#111111]">
+                  Paid Social Campaigns
+                </h3>
+                <p className="text-lg sm:text-xl md:text-2xl font-serif text-gray-700 leading-relaxed font-normal">
+                  Ad campaigns for lead generation, enquiries, and sales, with budgets set against what a lead is worth to you.
+                </p>
+              </div>
+
+              <div className="w-full overflow-hidden rounded-2xl md:rounded-3xl shadow-2xl bg-black/5 mt-6">
+                <img
+                  src="/assets/services/social-media/Laptop Analytics Dashboard at Work.png"
+                  alt="Laptop Analytics Dashboard at Work"
+                  className="w-full h-auto max-h-[85vh] object-cover block transition-transform duration-700 hover:scale-[1.01]"
+                  loading="lazy"
+                />
+              </div>
+            </motion.div>
+
+            {/* SERVICE 3: Content Creation */}
+            <motion.div
+              variants={fadeInUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-60px' }}
+              className="space-y-6"
+            >
+              <div className="max-w-3xl space-y-2">
+                <span className="text-xs font-mono font-black text-rose-600 tracking-widest uppercase block">
+                  03 &bull; BESPOKE CREATIVE ASSETS
+                </span>
+                <h3 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight text-[#111111]">
+                  Content Creation
+                </h3>
+                <p className="text-lg sm:text-xl md:text-2xl font-serif text-gray-700 leading-relaxed font-normal">
+                  Posts, carousels, short video and brand assets that look like they belong together.
+                </p>
+              </div>
+
+              <div className="w-full overflow-hidden rounded-2xl md:rounded-3xl shadow-2xl bg-black/5 mt-6">
+                <img
+                  src="/assets/services/social-media/Content creation.png"
+                  alt="Social Media Content Creation"
+                  className="w-full h-auto max-h-[85vh] object-cover block transition-transform duration-700 hover:scale-[1.01]"
+                  loading="lazy"
+                />
+              </div>
+            </motion.div>
+
+            {/* SERVICE 4: Reporting and Optimisation */}
+            <motion.div
+              variants={fadeInUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-60px' }}
+              className="space-y-6"
+            >
+              <div className="max-w-3xl space-y-2">
+                <span className="text-xs font-mono font-black text-rose-600 tracking-widest uppercase block">
+                  04 &bull; TRANSPARENT METRICS & AUDITS
+                </span>
+                <h3 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight text-[#111111]">
+                  Reporting and Optimisation
+                </h3>
+                <p className="text-lg sm:text-xl md:text-2xl font-serif text-gray-700 leading-relaxed font-normal">
+                  Monthly reports covering reach, engagement and, more usefully, enquiries and cost per lead.
+                </p>
+              </div>
+
+              <div className="w-full overflow-hidden rounded-2xl md:rounded-3xl shadow-2xl bg-black/5 mt-6">
+                <img
+                  src="/assets/services/social-media/Social Media Analytics Workspace.png"
+                  alt="Social Media Analytics Workspace"
+                  className="w-full h-auto max-h-[85vh] object-cover block transition-transform duration-700 hover:scale-[1.01]"
+                  loading="lazy"
+                />
+              </div>
+            </motion.div>
+
+          </div>
+        </section>
+
+        {/* ========================================================================= */}
+        {/* 5. HOW WE PLAN YOUR SOCIAL MEDIA                                          */}
+        {/* ========================================================================= */}
+        <section className="space-y-10 pt-12 border-t border-black/10">
+          <motion.div
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-60px' }}
+            className="space-y-4 max-w-4xl"
+          >
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-500/10 border border-rose-500/20 text-[10px] font-mono font-bold tracking-widest text-rose-600 uppercase">
+              <Target className="w-3.5 h-3.5 text-rose-600" /> STRATEGIC PLAYBOOK
+            </div>
+
+            <h2 className="text-3xl sm:text-5xl md:text-6xl font-black uppercase tracking-tight text-[#111111] leading-tight">
+              How We Plan Your Social Media
+            </h2>
+
+            <p className="text-xl sm:text-2xl md:text-3xl font-serif text-gray-800 leading-relaxed font-normal">
+              We begin with your audience, your goals and what competitors are doing. Then we choose the platforms that make sense, set a posting rhythm you can sustain, and decide how we&apos;ll measure success before anything is published.
+            </p>
+          </motion.div>
+
+          {/* Featured Image */}
+          <motion.div
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-60px' }}
+            className="w-full overflow-hidden rounded-2xl md:rounded-3xl shadow-2xl bg-black/5"
+          >
+            <img
+              src="/assets/services/social-media/Social Media Strategy Meeting.png"
+              alt="Social Media Strategy Meeting"
+              className="w-full h-auto max-h-[85vh] object-cover block transition-transform duration-700 hover:scale-[1.01]"
+              loading="lazy"
+            />
+          </motion.div>
+        </section>
+
+        {/* ========================================================================= */}
+        {/* 6. SOCIAL MEDIA FOR DIFFERENT INDUSTRIES                                  */}
+        {/* ========================================================================= */}
+        <section className="space-y-12 md:space-y-16 pt-12 border-t border-black/10">
+          <motion.div
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-60px' }}
+            className="space-y-4 max-w-4xl"
+          >
+            <span className="text-[11px] font-mono tracking-widest text-rose-600 font-bold uppercase block">
+              TAILORED PLAYBOOKS
+            </span>
+            <h2 className="text-4xl sm:text-6xl md:text-7xl font-black uppercase tracking-tight text-[#111111]">
+              Social Media for Different Industries
+            </h2>
+            <p className="text-xl sm:text-2xl font-serif text-gray-800 leading-relaxed font-normal">
+              Real estate, restaurants, startups, and professional services all use social media differently. A property developer needs project launches and site visit bookings. A café needs footfall and regulars. We plan for the actual goal.
+            </p>
+          </motion.div>
+
+          {/* Big Cards: All 4 in One Line, Pure Images with No Text, 100% Uncropped */}
+          <motion.div
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-60px' }}
+            className="grid grid-cols-4 gap-2 sm:gap-4 md:gap-6 w-full items-start"
+          >
+            {INDUSTRIES.map((ind, idx) => (
+              <div
+                key={idx}
+                className="w-full rounded-2xl md:rounded-3xl overflow-hidden shadow-xl bg-transparent group flex items-center justify-center"
+              >
+                <img
+                  src={ind.image}
+                  alt={ind.title}
+                  className="w-full h-auto block rounded-2xl md:rounded-3xl transition-transform duration-700 group-hover:scale-[1.02]"
+                  loading="lazy"
                 />
               </div>
             ))}
+          </motion.div>
+        </section>
+
+        {/* ========================================================================= */}
+        {/* 7. FREQUENTLY ASKED QUESTIONS (Interactive Accordion)                     */}
+        {/* ========================================================================= */}
+        <section className="space-y-10 pt-12 border-t border-black/10">
+          <motion.div
+            variants={fadeInUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-60px' }}
+            className="space-y-3"
+          >
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-rose-500/10 border border-rose-500/20 text-rose-600 text-xs font-mono font-bold tracking-widest uppercase">
+              <HelpCircle className="w-3.5 h-3.5 text-rose-600" /> GOT QUESTIONS?
+            </div>
+
+            <h2 className="text-4xl sm:text-6xl md:text-7xl font-black uppercase tracking-tight text-[#111111]">
+              FAQ’s
+            </h2>
+          </motion.div>
+
+          <div className="divide-y divide-black/10 border-y border-black/10">
+            {FAQ_ITEMS.map((faq, idx) => {
+              const isOpen = openFaq === idx;
+              return (
+                <div key={idx} className="py-6 sm:py-8 transition-colors">
+                  <button
+                    onClick={() => toggleFaq(idx)}
+                    className="w-full flex items-center justify-between text-left gap-4 focus:outline-none group"
+                  >
+                    <span className="text-lg sm:text-2xl font-black uppercase tracking-tight text-gray-900 group-hover:text-rose-600 transition-colors">
+                      {faq.q}
+                    </span>
+                    <div
+                      className={`w-9 h-9 rounded-full flex items-center justify-center shrink-0 border border-black/10 transition-transform duration-300 ${
+                        isOpen ? 'rotate-180 bg-black text-white' : 'bg-white text-black'
+                      }`}
+                    >
+                      <ChevronDown className="w-4 h-4" />
+                    </div>
+                  </button>
+
+                  <AnimatePresence>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="overflow-hidden"
+                      >
+                        <p className="pt-4 text-base sm:text-lg font-serif text-gray-700 leading-relaxed max-w-4xl font-normal">
+                          {faq.a}
+                        </p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            })}
           </div>
+        </section>
 
-          {/* Active story background image */}
-          <div className="absolute inset-0 z-10 w-full h-full pointer-events-none">
-            <img
-              src={STORY_SLIDES[activeStory].image}
-              alt={STORY_SLIDES[activeStory].title}
-              className="w-full h-full object-cover filter brightness-[0.7] contrast-[1.05]"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/10 to-black/30" />
-          </div>
-
-          {/* Manual tap controls */}
-          <button
-            onClick={handlePrevStory}
-            className="absolute top-12 bottom-24 left-0 w-1/3 z-20 cursor-w-resize"
-          />
-          <button
-            onClick={handleNextStory}
-            className="absolute top-12 bottom-24 right-0 w-1/3 z-20 cursor-e-resize"
-          />
-
-          {/* Details header */}
-          <div className="relative z-30 pt-6 flex justify-between items-center">
-            <span className="text-[9px] font-mono tracking-widest uppercase font-bold text-pink-400 bg-pink-500/10 px-2 py-0.5 rounded border border-pink-500/20">
-              {STORY_SLIDES[activeStory].tag}
+        {/* ========================================================================= */}
+        {/* 8. BOTTOM CALL TO ACTION                                                  */}
+        {/* ========================================================================= */}
+        <motion.section
+          variants={fadeInUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-60px' }}
+          className="rounded-3xl bg-[#050505] text-white p-8 sm:p-14 md:p-20 relative overflow-hidden shadow-2xl border border-white/10"
+        >
+          <div className="relative z-10 max-w-3xl space-y-6">
+            <span className="text-xs font-mono font-bold tracking-widest text-rose-400 uppercase block">
+              STOP THE SCROLL & WIN CLIENTS
             </span>
-            <span className="text-[9px] font-mono tracking-widest text-white/50">
-              0{activeStory + 1} / 0{STORY_SLIDES.length}
-            </span>
-          </div>
-
-          {/* Story description info */}
-          <div className="relative z-30 space-y-4">
-            <h3 className="text-xl font-bold uppercase text-white leading-none">
-              {STORY_SLIDES[activeStory].title}
-            </h3>
-            <p className="text-xs text-gray-300 font-semibold leading-relaxed">
-              {STORY_SLIDES[activeStory].desc}
+            <h2 className="text-4xl sm:text-6xl md:text-7xl font-black uppercase tracking-tight leading-[0.95]">
+              Let&apos;s Build a Social Presence That Drives Real Business.
+            </h2>
+            <p className="text-base sm:text-xl text-gray-300 font-serif leading-relaxed">
+              From creative reel production and cohesive organic feeds to high-converting paid meta ads across Pune and beyond, we turn attention into predictable revenue.
             </p>
-            <div className="pt-2">
-              <Link
-                href={getWhatsAppLink(STORY_SLIDES[activeStory].title)}
+
+            <div className="pt-4 flex flex-wrap gap-4">
+              <a
+                href={getWhatsAppLink()}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-6 py-3 rounded-full bg-white text-black font-extrabold text-[10px] uppercase tracking-widest shadow-md hover:scale-105 active:scale-95 transition-all"
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-rose-600 text-white font-mono font-bold text-xs uppercase tracking-wider hover:bg-rose-700 transition-colors shadow-lg shadow-rose-600/20"
               >
-                Enquire Story <ArrowUpRight className="w-3.5 h-3.5 text-black" />
+                <MessageCircle className="w-4 h-4" /> Chat on WhatsApp
+              </a>
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white/10 border border-white/20 text-white font-mono font-bold text-xs uppercase tracking-wider hover:bg-white/20 transition-colors"
+              >
+                Plan a Campaign <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
           </div>
-        </div>
-      </section>
 
-      {/* 3. SPLIT FOOTER FORM */}
-      <section className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch max-w-6xl mx-auto">
-        <div className="relative h-64 lg:h-auto rounded-3xl overflow-hidden shadow-lg border border-black/5 min-h-[300px]">
-          <img
-            src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800&auto=format&fit=crop&q=60"
-            alt="Instagram management creatives"
-            className="w-full h-full object-cover filter brightness-[0.85]"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
-          <div className="absolute bottom-8 left-8 space-y-2 text-white">
-            <span className="text-[9px] font-mono tracking-widest uppercase text-pink-400">ENGAGEMENT MEDIA</span>
-            <h3 className="text-xl font-bold uppercase">SCROLL STOPPING STORIES</h3>
+          <div className="absolute right-0 bottom-0 opacity-10 pointer-events-none transform translate-x-12 translate-y-12">
+            <Share2 className="w-96 h-96 text-white" />
           </div>
-        </div>
+        </motion.section>
 
-        <div className="bg-[#050505] text-white p-8 md:p-12 rounded-3xl border border-white/5 shadow-xl flex flex-col justify-center">
-          <div className="space-y-4 mb-6">
-            <span className="text-[9px] font-mono tracking-widest text-pink-400">INQUIRY PANEL</span>
-            <h3 className="text-2xl font-black uppercase leading-tight">DIDN&apos;T FIND YOUR FIT?</h3>
-            <p className="text-xs text-gray-400 font-semibold leading-relaxed">
-              We create customized social media retainer packages and co-partnership agreements. Let us know what fits your brand goals.
-            </p>
-          </div>
-
-          <form onSubmit={handleFormSubmit} className="space-y-4">
-            <div className="space-y-2">
-              <label htmlFor="custom-req" className="text-[9px] font-bold text-gray-500 uppercase tracking-widest">
-                Describe requirements
-              </label>
-              <textarea
-                id="custom-req"
-                rows={3}
-                required
-                value={customMsg}
-                onChange={(e) => setCustomMsg(e.target.value)}
-                placeholder="We need full page management, content generation (reels/posts), and meta ad management..."
-                className="w-full px-4 py-3 rounded-xl border border-white/10 bg-white/5 hover:border-pink-500/30 focus:border-pink-500 focus:outline-none text-white text-xs placeholder:text-gray-700 transition-colors resize-none"
-              />
-            </div>
-            
-            <button
-              type="submit"
-              className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-white hover:bg-white/85 text-black text-xs font-extrabold uppercase tracking-widest hover:scale-103 active:scale-95 transition-all duration-200 cursor-pointer"
-            >
-              Send Requirement (WhatsApp) <ArrowUpRight className="w-4 h-4" />
-            </button>
-          </form>
-        </div>
-      </section>
-
+      </div>
     </div>
   );
 }
