@@ -13,6 +13,7 @@ const CHAPTERS = [
     title: 'Brand Design',
     desc: "Strategy, naming, and visual identity that make your business people's main character.",
     image: '/assets/services/Brand Design.png',
+    mobileImage: '/assets/services/Moody Creative Studio at Sunset.png',
     accentColor: '#8b5cf6',
     accent: 'text-violet-400 border-violet-500/20 bg-violet-500/5',
     btnBg: 'bg-violet-600 hover:bg-violet-500 text-white',
@@ -23,6 +24,7 @@ const CHAPTERS = [
     title: 'UI UX Design',
     desc: 'Visually stunning, responsive websites and apps shaped by user behavior. Buttery-smooth layouts.',
     image: '/assets/services/UiUX.png',
+    mobileImage: '/assets/services/Blue-Lit UI Designer’s Workspace.png',
     accentColor: '#06b6d4',
     accent: 'text-cyan-400 border-cyan-500/20 bg-cyan-500/5',
     btnBg: 'bg-cyan-600 hover:bg-cyan-500 text-white',
@@ -33,6 +35,7 @@ const CHAPTERS = [
     title: 'Social Media Marketing',
     desc: 'Compelling campaigns and feed-stopping page management designed to capture infinite attention.',
     image: '/assets/services/Social Media.png',
+    mobileImage: '/assets/services/Neon Social Analytics Workspace.png',
     accentColor: '#ec4899',
     accent: 'text-pink-400 border-pink-500/20 bg-pink-500/5',
     btnBg: 'bg-pink-600 hover:bg-pink-500 text-white',
@@ -43,6 +46,7 @@ const CHAPTERS = [
     title: 'SEO Growth',
     desc: 'Google ranking optimization that gets you organic page 1 slots and crushes the competition.',
     image: '/assets/services/SEO.png',
+    mobileImage: '/assets/services/Neon Green Holographic Analytics Workspace.png',
     accentColor: '#a3e635',
     accent: 'text-lime-400 border-lime-500/20 bg-lime-500/5',
     btnBg: 'bg-lime-500 text-black hover:bg-lime-400',
@@ -180,12 +184,21 @@ export default function ServicesPin() {
             {/* Background Image with Parallax Scale */}
             <div className="absolute inset-0 w-full h-full z-10 pointer-events-none overflow-hidden">
               <div className="service-bg-image relative w-full h-full will-change-transform">
+                {/* Desktop Background (Untouched) */}
                 <Image
                   src={chapter.image}
                   alt={chapter.title}
                   fill
                   priority={idx === 0}
-                  className="object-cover opacity-85 filter contrast-[1.08] brightness-[0.9]"
+                  className="hidden md:block object-cover opacity-85 filter contrast-[1.08] brightness-[0.9]"
+                />
+                {/* Mobile Background */}
+                <Image
+                  src={chapter.mobileImage}
+                  alt={chapter.title}
+                  fill
+                  priority={idx === 0}
+                  className="block md:hidden object-cover opacity-85 filter contrast-[1.08] brightness-[0.9]"
                 />
               </div>
               <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/40 to-transparent" />

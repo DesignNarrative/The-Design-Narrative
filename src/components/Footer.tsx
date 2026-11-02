@@ -14,10 +14,10 @@ export default function Footer() {
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 pt-20 pb-12">
         {/* Main Footer Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 lg:gap-10 pb-16 border-b border-white/10">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-12 lg:gap-10 pb-16 border-b border-white/10">
           
           {/* Column 1: Brand & Mission (3 cols on lg) */}
-          <div className="md:col-span-12 lg:col-span-3 space-y-6">
+          <div className="col-span-1 md:col-span-12 lg:col-span-3 space-y-6">
             <Link href="/" className="inline-flex items-center gap-3 group">
               <div className="relative w-9 h-9 overflow-hidden rounded-xl border border-white/15 bg-white/5 p-1 group-hover:border-violet-500/50 transition-colors">
                 <Image
@@ -48,81 +48,84 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Column 2: Quick Links (2 cols) */}
-          <div className="col-span-6 md:col-span-3 lg:col-span-2 space-y-4">
-            <h3 className="text-[11px] font-mono tracking-widest uppercase font-bold text-violet-400">
-              QUICK LINKS
-            </h3>
-            <ul className="space-y-2.5 text-xs text-gray-400 font-medium">
-              <li>
-                <Link href="/" className="hover:text-white transition-colors flex items-center gap-1 hover:translate-x-1 duration-200">
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link href="/about" className="hover:text-white transition-colors flex items-center gap-1 hover:translate-x-1 duration-200">
-                  About Us
-                </Link>
-              </li>
-              <li>
-                <Link href="/services" className="hover:text-white transition-colors flex items-center gap-1 hover:translate-x-1 duration-200">
-                  Services
-                </Link>
-              </li>
-              <li>
-                <Link href="/work" className="hover:text-white transition-colors flex items-center gap-1 hover:translate-x-1 duration-200">
-                  Our Work
-                </Link>
-              </li>
-              <li>
-                <Link href="/careers" className="hover:text-white transition-colors flex items-center gap-1 hover:translate-x-1 duration-200">
-                  Careers
-                </Link>
-              </li>
-              <li>
-                <Link href="/blogs" className="hover:text-white transition-colors flex items-center gap-1 hover:translate-x-1 duration-200">
-                  Our Resources
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="hover:text-white transition-colors flex items-center gap-1 hover:translate-x-1 duration-200">
-                  Say Hello
-                </Link>
-              </li>
-            </ul>
-          </div>
+          {/* Columns 2 & 3: Quick Links & Our Services (Side-by-side on mobile, 4 cols total on lg) */}
+          <div className="col-span-1 md:col-span-6 lg:col-span-4 grid grid-cols-2 gap-6 sm:gap-8">
+            {/* Quick Links */}
+            <div className="space-y-4">
+              <h3 className="text-[11px] font-mono tracking-widest uppercase font-bold text-violet-400">
+                QUICK LINKS
+              </h3>
+              <ul className="space-y-2.5 text-xs text-gray-400 font-medium">
+                <li>
+                  <Link href="/" className="hover:text-white transition-colors flex items-center gap-1 hover:translate-x-1 duration-200">
+                    Home
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/about" className="hover:text-white transition-colors flex items-center gap-1 hover:translate-x-1 duration-200">
+                    About Us
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services" className="hover:text-white transition-colors flex items-center gap-1 hover:translate-x-1 duration-200">
+                    Services
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/work" className="hover:text-white transition-colors flex items-center gap-1 hover:translate-x-1 duration-200">
+                    Our Work
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/careers" className="hover:text-white transition-colors flex items-center gap-1 hover:translate-x-1 duration-200">
+                    Careers
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/blogs" className="hover:text-white transition-colors flex items-center gap-1 hover:translate-x-1 duration-200">
+                    Our Resources
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/contact" className="hover:text-white transition-colors flex items-center gap-1 hover:translate-x-1 duration-200">
+                    Say Hello
+                  </Link>
+                </li>
+              </ul>
+            </div>
 
-          {/* Column 3: Our Services (2 cols) */}
-          <div className="col-span-6 md:col-span-3 lg:col-span-2 space-y-4">
-            <h3 className="text-[11px] font-mono tracking-widest uppercase font-bold text-violet-400">
-              OUR SERVICES
-            </h3>
-            <ul className="space-y-2.5 text-xs text-gray-400 font-medium">
-              <li>
-                <Link href="/services/brand-design" className="hover:text-white transition-colors flex items-center gap-1 hover:translate-x-1 duration-200">
-                  Brand Design
-                </Link>
-              </li>
-              <li>
-                <Link href="/services/ui-ux" className="hover:text-white transition-colors flex items-center gap-1 hover:translate-x-1 duration-200">
-                  UI UX Design
-                </Link>
-              </li>
-              <li>
-                <Link href="/services/seo" className="hover:text-white transition-colors flex items-center gap-1 hover:translate-x-1 duration-200">
-                  SEO
-                </Link>
-              </li>
-              <li>
-                <Link href="/services/social-media" className="hover:text-white transition-colors flex items-center gap-1 hover:translate-x-1 duration-200">
-                  Social Media Management
-                </Link>
-              </li>
-            </ul>
+            {/* Our Services */}
+            <div className="space-y-4">
+              <h3 className="text-[11px] font-mono tracking-widest uppercase font-bold text-violet-400">
+                OUR SERVICES
+              </h3>
+              <ul className="space-y-2.5 text-xs text-gray-400 font-medium">
+                <li>
+                  <Link href="/services/brand-design" className="hover:text-white transition-colors flex items-center gap-1 hover:translate-x-1 duration-200">
+                    Brand Design
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services/ui-ux" className="hover:text-white transition-colors flex items-center gap-1 hover:translate-x-1 duration-200">
+                    UI UX Design
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services/seo" className="hover:text-white transition-colors flex items-center gap-1 hover:translate-x-1 duration-200">
+                    SEO
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services/social-media" className="hover:text-white transition-colors flex items-center gap-1 hover:translate-x-1 duration-200">
+                    Social Media Management
+                  </Link>
+                </li>
+              </ul>
+            </div>
           </div>
 
           {/* Column 4: Offices - Pune HQ & Jaipur (5 cols on lg) */}
-          <div className="col-span-12 md:col-span-6 lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 gap-8">
+          <div className="col-span-1 md:col-span-6 lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 gap-8">
             {/* Pune HQ */}
             <div className="space-y-4">
               <h3 className="text-[11px] font-mono tracking-widest uppercase font-bold text-violet-400">

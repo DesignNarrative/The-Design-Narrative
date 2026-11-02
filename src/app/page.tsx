@@ -285,13 +285,23 @@ export default function HomePage() {
       <section className="relative w-full h-[95vh] bg-[#050505] overflow-hidden flex flex-col justify-center items-center text-center">
         {/* Cinematic Backdrop Video */}
         <div className="absolute inset-0 z-10 pointer-events-none">
+          {/* Desktop/Laptop Video - Keep untouched */}
           <video
             autoPlay
             muted
             loop
             playsInline
-            className="w-full h-full object-cover filter brightness-[0.95] contrast-[1.05]"
+            className="hidden md:block w-full h-full object-cover filter brightness-[0.95] contrast-[1.05]"
             src="/assets/videos/Homepage website video.mp4"
+          />
+          {/* Mobile Video */}
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="block md:hidden w-full h-full object-cover filter brightness-[0.95] contrast-[1.05]"
+            src="/assets/videos/Mobile TDN Banner vedio.mp4"
           />
         </div>
 
@@ -333,7 +343,7 @@ export default function HomePage() {
                     src={client.logo}
                     alt={`${client.name} Logo`}
                     fill
-                    className="object-contain filter grayscale opacity-65 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
+                    className="object-contain filter-none opacity-100 md:filter md:grayscale md:opacity-65 md:group-hover:grayscale-0 md:group-hover:opacity-100 transition-all duration-300"
                   />
                 </div>
               </div>
@@ -470,13 +480,13 @@ export default function HomePage() {
           <button
             onClick={handlePrevTestimonial}
             aria-label="Previous Testimonials"
-            className="absolute left-1 sm:left-2 lg:left-4 top-1/2 -translate-y-1/2 z-30 w-11 h-11 md:w-13 md:h-13 rounded-full bg-white shadow-xl border border-black/5 flex items-center justify-center text-black hover:scale-110 active:scale-95 transition-all duration-200 cursor-pointer"
+            className="hidden md:flex absolute left-1 sm:left-2 lg:left-4 top-1/2 -translate-y-1/2 z-30 w-11 h-11 md:w-13 md:h-13 rounded-full bg-white shadow-xl border border-black/5 items-center justify-center text-black hover:scale-110 active:scale-95 transition-all duration-200 cursor-pointer"
           >
             <ArrowLeft className="w-5 h-5" />
           </button>
 
-          {/* 3-Card Carousel Track */}
-          <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 px-8 md:px-12">
+          {/* 3-Card Carousel Track (Horizontal swipe on mobile, 3-column grid on desktop) */}
+          <div className="w-full flex flex-row overflow-x-auto snap-x snap-mandatory gap-4 px-4 pb-6 pt-2 no-scrollbar md:grid md:grid-cols-3 md:gap-8 md:px-12 md:pb-0 md:pt-0 md:overflow-visible">
             {[0, 1, 2].map((offset) => {
               const itemIdx = (activeTestimonialIdx + offset) % TESTIMONIALS_DATA.length;
               const item = TESTIMONIALS_DATA[itemIdx];
@@ -491,7 +501,7 @@ export default function HomePage() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -15 }}
                   transition={{ duration: 0.3 }}
-                  className={`rounded-3xl p-6 sm:p-7 md:p-8 flex flex-col justify-between h-[480px] md:h-[510px] transition-all duration-300 ${
+                  className={`rounded-3xl p-6 sm:p-7 md:p-8 flex flex-col justify-between w-[85vw] max-w-[340px] shrink-0 snap-center h-[470px] md:w-auto md:max-w-none md:shrink md:h-[510px] transition-all duration-300 ${
                     isDark
                       ? 'bg-[#13111c] text-white border border-violet-500/25 shadow-[0_20px_50px_rgba(139,92,246,0.3)] ring-1 ring-violet-500/20'
                       : 'bg-white text-[#111111] border border-black/8 shadow-xl hover:shadow-2xl'
@@ -559,9 +569,27 @@ export default function HomePage() {
           <button
             onClick={handleNextTestimonial}
             aria-label="Next Testimonials"
-            className="absolute right-1 sm:right-2 lg:right-4 top-1/2 -translate-y-1/2 z-30 w-11 h-11 md:w-13 md:h-13 rounded-full bg-white shadow-xl border border-black/5 flex items-center justify-center text-black hover:scale-110 active:scale-95 transition-all duration-200 cursor-pointer"
+            className="hidden md:flex absolute right-1 sm:right-2 lg:right-4 top-1/2 -translate-y-1/2 z-30 w-11 h-11 md:w-13 md:h-13 rounded-full bg-white shadow-xl border border-black/5 items-center justify-center text-black hover:scale-110 active:scale-95 transition-all duration-200 cursor-pointer"
           >
             <ArrowRight className="w-5 h-5" />
+          </button>
+        </div>
+
+        {/* Mobile Carousel Navigation Arrows */}
+        <div className="flex md:hidden justify-center items-center gap-4 mt-4">
+          <button
+            onClick={handlePrevTestimonial}
+            aria-label="Previous Testimonials"
+            className="w-10 h-10 rounded-full bg-white shadow-md border border-black/10 flex items-center justify-center text-black active:scale-95 transition-all cursor-pointer"
+          >
+            <ArrowLeft className="w-4 h-4" />
+          </button>
+          <button
+            onClick={handleNextTestimonial}
+            aria-label="Next Testimonials"
+            className="w-10 h-10 rounded-full bg-white shadow-md border border-black/10 flex items-center justify-center text-black active:scale-95 transition-all cursor-pointer"
+          >
+            <ArrowRight className="w-4 h-4" />
           </button>
         </div>
 
@@ -793,7 +821,7 @@ export default function HomePage() {
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6 }}
-                className="relative w-[150px] sm:w-[175px] md:w-[200px] aspect-square flex items-center justify-center rounded-3xl"
+                className="relative w-[230px] sm:w-[260px] md:w-[200px] aspect-square flex items-center justify-center rounded-3xl z-10"
               >
                 <div className="relative w-full h-full">
                   <Image
@@ -907,9 +935,9 @@ export default function HomePage() {
                 animate={{ opacity: 1, y: 0, rotate: -4 }}
                 whileHover={{ rotate: 0, scale: 1.05 }}
                 transition={{ duration: 0.3 }}
-                className="absolute left-0 sm:left-4 md:left-6 top-8 md:top-12 z-20 w-36 sm:w-44 md:w-48 bg-[#111116] border border-white/15 rounded-2xl p-2 shadow-2xl backdrop-blur-md"
+                className="absolute left-1 sm:left-4 md:left-6 top-8 md:top-12 z-20 w-20 sm:w-28 md:w-48 bg-[#111116] border border-white/15 rounded-xl md:rounded-2xl p-1.5 md:p-2 shadow-2xl backdrop-blur-md"
               >
-                <div className="relative aspect-square w-full rounded-xl overflow-hidden bg-gray-900">
+                <div className="relative aspect-square w-full rounded-lg md:rounded-xl overflow-hidden bg-gray-900">
                   <Image
                     src="/assets/cta-studio.jpg"
                     alt="TDN Studio Setup"
@@ -917,7 +945,7 @@ export default function HomePage() {
                     className="object-cover"
                   />
                 </div>
-                <div className="py-2 px-1 text-center">
+                <div className="hidden sm:block py-2 px-1 text-center">
                   <span className="text-[9px] font-mono font-bold tracking-wider text-gray-400 uppercase">
                     Strategy | Design | Growth
                   </span>
@@ -930,7 +958,7 @@ export default function HomePage() {
                 animate={{ opacity: 1, y: 0 }}
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.3 }}
-                className="absolute top-0 right-0 sm:right-2 md:right-4 z-30 flex items-center gap-3 px-4 py-2 rounded-full bg-[#13121a]/95 border border-white/15 shadow-[0_10px_30px_rgba(0,0,0,0.5)] backdrop-blur-md"
+                className="absolute top-0 right-1 sm:right-2 md:right-4 z-30 flex items-center gap-2 sm:gap-3 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-[#13121a]/95 border border-white/15 shadow-[0_10px_30px_rgba(0,0,0,0.5)] backdrop-blur-md scale-90 sm:scale-100 origin-top-right"
               >
                 <div className="flex -space-x-2">
                   <img
@@ -961,9 +989,9 @@ export default function HomePage() {
                 animate={{ opacity: 1, y: 0, rotate: 6 }}
                 whileHover={{ rotate: 0, scale: 1.05 }}
                 transition={{ duration: 0.3 }}
-                className="absolute right-0 sm:right-2 md:right-4 top-14 md:top-18 z-20 w-36 sm:w-44 md:w-48 bg-[#111116] border border-white/15 rounded-2xl p-2 shadow-2xl backdrop-blur-md"
+                className="absolute right-1 sm:right-2 md:right-4 top-20 md:top-18 z-20 w-20 sm:w-28 md:w-48 bg-[#111116] border border-white/15 rounded-xl md:rounded-2xl p-1.5 md:p-2 shadow-2xl backdrop-blur-md"
               >
-                <div className="relative aspect-[3/4] w-full rounded-xl overflow-hidden bg-gray-900">
+                <div className="relative aspect-[3/4] w-full rounded-lg md:rounded-xl overflow-hidden bg-gray-900">
                   <Image
                     src="/assets/cta-laptop.jpg"
                     alt="Good Design Builds Better Brands"
@@ -979,7 +1007,7 @@ export default function HomePage() {
                 animate={{ opacity: 1, y: 0 }}
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.3 }}
-                className="absolute bottom-2 left-6 sm:left-12 md:left-16 z-30 flex items-center gap-4 px-5 py-3 rounded-2xl bg-[#13121a]/95 border border-white/15 shadow-[0_15px_35px_rgba(0,0,0,0.6)] backdrop-blur-md"
+                className="absolute bottom-1 md:bottom-2 left-1/2 -translate-x-1/2 md:left-16 md:translate-x-0 z-30 flex items-center gap-3 sm:gap-4 px-4 py-2 sm:px-5 sm:py-3 rounded-2xl bg-[#13121a]/95 border border-white/15 shadow-[0_15px_35px_rgba(0,0,0,0.6)] backdrop-blur-md scale-90 sm:scale-100 origin-bottom whitespace-nowrap"
               >
                 <div className="w-8 h-8 rounded-xl bg-violet-600/20 border border-violet-500/30 flex items-center justify-center text-violet-400">
                   <BarChart3 className="w-4 h-4" />
