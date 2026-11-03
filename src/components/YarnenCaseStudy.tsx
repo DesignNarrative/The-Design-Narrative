@@ -189,12 +189,12 @@ export default function YarnenCaseStudy({ nextProjects }: { nextProjects: Projec
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: '-60px' }}
-        className="relative w-full h-[85vh] md:h-screen overflow-hidden my-12 md:my-16 bg-[#050505] shadow-2xl"
+        className="relative w-full h-auto md:h-screen overflow-hidden my-8 md:my-16 bg-[#050505] shadow-2xl"
       >
         <img
           src="/assets/projects/yarnen/Logo (1).jpg"
           alt="Yarnen Brand Concept Deconstruction"
-          className="w-full h-full object-cover filter brightness-[0.96]"
+          className="w-full h-auto md:h-full object-contain md:object-cover filter brightness-[0.96] block"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20 pointer-events-none" />
       </motion.section>
@@ -207,12 +207,12 @@ export default function YarnenCaseStudy({ nextProjects }: { nextProjects: Projec
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: '-60px' }}
-        className="relative w-full h-[85vh] md:h-screen overflow-hidden my-12 md:my-16 bg-[#050505] shadow-2xl"
+        className="relative w-full h-auto md:h-screen overflow-hidden my-8 md:my-16 bg-[#050505] shadow-2xl"
       >
         <img
           src="/assets/projects/yarnen/Packaging paper.jpg"
           alt="Yarnen Eco-Friendly Packaging Paper"
-          className="w-full h-full object-cover filter brightness-[0.96]"
+          className="w-full h-auto md:h-full object-contain md:object-cover filter brightness-[0.96] block"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20 pointer-events-none" />
       </motion.section>
