@@ -80,7 +80,7 @@ export default function ChavBhariCaseStudy({ nextProjects }: { nextProjects: Pro
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: '-60px' }}
-        className="relative w-full h-[85vh] md:h-screen overflow-hidden my-12 md:my-16 bg-[#050505] shadow-2xl"
+        className="relative w-full h-auto md:h-screen overflow-hidden my-8 md:my-16 bg-[#050505] shadow-2xl"
       >
         <video
           src="/assets/projects/chav-bhari/Chav Bhari logo meaning.mp4"
@@ -88,7 +88,7 @@ export default function ChavBhariCaseStudy({ nextProjects }: { nextProjects: Pro
           muted
           loop
           playsInline
-          className="w-full h-full object-cover filter brightness-[0.96]"
+          className="w-full h-auto md:h-full object-contain md:object-cover filter brightness-[0.96] block"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20 pointer-events-none" />
       </motion.section>
@@ -153,12 +153,12 @@ export default function ChavBhariCaseStudy({ nextProjects }: { nextProjects: Pro
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: '-60px' }}
-        className="relative w-full h-[85vh] md:h-screen overflow-hidden my-12 md:my-16 bg-[#050505] shadow-2xl"
+        className="relative w-full h-auto md:h-screen overflow-hidden my-8 md:my-16 bg-[#050505] shadow-2xl"
       >
         <img
           src="/assets/projects/chav-bhari/Hoarding.png"
           alt="Chav Bhari Outdoor Billboard Hoarding"
-          className="w-full h-full object-cover filter brightness-[0.92] contrast-[1.04]"
+          className="w-full h-auto md:h-full object-contain md:object-cover filter brightness-[0.92] contrast-[1.04] block"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20 pointer-events-none" />
       </motion.section>
