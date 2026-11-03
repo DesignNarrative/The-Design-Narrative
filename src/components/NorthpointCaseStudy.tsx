@@ -21,11 +21,11 @@ export default function NorthpointCaseStudy({ nextProjects }: { nextProjects: Pr
       {/* ========================================================================= */}
       {/* 1. TOP HERO BANNER: Brochure.png covering the entire screen                */}
       {/* ========================================================================= */}
-      <section className="relative w-full h-[85vh] md:h-screen overflow-hidden bg-[#050505]">
+      <section className="relative w-full h-auto md:h-screen overflow-hidden bg-[#050505]">
         <img
           src="/assets/projects/northpoint-school/Brochure.png"
           alt="Vidya Valley Northpoint School Brochure Design Hero"
-          className="w-full h-full object-cover filter brightness-[0.98]"
+          className="w-full h-auto md:h-full object-contain md:object-cover filter brightness-[0.98] block"
         />
         {/* Soft edge vignette */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20 pointer-events-none" />
