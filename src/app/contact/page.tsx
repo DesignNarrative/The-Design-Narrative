@@ -24,21 +24,10 @@ const LOCATIONS = [
     title: 'Pune Headquarters',
     pinName: 'TDN - Pune HQ',
     address: 'CTS 927, Office No.302, Sanas Memories, F.C. Road, Pune – 411005',
-    phone: '+91 9850 417 266',
+    phone: '+91 7387 234 785',
     email: 'ceo@thedesignnarrative.in',
     mapUrl: 'https://maps.google.com/maps?q=Sanas%20Memories,%20F.C.%20Road,%20Pune&t=&z=15&ie=UTF8&iwloc=&output=embed',
     directionUrl: 'https://maps.google.com/?q=Sanas+Memories+F.C.+Road+Pune+411005',
-  },
-  {
-    id: 'jaipur',
-    label: 'JAIPUR STUDIO',
-    title: 'Jaipur Creative Studio',
-    pinName: 'TDN - Jaipur Studio',
-    address: '8 Khaliya house, Raj Bhawan Road, Gayatri Nagar, Sodala, Jaipur – 302015',
-    phone: '+91 7387 234 785',
-    email: 'digital@thedesignnarrative.in',
-    mapUrl: 'https://maps.google.com/maps?q=Gayatri%20Nagar,%20Sodala,%20Jaipur&t=&z=15&ie=UTF8&iwloc=&output=embed',
-    directionUrl: 'https://maps.google.com/?q=Gayatri+Nagar+Sodala+Jaipur+302015',
   },
 ];
 
@@ -119,7 +108,7 @@ I'm reaching out from your website contact page:
 • Interested In: ${formData.service}
 • Message: ${formData.message}`;
 
-    const formattedLink = `https://wa.me/919850417266?text=${encodeURIComponent(waText)}`;
+    const formattedLink = `https://wa.me/917387234785?text=${encodeURIComponent(waText)}`;
     window.open(formattedLink, '_blank');
   };
 
@@ -316,12 +305,12 @@ I'm reaching out from your website contact page:
               HERE.
             </h2>
             <p className="text-sm md:text-base text-gray-600 font-medium leading-relaxed">
-              Come say hello! We work from two locations and collaborate with clients across the globe.
+              Come say hello! We collaborate with clients across the globe.
             </p>
           </div>
 
-          {/* Side-by-Side Office Cards with Large Colorful Maps */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-10">
+          {/* Office Card with Large Colorful Map */}
+          <div className="max-w-3xl mx-auto w-full">
             {LOCATIONS.map((loc) => (
               <div
                 key={loc.id}
@@ -423,7 +412,7 @@ I'm reaching out from your website contact page:
 
             <div className="pt-2">
               <a
-                href="https://wa.me/919850417266?text=Hey%20TDN!%20I%20have%20a%20question%20regarding%20your%20services"
+                href="https://wa.me/917387234785?text=Hey%20TDN!%20I%20have%20a%20question%20regarding%20your%20services"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full border border-black/15 text-black text-xs font-black uppercase tracking-widest hover:bg-black hover:text-white hover:scale-105 active:scale-95 transition-all cursor-pointer shadow-sm"

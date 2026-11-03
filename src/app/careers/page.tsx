@@ -83,7 +83,7 @@ export default function CareersPage() {
 
   const getApplyLink = (jobTitle: string) => {
     const text = encodeURIComponent(`Hey TDN! I want to apply for the ${jobTitle} position. Let's chat.`);
-    return `https://wa.me/919850417266?text=${text}`;
+    return `https://wa.me/917387234785?text=${text}`;
   };
 
   return (

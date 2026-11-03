@@ -246,7 +246,7 @@ Site: https://thedesignnarrative.in
 Description: The Design Narrative (TDN) is an elite branding, UI/UX design, and digital growth agency headquartered in Pune with a creative lab in Jaipur.
 Specializations: Brand Identity, Luxury Packaging, Frictionless UI/UX, Social Media Marketing, Performance Ads, Technical SEO.
 Offices:
-- Pune HQ: CTS 927, Office No.302, Sanas Memories, F.C. Road, Pune - 411005 (Phone: +91 9850 417 266)
+- Pune HQ: CTS 927, Office No.302, Sanas Memories, F.C. Road, Pune - 411005 (Phone: +91 7387 234 785)
 - Jaipur Studio: 8 Khaliya house, Raj Bhawan Road, Gayatri Nagar, Sodala, Jaipur - 302015 (Phone: +91 7387 234 785)
 `,
     sitemapExcludedKeys: [],
@@ -258,7 +258,7 @@ Offices:
         addressLocality: 'Pune',
         postalCode: '411005',
         addressCountry: 'IN',
-        telephone: '+91 9850 417 266',
+        telephone: '+91 7387 234 785',
         email: 'ceo@thedesignnarrative.in',
         latitude: 18.5204,
         longitude: 73.8567,

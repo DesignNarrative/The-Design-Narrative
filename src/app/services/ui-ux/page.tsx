@@ -129,7 +129,7 @@ export default function UiUxPage() {
     const text = encodeURIComponent(
       "Hey TDN! We'd like to consult on UI/UX & Website Design for our business in Pune. Let's talk!"
     );
-    return `https://wa.me/919850417266?text=${text}`;
+    return `https://wa.me/917387234785?text=${text}`;
   };
 
   return (

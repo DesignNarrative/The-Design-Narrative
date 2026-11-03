@@ -100,7 +100,7 @@ export default function ServicesPage() {
     e.preventDefault();
     if (!customMsg.trim()) return;
     const text = encodeURIComponent(`Hey TDN! We saw your services page and have a custom requirement: ${customMsg}`);
-    window.open(`https://wa.me/919850417266?text=${text}`, '_blank');
+    window.open(`https://wa.me/917387234785?text=${text}`, '_blank');
   };
 
   return (

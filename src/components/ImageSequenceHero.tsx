@@ -127,7 +127,7 @@ export default function ImageSequenceHero() {
       >
         <div className="flex gap-4 pointer-events-auto">
           <Link
-            href="https://wa.me/919850417266?text=Hey%20TDN!%20We%20saw%20your%20design%20sequence%20and%20want%20to%20work%20together!%20Let's%20collaborate."
+            href="https://wa.me/917387234785?text=Hey%20TDN!%20We%20saw%20your%20design%20sequence%20and%20want%20to%20work%20together!%20Let's%20collaborate."
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center justify-center gap-1.5 px-8 py-3.5 rounded-full bg-white hover:bg-white/85 text-black font-extrabold text-xs uppercase tracking-widest shadow-xl hover:scale-105 active:scale-95 transition-all duration-200"

@@ -40,7 +40,7 @@ export function buildPageSchemaJson(
       name: schema.name || puneNap?.name || settings.siteName,
       image: settings.defaultOgImage ? `${domain}${settings.defaultOgImage}` : undefined,
       url: domain,
-      telephone: puneNap?.telephone || '+91 9850 417 266',
+      telephone: puneNap?.telephone || '+91 7387 234 785',
       priceRange: schema.priceRange || '$$$$',
       address: {
         '@type': 'PostalAddress',

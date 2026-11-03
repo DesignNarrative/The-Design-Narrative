@@ -215,8 +215,8 @@ export default function AboutPage() {
           {/* Hero headline */}
           <div className="space-y-1 md:space-y-3">
             <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black uppercase tracking-tighter text-[#111111] leading-[0.95]">
-              A Digital Marketing and <br className="hidden sm:inline" />
-              <span className="font-serif italic font-normal text-violet-600 normal-case">Branding Agency</span> in Pune
+              Strategic Brand Design Company <br className="hidden sm:inline" />
+              <span className="font-serif italic font-normal text-violet-600 normal-case">and Social Media</span> agency
             </h1>
           </div>
 

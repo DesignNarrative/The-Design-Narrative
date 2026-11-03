@@ -191,7 +191,7 @@ function StatCounter({ target, suffix = '', duration = 1500 }: { target: number;
 }
 
 export default function HomePage() {
-  const whatsappLink = "https://wa.me/919850417266?text=Hey%20TDN!%20We%20saw%20your%20website%20and%20want%20to%20collaborate%20on%20our%20brand%20design/marketing.%20Let's%20talk!";
+  const whatsappLink = "https://wa.me/917387234785?text=Hey%20TDN!%20We%20saw%20your%20website%20and%20want%20to%20collaborate%20on%20our%20brand%20design/marketing.%20Let's%20talk!";
   const [customMsg, setCustomMsg] = useState('');
   const [activeTestimonialIdx, setActiveTestimonialIdx] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
@@ -275,7 +275,7 @@ export default function HomePage() {
     e.preventDefault();
     if (!customMsg.trim()) return;
     const text = encodeURIComponent(`Hey TDN! Here are my enquiry details: ${customMsg}`);
-    window.open(`https://wa.me/919850417266?text=${text}`, '_blank');
+    window.open(`https://wa.me/917387234785?text=${text}`, '_blank');
   };
 
   return (

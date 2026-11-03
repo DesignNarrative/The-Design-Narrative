@@ -64,7 +64,7 @@ export default function Navbar() {
         {/* CTA Button */}
         <div className="hidden md:block">
           <Link
-            href="https://wa.me/919850417266"
+            href="https://wa.me/917387234785"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-1.5 px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#111111] hover:bg-[#111111]/85 text-white shadow-sm hover:scale-105 active:scale-95 transition-all duration-200"
@@ -109,7 +109,7 @@ export default function Navbar() {
                 );
               })}
               <Link
-                href="https://wa.me/919850417266"
+                href="https://wa.me/917387234785"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => setIsOpen(false)}

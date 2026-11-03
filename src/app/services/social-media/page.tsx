@@ -105,7 +105,7 @@ export default function SocialMediaPage() {
     const text = encodeURIComponent(
       "Hey TDN! We'd like to consult with you on Social Media Marketing & Campaigns for our business. Let's talk!"
     );
-    return `https://wa.me/919850417266?text=${text}`;
+    return `https://wa.me/917387234785?text=${text}`;
   };
 
   return (

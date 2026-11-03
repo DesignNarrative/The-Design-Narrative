@@ -127,7 +127,7 @@ export default function BrandDesignPage() {
     const text = encodeURIComponent(
       "Hey TDN! We'd like to consult with you on Branding & Identity Design for our business. Let's talk!"
     );
-    return `https://wa.me/919850417266?text=${text}`;
+    return `https://wa.me/917387234785?text=${text}`;
   };
 
   return (
