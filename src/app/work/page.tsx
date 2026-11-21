@@ -81,7 +81,7 @@ function WorkCard({ project, idx }: { project: Project; idx: number }) {
         <div className="absolute inset-0 w-full h-full z-10 pointer-events-none overflow-hidden">
           {(project.video && (project.video.endsWith('.mp4') || project.video.includes('.mp4'))) ||
           (project.image && (project.image.endsWith('.mp4') || project.image.includes('.mp4'))) ? (
-            <video
+            <video preload="metadata"
               key={project.video || project.image}
               src={project.video && (project.video.endsWith('.mp4') || project.video.includes('.mp4')) ? project.video : project.image}
               autoPlay

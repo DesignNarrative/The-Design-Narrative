@@ -274,7 +274,7 @@ export default function AboutPage() {
       {/* SECTION 2: CINEMATIC STORY VIDEO (Fullscreen Video Backdrop)              */}
       {/* ========================================================================= */}
       <section className="relative w-full h-[95vh] bg-[#050505] overflow-hidden">
-        <video
+        <video preload="metadata"
           src="/assets/videos/Home banner vedio.mp4"
           autoPlay
           loop

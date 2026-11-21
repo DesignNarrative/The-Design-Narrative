@@ -193,7 +193,7 @@ export default function AmToAmCaseStudy({ nextProjects }: { nextProjects: Projec
         viewport={{ once: true, margin: '-60px' }}
         className="w-full my-8 md:my-14 flex justify-center items-center px-4 sm:px-6"
       >
-        <video
+        <video preload="metadata"
           src="/assets/projects/am-to-am/Reel.mp4"
           autoPlay
           muted
@@ -257,7 +257,7 @@ export default function AmToAmCaseStudy({ nextProjects }: { nextProjects: Projec
                 {/* Background visual/video */}
                 <div className="absolute inset-0 w-full h-full z-10 pointer-events-none overflow-hidden">
                   {p.image.endsWith('.mp4') || p.image.includes('.mp4') ? (
-                    <video
+                    <video preload="metadata"
                       src={p.image}
                       autoPlay
                       muted

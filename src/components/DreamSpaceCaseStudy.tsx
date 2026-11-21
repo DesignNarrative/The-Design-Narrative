@@ -88,7 +88,7 @@ export default function DreamSpaceCaseStudy({ nextProjects }: { nextProjects: Pr
         >
           {/* Left: 15th anniversey_2.mp4 */}
           <div className="flex justify-center w-full overflow-hidden rounded-2xl md:rounded-3xl shadow-xl bg-black">
-            <video
+            <video preload="metadata"
               src="/assets/projects/dream-space/15th anniversey_2.mp4"
               autoPlay
               muted
@@ -259,7 +259,7 @@ export default function DreamSpaceCaseStudy({ nextProjects }: { nextProjects: Pr
                 {/* Background visual/video */}
                 <div className="absolute inset-0 w-full h-full z-10 pointer-events-none overflow-hidden">
                   {p.image.endsWith('.mp4') || p.image.includes('.mp4') ? (
-                    <video
+                    <video preload="metadata"
                       src={p.image}
                       autoPlay
                       muted

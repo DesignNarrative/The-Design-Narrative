@@ -332,7 +332,7 @@ export default function CitaraCaseStudy({ nextProjects }: { nextProjects: Projec
                 {/* Background visual/video */}
                 <div className="absolute inset-0 w-full h-full z-10 pointer-events-none overflow-hidden">
                   {p.image.endsWith('.mp4') || p.image.includes('.mp4') ? (
-                    <video
+                    <video preload="metadata"
                       src={p.image}
                       autoPlay
                       muted

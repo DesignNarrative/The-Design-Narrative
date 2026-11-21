@@ -85,7 +85,7 @@ export default function PinkwestCaseStudy({ nextProjects }: { nextProjects: Proj
         viewport={{ once: true, margin: '-60px' }}
         className="w-full my-8 md:my-14 flex justify-center items-center px-4 sm:px-6"
       >
-        <video
+        <video preload="metadata"
           src="/assets/projects/pinkwest/pinkwest vedio.mp4"
           autoPlay
           muted
@@ -128,7 +128,7 @@ export default function PinkwestCaseStudy({ nextProjects }: { nextProjects: Proj
         viewport={{ once: true, margin: '-60px' }}
         className="w-full my-8 md:my-14 flex justify-center items-center px-4 sm:px-6"
       >
-        <video
+        <video preload="metadata"
           src="/assets/projects/pinkwest/e.mp4"
           autoPlay
           muted
@@ -171,7 +171,7 @@ export default function PinkwestCaseStudy({ nextProjects }: { nextProjects: Proj
         viewport={{ once: true, margin: '-60px' }}
         className="w-full my-8 md:my-14 flex justify-center items-center px-4 sm:px-6"
       >
-        <video
+        <video preload="metadata"
           src="/assets/projects/pinkwest/e (1).mp4"
           autoPlay
           muted
@@ -235,7 +235,7 @@ export default function PinkwestCaseStudy({ nextProjects }: { nextProjects: Proj
                 {/* Background visual/video */}
                 <div className="absolute inset-0 w-full h-full z-10 pointer-events-none overflow-hidden">
                   {p.image.endsWith('.mp4') || p.image.includes('.mp4') ? (
-                    <video
+                    <video preload="metadata"
                       src={p.image}
                       autoPlay
                       muted

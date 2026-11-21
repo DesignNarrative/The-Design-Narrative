@@ -84,7 +84,7 @@ export default function DDSCaseStudy({ nextProjects }: { nextProjects: Project[]
         viewport={{ once: true, margin: '-60px' }}
         className="relative w-full h-auto md:h-screen overflow-hidden my-8 md:my-16 bg-[#050505] shadow-2xl"
       >
-        <video
+        <video preload="metadata"
           src="/assets/projects/dds/Logo Video.mp4"
           autoPlay
           muted
@@ -268,7 +268,7 @@ export default function DDSCaseStudy({ nextProjects }: { nextProjects: Project[]
                 {/* Background visual/video */}
                 <div className="absolute inset-0 w-full h-full z-10 pointer-events-none overflow-hidden">
                   {p.image.endsWith('.mp4') || p.image.includes('.mp4') ? (
-                    <video
+                    <video preload="metadata"
                       src={p.image}
                       autoPlay
                       muted

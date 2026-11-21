@@ -22,7 +22,7 @@ export default function DangayachCaseStudy({ nextProjects }: { nextProjects: Pro
       {/* 1. TOP HERO BANNER: DangayachGroup.mp4 covering the entire screen         */}
       {/* ========================================================================= */}
       <section className="relative w-full h-[85vh] md:h-screen overflow-hidden bg-[#050505]">
-        <video
+        <video preload="metadata"
           src="/assets/projects/dangayach/DangayachGroup.mp4"
           autoPlay
           muted
@@ -89,7 +89,7 @@ export default function DangayachCaseStudy({ nextProjects }: { nextProjects: Pro
         viewport={{ once: true, margin: '-60px' }}
         className="w-full my-8 md:my-14 overflow-hidden"
       >
-        <video
+        <video preload="metadata"
           src="/assets/projects/dangayach/Dangayach website 1.mp4"
           autoPlay
           muted
@@ -132,7 +132,7 @@ export default function DangayachCaseStudy({ nextProjects }: { nextProjects: Pro
         viewport={{ once: true, margin: '-60px' }}
         className="w-full my-8 md:my-14 overflow-hidden"
       >
-        <video
+        <video preload="metadata"
           src="/assets/projects/dangayach/Dangayach website 2.mp4"
           autoPlay
           muted
@@ -175,7 +175,7 @@ export default function DangayachCaseStudy({ nextProjects }: { nextProjects: Pro
         viewport={{ once: true, margin: '-60px' }}
         className="w-full my-8 md:my-14 overflow-hidden"
       >
-        <video
+        <video preload="metadata"
           src="/assets/projects/dangayach/Dangayach website 3.mp4"
           autoPlay
           muted
@@ -239,7 +239,7 @@ export default function DangayachCaseStudy({ nextProjects }: { nextProjects: Pro
                 {/* Background visual/video */}
                 <div className="absolute inset-0 w-full h-full z-10 pointer-events-none overflow-hidden">
                   {p.image.endsWith('.mp4') || p.image.includes('.mp4') ? (
-                    <video
+                    <video preload="metadata"
                       src={p.image}
                       autoPlay
                       muted

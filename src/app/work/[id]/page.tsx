@@ -145,7 +145,7 @@ export default function CaseStudyPage({ params }: { params: Promise<{ id: string
         {/* Full-width image header */}
         <div className="relative w-full h-[55vh] rounded-3xl overflow-hidden shadow-lg border border-black/5 bg-[#050505] group">
           {project.image.endsWith('.mp4') || project.image.includes('.mp4') ? (
-            <video
+            <video preload="metadata"
               src={project.image}
               autoPlay
               muted

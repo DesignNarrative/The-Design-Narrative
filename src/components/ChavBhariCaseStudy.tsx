@@ -82,7 +82,7 @@ export default function ChavBhariCaseStudy({ nextProjects }: { nextProjects: Pro
         viewport={{ once: true, margin: '-60px' }}
         className="relative w-full h-auto md:h-screen overflow-hidden my-8 md:my-16 bg-[#050505] shadow-2xl"
       >
-        <video
+        <video preload="metadata"
           src="/assets/projects/chav-bhari/Chav Bhari logo meaning.mp4"
           autoPlay
           muted
@@ -197,7 +197,7 @@ export default function ChavBhariCaseStudy({ nextProjects }: { nextProjects: Pro
         >
           {/* Video: pure video, no white background, covers space with no side bars */}
           <div className="w-full h-[60vh] md:h-[80vh] overflow-hidden rounded-2xl md:rounded-3xl shadow-xl bg-transparent">
-            <video
+            <video preload="metadata"
               src="/assets/projects/chav-bhari/chav bhari (1).mp4"
               autoPlay
               muted
@@ -273,7 +273,7 @@ export default function ChavBhariCaseStudy({ nextProjects }: { nextProjects: Pro
                 {/* Background visual/video */}
                 <div className="absolute inset-0 w-full h-full z-10 pointer-events-none overflow-hidden">
                   {p.image.endsWith('.mp4') || p.image.includes('.mp4') ? (
-                    <video
+                    <video preload="metadata"
                       src={p.image}
                       autoPlay
                       muted

@@ -286,7 +286,7 @@ export default function HomePage() {
         {/* Cinematic Backdrop Video */}
         <div className="absolute inset-0 z-10 pointer-events-none">
           {/* Desktop/Laptop Video - Keep untouched */}
-          <video
+          <video preload="metadata"
             autoPlay
             muted
             loop
@@ -295,7 +295,7 @@ export default function HomePage() {
             src="/assets/videos/Homepage website video.mp4"
           />
           {/* Mobile Video */}
-          <video
+          <video preload="metadata"
             autoPlay
             muted
             loop

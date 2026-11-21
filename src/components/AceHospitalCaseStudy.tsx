@@ -98,7 +98,7 @@ export default function AceHospitalCaseStudy({ nextProjects }: { nextProjects: P
 
           {/* Right: Logo Meaing.mp4 */}
           <div className="flex justify-center w-full overflow-hidden rounded-2xl md:rounded-3xl shadow-xl bg-black">
-            <video
+            <video preload="metadata"
               src="/assets/projects/ace-hospitals/Logo Meaing.mp4"
               autoPlay
               muted
@@ -242,7 +242,7 @@ export default function AceHospitalCaseStudy({ nextProjects }: { nextProjects: P
                 {/* Background visual/video */}
                 <div className="absolute inset-0 w-full h-full z-10 pointer-events-none overflow-hidden">
                   {p.image.endsWith('.mp4') || p.image.includes('.mp4') ? (
-                    <video
+                    <video preload="metadata"
                       src={p.image}
                       autoPlay
                       muted

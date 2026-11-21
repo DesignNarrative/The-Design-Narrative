@@ -88,7 +88,7 @@ export default function DNLCaseStudy({ nextProjects }: { nextProjects: Project[]
         >
           {/* Video 1: Drone Sweeping Lagoon */}
           <div className="w-full overflow-hidden rounded-2xl md:rounded-3xl shadow-xl bg-transparent">
-            <video
+            <video preload="metadata"
               src="/assets/projects/dnl/Drone_camera_sweeping_lagoon_.mp4"
               autoPlay
               muted
@@ -102,7 +102,7 @@ export default function DNLCaseStudy({ nextProjects }: { nextProjects: Project[]
 
           {/* Video 2: Gemini Generated Video */}
           <div className="w-full overflow-hidden rounded-2xl md:rounded-3xl shadow-xl bg-transparent">
-            <video
+            <video preload="metadata"
               src="/assets/projects/dnl/gemini_generated_video_35d38266.mp4"
               autoPlay
               muted
@@ -261,7 +261,7 @@ export default function DNLCaseStudy({ nextProjects }: { nextProjects: Project[]
                 {/* Background visual/video */}
                 <div className="absolute inset-0 w-full h-full z-10 pointer-events-none overflow-hidden">
                   {p.image.endsWith('.mp4') || p.image.includes('.mp4') ? (
-                    <video
+                    <video preload="metadata"
                       src={p.image}
                       autoPlay
                       muted
